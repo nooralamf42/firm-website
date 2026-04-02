@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BarChart3, Briefcase, Calculator, Landmark, ShieldCheck, PieChart } from "lucide-react";
 import { articles, categoryColors } from "@/app/data/articles";
+import { COMPANY_NAME, DBA_NAME } from "@/lib/constants";
 
 export default function Home() {
   const insightPreviews = articles.slice(0, 3);
@@ -28,7 +29,7 @@ export default function Home() {
           {/* Thin blue divider */}
           <div className="mt-6 w-16 h-1 bg-blue-600 rounded-full" />
           <p className="mt-6 text-lg md:text-xl text-slate-300 max-w-2xl leading-relaxed">
-            Meridian Partners delivers premier audit, tax, and holistic advisory solutions. We empower visionary enterprises to navigate risks, optimise growth, and redefine industry standards.
+            {COMPANY_NAME} delivers premier tax, bookkeeping, and holistic advisory solutions. As an official {DBA_NAME} partner, we empower visionary enterprises to navigate risks, optimise growth, and redefine industry standards.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-base px-8 py-6">
@@ -189,7 +190,7 @@ export default function Home() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-400 mb-5">Get Started</p>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Ready to Transform Your Business?</h2>
           <p className="text-xl text-slate-300 mb-10">
-            Partner with Meridian to navigate uncertainty with unparalleled clarity and deep domain expertise.
+            Partner with us to navigate uncertainty with unparalleled clarity and deep domain expertise.
           </p>
           <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100 font-bold px-10 py-6 text-base rounded-full">
             <Link href="/contact">Get in Touch Today</Link>

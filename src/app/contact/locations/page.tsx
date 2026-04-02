@@ -2,6 +2,7 @@ import Link from "next/link";
 import { PageHeader } from "@/components/ui/page-header";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone } from "lucide-react";
+import { COMPANY_NAME, HEADQUARTERS_ADDRESS, CONTACT_PHONE } from "@/lib/constants";
 
 const stats = [
   { value: "120", label: "Offices" },
@@ -16,7 +17,6 @@ const regions = [
       {
         city: "New York",
         country: "United States",
-        note: "Global Headquarters",
         address: "100 Financial District Blvd, Suite 4500, New York, NY 10005",
         phone: "+1 212 555 1000",
       },
@@ -89,13 +89,20 @@ const regions = [
         city: "Amsterdam",
         country: "Netherlands",
         address: "Symphony, Gustav Mahlerplein 2, 1082 MA Amsterdam",
-        phone: "+31 20 555 0300",
+        phone: "+33 1 5555 9000",
       },
     ],
   },
   {
     name: "Asia Pacific",
     offices: [
+      {
+        city: "Parkwood",
+        country: "Australia",
+        note: "Global Headquarters",
+        address: HEADQUARTERS_ADDRESS.full,
+        phone: CONTACT_PHONE,
+      },
       {
         city: "Singapore",
         country: "Singapore",
@@ -141,7 +148,7 @@ export default function LocationsPage() {
     <div className="flex flex-col min-h-screen">
       <PageHeader
         title="Our Global Offices"
-        description="With 120 offices across 65 countries, Meridian Partners is where you need us."
+        description={`With 120 offices across 65 countries, ${COMPANY_NAME} is where you need us.`}
       />
 
       {/* Stats Bar */}
@@ -212,7 +219,7 @@ export default function LocationsPage() {
         <div className="container mx-auto px-4 lg:px-8 text-center max-w-2xl">
           <h2 className="text-2xl font-bold text-white mb-4">Start a Conversation</h2>
           <p className="text-blue-200 mb-8">
-            Wherever you operate, Meridian has the local expertise and global perspective to help your
+            Wherever you operate, we have the local expertise and global perspective to help your
             organisation navigate complexity and seize opportunity.
           </p>
           <Link href="/contact">

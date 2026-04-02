@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { articles, categoryColors, categoryGradients } from "@/app/data/articles";
+import { COMPANY_NAME } from "@/lib/constants";
 
 export default function ArticlesPage() {
   return (
@@ -11,7 +12,7 @@ export default function ArticlesPage() {
       <PageHeader
         tag="Articles"
         title="Articles"
-        description="Expert analysis and commentary from Meridian Partners."
+        description={`Expert analysis and commentary from ${COMPANY_NAME}.`}
       />
 
       <section className="py-20 bg-white">

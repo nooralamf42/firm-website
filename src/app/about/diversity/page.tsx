@@ -14,6 +14,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
+import { COMPANY_NAME } from "@/lib/constants";
 
 const deiStats = [
   { value: "48%", label: "Women Professionals" },
@@ -27,13 +28,13 @@ const programs = [
     icon: TrendingUp,
     title: "Women in Leadership Initiative",
     description:
-      "Launched in 2014, our Women in Leadership Initiative provides structured sponsorship, executive coaching, and curated career development opportunities for high-potential women across all levels of the firm. The program includes an annual leadership summit, cross-practice mentorship pairings, and a dedicated panel interview process designed to reduce bias. Since its inception, the proportion of women in director and partner roles has increased by 22 percentage points.",
+      `Launched in 2014, our Women in Leadership Initiative provides structured sponsorship, executive coaching, and curated career development opportunities for high-potential women across all levels of ${COMPANY_NAME}. The program includes an annual leadership summit, cross-practice mentorship pairings, and a dedicated panel interview process designed to reduce bias. Since its inception, the proportion of women in director and partner roles has increased by 22 percentage points.`,
   },
   {
     icon: Rainbow,
     title: "LGBTQ+ Allies Network",
     description:
-      "Meridian Partners' LGBTQ+ Allies Network operates across 45 offices globally and is one of the firm's most active employee resource groups. The network hosts regular educational events, provides peer support, advocates for inclusive benefits policies, and connects LGBTQ+ professionals across practice groups and geographies. The firm has been a signatory to the UN LGBTI Standards of Conduct for Business since 2018.",
+      `${COMPANY_NAME}'s LGBTQ+ Allies Network operates across 45 offices globally and is one of ${COMPANY_NAME}'s most active employee resource groups. The network hosts regular educational events, provides peer support, advocates for inclusive benefits policies, and connects LGBTQ+ professionals across practice groups and geographies. The firm has been a signatory to the UN LGBTI Standards of Conduct for Business since 2018.`,
   },
   {
     icon: Globe,
@@ -65,21 +66,21 @@ const awards = [
     title: "Forbes Best Employers for Diversity",
     year: "2022, 2023, 2024, 2025",
     description:
-      "Meridian Partners has been recognized by Forbes magazine as one of the Best Employers for Diversity for four consecutive years, based on independent surveys of employees across all demographic groups. The recognition reflects measurable progress on representation, pay equity, and inclusive culture.",
+      `${COMPANY_NAME} has been recognized by Forbes magazine as one of the Best Employers for Diversity for four consecutive years, based on independent surveys of employees across all demographic groups. The recognition reflects measurable progress on representation, pay equity, and inclusive culture.`,
   },
   {
     icon: ShieldCheck,
     title: "Human Rights Campaign — Best Places to Work",
     year: "2021 — 2026",
     description:
-      "Meridian Partners has achieved a perfect score on the Human Rights Campaign Corporate Equality Index for six consecutive years, earning its designation as one of the Best Places to Work for LGBTQ+ Equality. The index evaluates workplace non-discrimination policies, equal benefits, and organizational competency in LGBTQ+ inclusion.",
+      `${COMPANY_NAME} has achieved a perfect score on the Human Rights Campaign Corporate Equality Index for six consecutive years, earning its designation as one of the Best Places to Work for LGBTQ+ Equality. The index evaluates workplace non-discrimination policies, equal benefits, and organizational competency in LGBTQ+ inclusion.`,
   },
   {
     icon: Heart,
     title: "Disability:IN Disability Equality Index — Best Places to Work",
     year: "2023, 2024, 2025",
     description:
-      "Meridian Partners has been recognized by Disability:IN as a Best Place to Work for Disability Inclusion, based on its performance across culture and leadership, enterprise-wide access, employment practices, community engagement, and supplier diversity. The firm scored in the top tier of all participating global professional services firms.",
+      `${COMPANY_NAME} has been recognized by Disability:IN as a Best Place to Work for Disability Inclusion, based on its performance across culture and leadership, enterprise-wide access, employment practices, community engagement, and supplier diversity. The firm scored in the top tier of all participating global professional services firms.`,
   },
 ];
 
@@ -98,7 +99,7 @@ export default function DiversityPage() {
             Our Commitment
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-5">
-            At Meridian Partners, diversity, equity, and inclusion are not initiatives we run
+            At {COMPANY_NAME}, diversity, equity, and inclusion are not initiatives we run
             alongside our business — they are fundamental to how we run our business. We are
             convinced that the most rigorous analysis, the most creative problem-solving, and the
             most trusted client relationships emerge only when teams reflect the full range of human

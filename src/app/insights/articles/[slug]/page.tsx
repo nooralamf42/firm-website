@@ -9,6 +9,7 @@ import {
   getRelatedArticles,
   categoryColors,
 } from "@/app/data/articles";
+import { COMPANY_NAME } from "@/lib/constants";
 
 export async function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }));
@@ -23,7 +24,7 @@ export async function generateMetadata({
   const article = getArticleBySlug(slug);
   if (!article) return {};
   return {
-    title: `${article.title} | Meridian Partners`,
+    title: `${article.title} | ${COMPANY_NAME}`,
     description: article.excerpt,
   };
 }
@@ -83,7 +84,7 @@ export default async function ArticlePage({
             </div>
             <div>
               <p className="text-white font-medium text-sm">{article.author}</p>
-              <p className="text-slate-400 text-xs">Meridian Partners</p>
+              <p className="text-slate-400 text-xs">{COMPANY_NAME}</p>
             </div>
           </div>
         </div>
@@ -157,7 +158,7 @@ export default async function ArticlePage({
               <div className="rounded-xl bg-slate-950 text-white p-6">
                 <h3 className="font-bold text-base mb-2">Stay Informed</h3>
                 <p className="text-slate-300 text-sm mb-5 leading-relaxed">
-                  Subscribe to Meridian Insights for fortnightly analysis from our global practice groups.
+                  Subscribe to our Insights newsletter for fortnightly analysis from our global practice groups.
                 </p>
                 <Link
                   href="/insights#newsletter"

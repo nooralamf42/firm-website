@@ -4,6 +4,8 @@ import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
+import { COMPANY_NAME, DBA_NAME } from "@/lib/constants";
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -24,8 +26,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Meridian Partners | Premier Accounting & Advisory",
-  description: "Global leaders in audit, tax, consulting, and financial advisory services for modern enterprises.",
+  title: `${COMPANY_NAME} | ${DBA_NAME}`,
+  description: `Global leaders in tax, bookkeeping, consulting, and financial advisory services. Official ${DBA_NAME} partner delivering premier accounting solutions.`,
 };
 
 export default function RootLayout({

@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
+import { COMPANY_NAME } from "@/lib/constants";
 import {
   CheckCircle2,
   Lock,
@@ -34,7 +35,7 @@ const serviceAreas = [
     icon: FileText,
     title: "Regulatory & Compliance",
     description:
-      "Navigating an ever-expanding regulatory landscape demands structured, intelligence-led compliance programmes. Meridian maps your regulatory obligations, assesses gaps against current practice, and designs proportionate controls frameworks.",
+      `Navigating an ever-expanding regulatory landscape demands structured, intelligence-led compliance programmes. ${COMPANY_NAME} maps your regulatory obligations, assesses gaps against current practice, and designs proportionate controls frameworks.`,
     offerings: [
       "Regulatory change management",
       "Compliance programme design & maturity assessment",
@@ -156,7 +157,7 @@ export default function RiskAdvisoryPage() {
             <div>
               <h2 className="text-3xl font-bold text-slate-900 mb-4">Risk Is Not Just a Threat — It Is a Source of Competitive Advantage</h2>
               <p className="text-slate-600 leading-relaxed mb-4">
-                Organisations that identify and manage risk more effectively than their peers are better positioned to seize opportunities, maintain regulatory confidence, and sustain long-term value creation. Meridian Partners' Risk Advisory practice helps clients build that capability.
+                Organisations that identify and manage risk more effectively than their peers are better positioned to seize opportunities, maintain regulatory confidence, and sustain long-term value creation. {COMPANY_NAME}'s Risk Advisory practice helps clients build that capability.
               </p>
               <p className="text-slate-600 leading-relaxed">
                 Our risk professionals combine deep regulatory knowledge with practical controls implementation experience. We are former regulators, chief risk officers, cybersecurity specialists, and sustainability experts — with one shared goal: helping you manage risk on your terms.
@@ -216,7 +217,7 @@ export default function RiskAdvisoryPage() {
       <section className="bg-slate-950 py-20">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Meridian Risk Management Framework</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Risk Management Framework</h2>
             <p className="text-slate-400 max-w-2xl mx-auto">
               Our five-component framework — built on COSO ERM, ISO 31000, and industry-leading practice — provides a structured foundation for sustainable risk management capability.
             </p>
@@ -247,7 +248,7 @@ export default function RiskAdvisoryPage() {
               </div>
             </div>
             <p className="text-slate-600 leading-relaxed max-w-3xl">
-              The global regulatory environment continues to intensify. From new cybersecurity mandates and digital operational resilience requirements to climate disclosure obligations and sanctions expansion, compliance obligations are proliferating across every industry and jurisdiction. Meridian's regulatory specialists maintain real-time horizon scanning capabilities across all major regulatory bodies, providing clients with early warning and structured compliance roadmaps.
+              The global regulatory environment continues to intensify. From new cybersecurity mandates and digital operational resilience requirements to climate disclosure obligations and sanctions expansion, compliance obligations are proliferating across every industry and jurisdiction. {COMPANY_NAME}'s regulatory specialists maintain real-time horizon scanning capabilities across all major regulatory bodies, providing clients with early warning and structured compliance roadmaps.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -273,7 +274,7 @@ export default function RiskAdvisoryPage() {
             <div>
               <h2 className="text-3xl font-bold text-white mb-3">Build Resilience. Protect Value.</h2>
               <p className="text-blue-100 max-w-xl">
-                Connect with Meridian's Risk Advisory team to discuss your current risk exposure, upcoming regulatory requirements, or a specific incident or investigation.
+                Connect with our Risk Advisory team to discuss your current risk exposure, upcoming regulatory requirements, or a specific incident or investigation.
               </p>
             </div>
             <div className="flex flex-col gap-3 shrink-0">

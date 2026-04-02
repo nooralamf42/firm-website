@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
+import { COMPANY_NAME, DBA_NAME } from "@/lib/constants";
 import {
   CheckCircle2,
   Calculator,
@@ -100,7 +101,7 @@ const outsourcingBenefits = [
   {
     title: "Significant Cost Savings",
     description:
-      "Outsourcing your bookkeeping and payroll to Meridian eliminates the cost of in-house headcount — salaries, benefits, training, software licences, and management overhead. Most clients achieve savings of 40–60% compared to maintaining an equivalent internal function.",
+      `Outsourcing your bookkeeping and payroll to ${COMPANY_NAME} eliminates the cost of in-house headcount — salaries, benefits, training, software licences, and management overhead. Most clients achieve savings of 40–60% compared to maintaining an equivalent internal function.`,
   },
   {
     title: "Expertise On Demand",
@@ -195,7 +196,7 @@ export default function BookkeepingPage() {
                 Accurate, timely financial records are not just a compliance requirement — they are the foundation of every strategic and operational decision your business makes. Yet maintaining a high-quality in-house bookkeeping function is costly, time-consuming, and increasingly difficult as cloud technology and regulation evolve.
               </p>
               <p className="text-slate-600 leading-relaxed">
-                Meridian Partners' Bookkeeping & Payroll practice provides businesses of all sizes with access to a dedicated team of certified accounting professionals — delivering the accuracy, consistency, and analytical depth of a large finance department at a fraction of the cost.
+                As an official {DBA_NAME} partner, {COMPANY_NAME}'s bookkeeping & payroll practice provides businesses of all sizes with access to a dedicated team of certified accounting professionals — delivering the accuracy, consistency, and analytical depth of a large finance department at a fraction of the cost.
               </p>
             </div>
             <div className="space-y-4">
@@ -252,9 +253,9 @@ export default function BookkeepingPage() {
       <section className="bg-blue-900 py-20">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Why Outsource to Meridian?</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">Why Outsource to {COMPANY_NAME}?</h2>
             <p className="text-blue-100 max-w-2xl mx-auto">
-              The case for outsourced accounting goes beyond cost. Here are five reasons industry-leading businesses choose to partner with Meridian.
+              The case for outsourced accounting goes beyond cost. Here are five reasons industry-leading businesses choose to partner with us.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -346,7 +347,7 @@ export default function BookkeepingPage() {
         <div className="container mx-auto px-4 max-w-3xl">
           <h2 className="text-3xl font-bold text-white mb-4">Ready to Hand Off Your Books?</h2>
           <p className="text-slate-300 mb-10">
-            Meridian can onboard your business within 48 hours. Speak with a member of our team today to design a service package that fits your needs and budget.
+            {COMPANY_NAME} can onboard your business within 48 hours. Speak with a member of our team today to design a service package that fits your needs and budget.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

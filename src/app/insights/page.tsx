@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { ArrowRight, BookOpen, FileText, Download } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { articles, categoryColors } from "@/app/data/articles";
+import { COMPANY_NAME } from "@/lib/constants";
 
 const topics = ["Tax Policy", "Audit & Reporting", "Technology", "Risk", "ESG", "M&A"];
 
@@ -28,7 +29,7 @@ export default function InsightsPage() {
       <PageHeader
         tag="Insights"
         title="Insights & Perspectives"
-        description="Deeply researched thought leadership from Meridian's global experts."
+        description={`Deeply researched thought leadership from ${COMPANY_NAME}'s global experts.`}
       />
 
       {/* Featured Insight */}
@@ -46,7 +47,7 @@ export default function InsightsPage() {
                 </h2>
                 <p className="text-slate-300 text-base md:text-lg leading-relaxed mb-8">
                   The OECD Pillar Two framework — establishing a 15% global minimum effective tax rate — is now live
-                  in over 45 jurisdictions. Meridian's Global Tax Practice examines how multinational groups are
+                  in over 45 jurisdictions. ${COMPANY_NAME}'s Global Tax Practice examines how multinational groups are
                   restructuring inter-company arrangements, re-evaluating the economics of existing tax incentive
                   regimes, and designing compliant substance strategies. From Qualified Domestic Minimum Top-up Tax
                   elections to GloBE information return filings, this comprehensive guide equips tax leaders with
@@ -138,7 +139,7 @@ export default function InsightsPage() {
               <div>
                 <h2 className="text-2xl font-bold text-white mb-2">Research Reports</h2>
                 <p className="text-slate-300 text-base max-w-xl">
-                  Download Meridian's flagship annual reports, practitioner surveys, and regulatory guides — covering
+                  Download {COMPANY_NAME}'s flagship annual reports, practitioner surveys, and regulatory guides — covering
                   tax, ESG, M&A, technology, and sector-specific intelligence from our global practice groups.
                 </p>
               </div>
@@ -158,14 +159,14 @@ export default function InsightsPage() {
         <div className="container mx-auto px-4 lg:px-8 max-w-2xl text-center">
           <h2 className="text-3xl font-bold text-slate-900 mb-4">Stay Ahead of the Curve</h2>
           <p className="text-slate-600 text-lg mb-8">
-            Subscribe to Meridian's Insights newsletter and receive curated analysis, regulatory updates, and
+            Subscribe to our Insights newsletter and receive curated analysis, regulatory updates, and
             exclusive research delivered to your inbox every fortnight.
           </p>
           {subscribed ? (
             <div className="rounded-xl bg-green-50 border border-green-200 px-8 py-6">
               <p className="text-green-800 font-semibold text-lg">Thank you for subscribing!</p>
               <p className="text-green-700 text-sm mt-1">
-                Watch your inbox for the next edition of Meridian Insights.
+                Watch your inbox for the next edition of our insights.
               </p>
             </div>
           ) : (

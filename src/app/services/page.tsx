@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
+import { COMPANY_NAME, DBA_NAME } from "@/lib/constants";
 import {
   ShieldCheck,
   Calculator,
@@ -73,7 +74,7 @@ const differentiators = [
   {
     title: "Technology-Driven Methodology",
     description:
-      "Meridian's proprietary analytics platform, MeridianIQ, ingests and analyses full-population data sets rather than samples, enabling anomaly detection and risk identification at a depth traditional methods cannot achieve.",
+      "Our proprietary analytics platform ingests and analyses full-population data sets rather than samples, enabling anomaly detection and risk identification at a depth traditional methods cannot achieve.",
   },
   {
     title: "Global Network, Local Expertise",
@@ -88,7 +89,7 @@ const differentiators = [
   {
     title: "Independence & Integrity",
     description:
-      "Meridian's independence framework exceeds the requirements of the SEC, PCAOB, AICPA, and FRC. Our culture of professional scepticism is embedded from partner to staff level.",
+      `${COMPANY_NAME}'s independence framework exceeds the requirements of the SEC, PCAOB, AICPA, and FRC. Our culture of professional scepticism is embedded from partner to staff level.`,
   },
   {
     title: "Integrated, Multi-Disciplinary Teams",
@@ -98,7 +99,7 @@ const differentiators = [
   {
     title: "ESG & Sustainability Leadership",
     description:
-      "As reporting standards mature under ISSB, SEC climate rules, and the EU CSRD, Meridian's dedicated sustainability practice helps clients measure, report, and improve ESG performance with confidence.",
+      `As reporting standards mature under ISSB, SEC climate rules, and the EU CSRD, ${COMPANY_NAME}'s dedicated sustainability practice helps clients measure, report, and improve ESG performance with confidence.`,
   },
 ];
 
@@ -181,13 +182,13 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Why Meridian */}
+      {/* Why Our Firm */}
       <section className="bg-white py-24">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Why Meridian Partners</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">About {COMPANY_NAME}</h2>
             <p className="text-lg text-slate-600">
-              Clients choose Meridian not only for the breadth of our capabilities, but for the depth of our commitment — to quality, to independence, and to their long-term success.
+              Clients choose {COMPANY_NAME} not only for the breadth of our capabilities, but for the depth of our commitment — to quality, to independence, and to their long-term success.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -209,7 +210,7 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4 max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Find the Right Solution for Your Business</h2>
           <p className="text-lg text-slate-300 mb-10">
-            Our client relationship model starts with listening. Speak with a Meridian partner to discuss your specific challenges and how our multi-disciplinary teams can help.
+            Our client relationship model starts with listening. Speak with a partner to discuss your specific challenges and how our multi-disciplinary teams can help.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -222,7 +223,7 @@ export default function ServicesPage() {
               href="/about"
               className={cn(buttonVariants({ variant: "outline", size: "lg" }), "bg-transparent border-slate-600 text-slate-300 hover:bg-slate-800 hover:text-white px-8")}
             >
-              About Our Firm
+              About {COMPANY_NAME}
             </Link>
           </div>
         </div>

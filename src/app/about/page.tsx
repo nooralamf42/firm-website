@@ -11,6 +11,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
+import { COMPANY_NAME, DBA_NAME, FULL_BRAND_NAME } from "@/lib/constants";
 
 const coreValues = [
   {
@@ -47,18 +48,18 @@ const globalStats = [
 ];
 
 const timelineHighlights = [
-  { year: "1985", event: "Founded in New York City by Harold Meridian" },
-  { year: "2003", event: "Expanded to Asia-Pacific through merger with Pacific Partners" },
-  { year: "2017", event: "Launched ClearSight, our AI-driven audit platform" },
-  { year: "2026", event: "Global Sustainability Practice launched across 65 countries" },
+  { year: "2010", event: "Founded to provide specialized tax and accounting services" },
+  { year: "2018", event: `Became an official ${DBA_NAME} partner` },
+  { year: "2023", event: "Expanded digital advisory services across the region" },
+  { year: "2026", event: `Launched ${COMPANY_NAME}` },
 ];
 
 export default function AboutPage() {
   return (
     <main>
       <PageHeader
-        title="About Meridian Partners"
-        description="Trusted advisors to the world's leading organizations since 1985."
+        title={`About ${COMPANY_NAME}`}
+        description="Trusted advisors delivering premier tax and bookkeeping solutions."
       />
 
       {/* Who We Are */}
@@ -68,23 +69,20 @@ export default function AboutPage() {
             Who We Are
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-5">
-            Meridian Partners is a global professional services firm delivering audit, tax,
-            consulting, and financial advisory services to the world's most complex organizations.
-            Founded in 1985 by Harold Meridian in New York City, we have grown over four decades
-            from a boutique advisory practice into a firm spanning 120 offices across 65 countries,
-            with more than 10,000 professionals serving clients in every major industry and sector.
+            {FULL_BRAND_NAME} is a premier professional services firm delivering tax,
+            bookkeeping, consulting, and financial advisory services. We have grown to serve clients across 
+            diverse sectors, with a team of dedicated professionals committed to excellence.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed mb-5">
-            Our clients range from ambitious growth-stage companies to the largest multinational
-            corporations, sovereign governments, and leading nonprofit institutions. What unites them
-            is a demand for advice that is rigorous, independent, and attuned to the unique pressures
-            they face. That is precisely what Meridian Partners has delivered for 40 years — and what
-            drives every engagement we undertake today.
+            Our clients range from ambitious growth-stage companies to established multinational
+            corporations and local businesses. What unites them is a demand for advice that is rigorous, 
+            independent, and attuned to the unique pressures they face. That is precisely what we deliver — 
+            driving every engagement we undertake today.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
             We are not a firm that offers off-the-shelf answers. Our professionals bring deep sector
             expertise, global perspective, and a genuine commitment to our clients' long-term success.
-            When you work with Meridian Partners, you work with a team that treats your challenges as
+            When you work with us, you work with a team that treats your challenges as
             their own.
           </p>
         </div>
@@ -99,7 +97,7 @@ export default function AboutPage() {
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               These four principles are not aspirational statements — they are the criteria against
-              which every decision at Meridian Partners is measured.
+              which every decision at {COMPANY_NAME} is measured.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -184,7 +182,7 @@ export default function AboutPage() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Join Our Team</h2>
           <p className="text-lg text-slate-300 max-w-xl mx-auto mb-8">
             We are always looking for exceptional professionals who share our values and want to do
-            the best work of their careers. Explore opportunities at Meridian Partners today.
+            the best work of their careers. Explore opportunities with us today.
           </p>
           <Link href="/about/careers" className={cn(buttonVariants({ variant: "outline", size: "lg" }))}>
             View Open Positions

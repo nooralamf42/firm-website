@@ -1,257 +1,248 @@
-import Link from "next/link";
 import { PageHeader } from "@/components/ui/page-header";
+import { COMPANY_NAME, DBA_NAME, HEADQUARTERS_ADDRESS, CONTACT_PHONE, DPO_EMAIL } from "@/lib/constants";
 
 export default function PrivacyPolicyPage() {
+  const effectiveDate = "April 2, 2026";
+
   return (
     <div className="flex flex-col min-h-screen">
       <PageHeader
         title="Privacy Policy"
-        description="Last updated: January 1, 2026"
+        description={`Last updated: ${effectiveDate}`}
       />
 
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
-          <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-10">
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+          <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-12">
 
-            {/* Introduction */}
+            {/* Header Info */}
+            <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 text-sm grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <p><strong>Effective Date:</strong> {effectiveDate}</p>
+              </div>
+              <div>
+                <p><strong>Firm:</strong> {COMPANY_NAME}</p>
+                <p className="hidden"><strong>Contact:</strong> {CONTACT_PHONE} | {DPO_EMAIL}</p>
+                <p><strong>Phone:</strong> {CONTACT_PHONE}</p>
+              </div>
+            </div>
+
+            {/* 1. Our Commitment */}
             <div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">1. Introduction — Who We Are</h2>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4 font-serif italic">1. Our Commitment to Privacy</h2>
               <p>
-                Meridian Partners LLC and its global network of member firms, affiliates, and subsidiaries
-                (collectively, "Meridian Partners," "we," "us," or "our") are committed to protecting the privacy
-                and security of your personal data. This Privacy Policy explains what personal information we
-                collect, why we collect it, how we use it, and your rights in relation to it.
+                {COMPANY_NAME} (&quot;the Firm&quot;, &quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is bound by the 
+                <strong> Privacy Act 1988 (Cth)</strong> and the <strong>Australian Privacy Principles (APPs)</strong>. 
+                We are also committed to maintaining the security of financial data in accordance with the 
+                <strong> Payment Card Industry Data Security Standard (PCI DSS) v4.0</strong> where applicable.
               </p>
               <p className="mt-4">
-                Meridian Partners LLC is the data controller for personal data processed in connection with this
-                website. Our registered office is at 100 Financial District Blvd, Suite 4500, New York, NY 10005,
-                United States. Where personal data is processed by our member firms in other jurisdictions, the
-                relevant local entity is the data controller and processes data in accordance with applicable
-                local law.
-              </p>
-              <p className="mt-4">
-                This Policy applies to all personal data collected through our website, client portals, marketing
-                programmes, events, and recruitment activities. It does not cover the processing of personal data
-                under specific client engagement agreements, which are governed by separate data processing
-                addenda and engagement letters.
+                This Privacy Policy describes how we manage your personal information, including sensitive financial data, 
+                and explains your rights regarding access, correction, and complaints.
               </p>
             </div>
 
-            {/* Information We Collect */}
+            {/* 2. What Personal Information We Collect */}
             <div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">2. Information We Collect</h2>
-              <p className="font-semibold text-slate-800 mb-2">Personal Data You Provide Directly</p>
-              <p>
-                When you interact with us — through our contact forms, newsletter subscriptions, event
-                registrations, or client onboarding processes — we collect personal data you provide voluntarily.
-                This includes your full name, professional email address, phone number, job title, company name,
-                industry sector, and the content of your enquiries or messages.
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">2. What Personal Information We Collect</h2>
+              <p className="mb-6">
+                We collect only the information necessary to provide accounting, bookkeeping, tax, and business advisory services. 
+                The kinds of personal information we collect and hold include:
               </p>
-              <p className="mt-4 font-semibold text-slate-800 mb-2">Usage Data Collected Automatically</p>
-              <p>
-                When you visit our website, we automatically collect technical information about your device and
-                browsing behaviour. This includes your IP address, browser type and version, operating system,
-                referring URLs, pages viewed, time spent on pages, and click patterns. This data is collected
-                using server logs and analytics technologies described further in our{" "}
-                <Link href="/legal/cookies" className="text-blue-700 underline hover:text-blue-800">
-                  Cookie Policy
-                </Link>
-                .
-              </p>
-              <p className="mt-4 font-semibold text-slate-800 mb-2">Cookies and Tracking Technologies</p>
-              <p>
-                We use cookies, pixel tags, and similar technologies to enhance your experience, measure website
-                performance, and support our marketing activities. For full details of the cookies we use and how
-                to manage your preferences, please see our{" "}
-                <Link href="/legal/cookies" className="text-blue-700 underline hover:text-blue-800">
-                  Cookie Policy
-                </Link>
-                .
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse text-sm text-left">
+                  <thead>
+                    <tr className="bg-slate-100 border-b border-slate-200">
+                      <th className="px-4 py-3 font-bold text-slate-900 w-1/3">Category</th>
+                      <th className="px-4 py-3 font-bold text-slate-900">Examples of Information Collected</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-200">
+                    <tr>
+                      <td className="px-4 py-3 font-semibold text-slate-900">Identity &amp; Contact</td>
+                      <td className="px-4 py-3">Full name, residential/business address, email, phone number, date of birth.</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-3 font-semibold text-slate-900">Financial &amp; Tax</td>
+                      <td className="px-4 py-3">Tax File Numbers (TFN), Australian Business Number (ABN), bank account details, credit card numbers (PANs - truncated where possible), payroll records, BAS/IAS statements, superannuation details, asset registers.</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-3 font-semibold text-slate-900">Sensitive Information</td>
+                      <td className="px-4 py-3">Information about health (for payroll/leave entitlements), union membership, or criminal record (only if strictly required for a specific engagement or legal obligation).</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-3 font-semibold text-slate-900">Technical Data</td>
+                      <td className="px-4 py-3">IP address, browser type, and login audit trails when you access our client portals or cloud platforms.</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-3 font-semibold text-slate-900">Business Information</td>
+                      <td className="px-4 py-3">Company financials, shareholder details, director identification numbers.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-4 italic text-xs text-slate-500">
+                We generally do not collect government identifiers (e.g., driver&apos;s licence numbers) unless required by law (e.g., Anti-Money Laundering obligations).
               </p>
             </div>
 
-            {/* How We Use Your Information */}
+            {/* 3. How We Collect Information */}
             <div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">3. How We Use Your Information</h2>
-              <p>We process your personal data for the following purposes:</p>
-              <ul className="mt-4 space-y-3 list-disc list-inside text-slate-700">
-                <li>
-                  <strong>Service Delivery:</strong> To respond to your enquiries, provide requested audit, tax,
-                  consulting, or advisory services, manage client relationships, and fulfil our contractual
-                  obligations to you.
-                </li>
-                <li>
-                  <strong>Communications:</strong> To send you newsletters, research reports, event invitations,
-                  and other thought leadership content that we believe may be of professional interest to you.
-                  You may unsubscribe from marketing communications at any time.
-                </li>
-                <li>
-                  <strong>Website Improvement:</strong> To analyse how visitors use our website, identify
-                  technical issues, and continuously improve the content, structure, and performance of our
-                  digital properties.
-                </li>
-                <li>
-                  <strong>Legal Compliance:</strong> To comply with applicable laws and regulations, respond
-                  to lawful requests from public authorities, and enforce our legal rights.
-                </li>
-                <li>
-                  <strong>Recruitment:</strong> To evaluate applications for employment or partnership, conduct
-                  background screening where permitted by law, and manage talent pipelines.
-                </li>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">3. How We Collect Information</h2>
+              <ul className="space-y-4 list-disc list-inside">
+                <li><strong>Directly from you:</strong> via engagement letters, forms, emails, meetings, or our secure client portal.</li>
+                <li><strong>From third parties:</strong> such as the Australian Taxation Office (ATO), your bank, payroll software providers, or regulatory bodies.</li>
+                <li><strong>From publicly available sources:</strong> ASIC registers or credit reporting bodies (where permitted).</li>
+              </ul>
+              <p className="mt-4 text-sm">
+                If you provide us with personal information about another individual (e.g., an employee or director), 
+                you confirm that you have made them aware of this policy and obtained their consent.
+              </p>
+            </div>
+
+            {/* 4. PCI DSS Compliance */}
+            <div className="bg-slate-50 p-8 rounded-2xl border border-slate-200">
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">4. PCI DSS Compliance – How We Protect Card Data</h2>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-2">4.1 We Do Not Store Sensitive Authentication Data (SAD):</h3>
+                  <p className="text-sm">We never store the full magnetic stripe data, CVV2/CVC2 (the three-digit security code), or PIN data after transaction authorisation.</p>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-2">4.2 Truncation &amp; Encryption of Primary Account Numbers (PANs):</h3>
+                  <ul className="text-sm list-disc list-inside space-y-1">
+                    <li>Where we store credit card numbers to reconcile client accounts, we truncate (mask) the PAN so that only the last four digits are visible.</li>
+                    <li>We apply strong cryptography to render stored PANs unreadable. We do not maintain &quot;clear-text windows&quot; of PANs in logs or temporary files.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-2">4.3 Multi-Factor Authentication (MFA):</h3>
+                  <p className="text-sm">Any access to our cardholder data environment (CDE), including remote access to our practice management software and cloud storage, is protected by MFA.</p>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-2">4.4 Payment Gateways:</h3>
+                  <p className="text-sm">We use PCI DSS Level 1 validated third-party gateways (e.g., Stripe, Square). We use tokenisation – your card number is replaced with a unique token stored by the gateway, not on our servers.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* 5. Purposes for Collection */}
+            <div>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">5. Purposes for Collection, Use, and Disclosure</h2>
+              <p className="mb-4">We collect, hold, use, and disclose your personal information for the following purposes:</p>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 list-disc list-inside text-sm">
+                <li>Preparing tax returns and financial statements.</li>
+                <li>Liaising with the ATO, ASIC, and SROs.</li>
+                <li>Liaising with State Revenue Offices.</li>
+                <li>Identity verification (AML/CTF compliance).</li>
+                <li>Invoicing and payment processing.</li>
+                <li>Managing business operations &amp; IT security.</li>
+                <li>Professional standards compliance.</li>
+                <li>TPB regulatory compliance.</li>
               </ul>
             </div>
 
-            {/* Legal Basis */}
+            {/* 6. Cross-Border Disclosure */}
             <div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">4. Legal Basis for Processing (GDPR)</h2>
-              <p>
-                For individuals located in the European Economic Area, the United Kingdom, or other
-                jurisdictions that apply a lawful basis framework, our processing relies on the following grounds:
+              <h2 className="text-2xl font-bold text-slate-900 mb-4 font-serif italic border-b border-slate-100 pb-2">6. Cross-Border Disclosure of Data</h2>
+              <p className="text-xs font-bold text-blue-900 uppercase tracking-widest mb-4">Crucial for International &amp; Cloud-Based Business</p>
+              <p className="mb-4">
+                We use cloud-based platforms (e.g., Xero, MYOB, QuickBooks, Microsoft 365, Google Workspace) to deliver 
+                our services. These platforms may store your personal information on servers located outside of 
+                Australia (e.g., United States, European Union, Singapore).
               </p>
-              <ul className="mt-4 space-y-3 list-disc list-inside text-slate-700">
-                <li>
-                  <strong>Performance of a contract:</strong> Where processing is necessary to provide services
-                  you have requested or to take steps prior to entering into an engagement.
-                </li>
-                <li>
-                  <strong>Legitimate interests:</strong> Where we have a legitimate business interest in
-                  processing your data, such as operating and improving our website, sending business-to-business
-                  marketing communications, and protecting our firm against fraud or legal claims, provided such
-                  interests are not overridden by your rights and interests.
-                </li>
-                <li>
-                  <strong>Legal obligation:</strong> Where processing is necessary to comply with applicable law,
-                  including anti-money laundering regulations, tax reporting obligations, and court orders.
-                </li>
-                <li>
-                  <strong>Consent:</strong> For certain marketing activities and non-essential cookies, where
-                  we rely on your freely given, specific, and informed consent. You may withdraw consent at any
-                  time without affecting the lawfulness of processing carried out prior to withdrawal.
-                </li>
-              </ul>
-            </div>
-
-            {/* Data Sharing */}
-            <div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">5. Data Sharing &amp; Third Parties</h2>
-              <p>
-                We do not sell or rent your personal data to third parties. We may share your information with:
-              </p>
-              <ul className="mt-4 space-y-3 list-disc list-inside text-slate-700">
-                <li>
-                  <strong>Meridian member firms:</strong> Other firms within the Meridian global network where
-                  necessary to deliver cross-border services or refer you to the appropriate local expert.
-                </li>
-                <li>
-                  <strong>Service providers:</strong> Trusted third-party vendors who process data on our behalf
-                  under contractual obligations, including cloud infrastructure providers, CRM platforms, email
-                  marketing services, and analytics providers.
-                </li>
-                <li>
-                  <strong>Professional advisers:</strong> Lawyers, auditors, insurers, and other professional
-                  advisers who require access to the data in the course of advising us.
-                </li>
-                <li>
-                  <strong>Regulatory authorities:</strong> Where required by law, regulation, or court order,
-                  including regulatory bodies such as the SEC, PCAOB, or equivalent international authorities.
-                </li>
-              </ul>
-            </div>
-
-            {/* International Transfers */}
-            <div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">6. International Data Transfers</h2>
-              <p>
-                Meridian Partners operates globally, and your personal data may be transferred to and processed
-                in countries other than the country in which you are located. These countries may have data
-                protection laws that differ from those in your jurisdiction.
-              </p>
-              <p className="mt-4">
-                When we transfer personal data from the EEA or UK to countries not deemed adequate by the
-                European Commission or UK Information Commissioner's Office, we implement appropriate safeguards
-                in accordance with applicable data protection law, including the use of Standard Contractual
-                Clauses approved by the European Commission, UK International Data Transfer Agreements, or other
-                lawful transfer mechanisms.
-              </p>
-            </div>
-
-            {/* Data Retention */}
-            <div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">7. Data Retention</h2>
-              <p>
-                We retain personal data only for as long as necessary to fulfil the purposes described in this
-                Policy, or as required by law. Our retention periods are determined by the nature of the data
-                and the purpose for which it was collected. For example:
-              </p>
-              <ul className="mt-4 space-y-2 list-disc list-inside text-slate-700">
-                <li>Client engagement data is retained for a minimum of seven years following the conclusion of an engagement, in accordance with professional regulatory requirements and applicable statute of limitations.</li>
-                <li>Website enquiry data is retained for up to two years from the date of enquiry unless a client relationship is established.</li>
-                <li>Marketing preference records are retained until you withdraw consent or exercise your right to erasure.</li>
-              </ul>
-            </div>
-
-            {/* Your Rights */}
-            <div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">8. Your Rights</h2>
-              <p>
-                Depending on your jurisdiction, you may have the following rights with respect to your personal
-                data. We will respond to all valid requests within the timeframes required by applicable law
-                (generally 30 days under GDPR):
-              </p>
-              <ul className="mt-4 space-y-3 list-disc list-inside text-slate-700">
-                <li><strong>Right of access:</strong> Obtain a copy of the personal data we hold about you.</li>
-                <li><strong>Right to rectification:</strong> Request correction of inaccurate or incomplete data.</li>
-                <li><strong>Right to erasure ("right to be forgotten"):</strong> Request deletion of your data where there is no legitimate reason for us to continue processing it.</li>
-                <li><strong>Right to restrict processing:</strong> Ask us to suspend processing of your data in certain circumstances.</li>
-                <li><strong>Right to data portability:</strong> Receive your data in a structured, machine-readable format and transmit it to another controller.</li>
-                <li><strong>Right to object:</strong> Object to processing based on legitimate interests or for direct marketing purposes.</li>
-                <li><strong>Rights related to automated decision-making:</strong> Not be subject to decisions based solely on automated processing that produce significant legal effects on you.</li>
-              </ul>
-              <p className="mt-4">
-                To exercise any of these rights, please contact our Data Protection Officer at the address set
-                out in Section 10. You also have the right to lodge a complaint with your local supervisory
-                authority (e.g., the UK Information Commissioner's Office or the relevant EU data protection
-                authority).
-              </p>
-            </div>
-
-            {/* Cookies */}
-            <div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">9. Cookies</h2>
-              <p>
-                Our website uses cookies and similar tracking technologies to provide essential functionality,
-                measure performance, and deliver relevant content. For detailed information about the specific
-                cookies we use, their purpose, duration, and how to manage your preferences, please read our{" "}
-                <Link href="/legal/cookies" className="text-blue-700 underline hover:text-blue-800">
-                  Cookie Policy
-                </Link>
-                .
-              </p>
-            </div>
-
-            {/* DPO Contact */}
-            <div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">10. Contact the Data Protection Officer</h2>
-              <p>
-                Meridian Partners has appointed a Data Protection Officer (DPO) who is responsible for overseeing
-                questions in relation to this Privacy Policy. If you have any questions, concerns, or requests
-                relating to your personal data or our privacy practices, please contact our DPO:
-              </p>
-              <div className="mt-4 p-5 bg-slate-50 rounded-xl border border-slate-200 text-sm text-slate-700 space-y-1">
-                <p><strong>Data Protection Officer</strong></p>
-                <p>Meridian Partners LLC</p>
-                <p>100 Financial District Blvd, Suite 4500, New York, NY 10005</p>
-                <p>
-                  Email:{" "}
-                  <a href="mailto:dpo@meridianpartners.example.com" className="text-blue-700 underline hover:text-blue-800">
-                    dpo@meridianpartners.example.com
-                  </a>
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-2 text-sm">6.1 Overseas Recipients:</h3>
+                  <p className="text-sm italic">United States, New Zealand, Singapore.</p>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-2 text-sm">6.2 APP 8 Accountability:</h3>
+                  <p className="text-sm">
+                    Under APP 8, we take reasonable steps to ensure overseas recipients do not breach the APPs, 
+                    typically through Data Processing Agreements (DPAs) and verifying security certifications (ISO 27001, SOC 2).
+                  </p>
+                </div>
+                <p className="text-xs text-slate-500">
+                  By engaging our services, you consent to the disclosure of your personal information to overseas 
+                  recipients as described. Note that under APP 8.1, overseas recipients may not be subject to 
+                  the full range of Australian privacy obligations, though we contractually protect your data.
                 </p>
               </div>
-              <p className="mt-4">
-                We take all privacy enquiries seriously and will endeavour to respond promptly and thoroughly.
+            </div>
+
+            {/* 7. Data Security and Storage */}
+            <div>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">7. Data Security and Storage</h2>
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse text-sm text-left">
+                  <thead>
+                    <tr className="bg-slate-900 text-white border-b border-slate-700">
+                      <th className="px-4 py-3 font-bold w-1/3">Security Measure</th>
+                      <th className="px-4 py-3 font-bold">Implementation</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-200">
+                    <tr>
+                      <td className="px-4 py-3 font-semibold text-slate-900">Encryption</td>
+                      <td className="px-4 py-3">Data encrypted at rest (AES-256) and in transit (TLS 1.3).</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-3 font-semibold text-slate-900">Access Controls</td>
+                      <td className="px-4 py-3">Role-based access (Need-to-Know basis). No administrative access to CDE without approval.</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-3 font-semibold text-slate-900">MFA</td>
+                      <td className="px-4 py-3">Mandatory for all staff accessing remote systems, email, and practice management software.</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-3 font-semibold text-slate-900">Malware Protection</td>
+                      <td className="px-4 py-3">Automated anti-malware and behavioural analysis on all endpoints and removable media.</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-3 font-semibold text-slate-900">Audit Logging</td>
+                      <td className="px-4 py-3">Automated review of audit logs for all access to cardholder data environments.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* 9. NDB */}
+            <div className="border-l-4 border-slate-900 pl-6 py-2">
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">9. Notifiable Data Breaches (NDB)</h2>
+              <p className="text-sm">
+                We comply with the NDB scheme. If an eligible data breach occurs, we will conduct an assessment, 
+                notify affected individuals, and report to the OAIC.
               </p>
             </div>
+
+            {/* 11. Automated Decision-Making */}
+            <div className="bg-blue-50/50 p-6 rounded-xl border border-blue-100">
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">11. Automated Decision-Making</h2>
+              <p className="text-xs text-blue-900 font-bold uppercase mb-2">Effective 10 December 2026</p>
+              <p className="text-sm italic">
+                Currently, software (e.g., Xero, MYOB) automates transaction coding. However, all material 
+                financial and tax decisions are reviewed by a qualified human accountant.
+              </p>
+            </div>
+
+            {/* 13. Contact Us */}
+            <div className="bg-slate-900 text-white p-8 rounded-2xl">
+              <h2 className="text-2xl font-bold mb-6 text-blue-400">13. Contact Us (Privacy Officer)</h2>
+              <div className="space-y-1 text-slate-300">
+                <p className="font-bold text-white">Privacy Officer</p>
+                <p>{COMPANY_NAME}</p>
+                <p>{HEADQUARTERS_ADDRESS.full}</p>
+                <p className="pt-4 font-mono hidden">Email: {DPO_EMAIL}</p>
+                <p className="font-mono">Phone: {CONTACT_PHONE}</p>
+              </div>
+            </div>
+
+            {/* 14. Changes */}
+            <p className="text-xs text-slate-400 text-center italic">
+              Latest version available at our website. Significant changes will be notified via email.
+            </p>
 
           </div>
         </div>
@@ -259,3 +250,5 @@ export default function PrivacyPolicyPage() {
     </div>
   );
 }
+
+

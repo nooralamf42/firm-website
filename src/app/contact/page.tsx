@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { MapPin, Phone, Mail, Clock, ArrowRight } from "lucide-react";
+import { COMPANY_NAME, DBA_NAME, HEADQUARTERS_ADDRESS, CONTACT_PHONE, CONTACT_EMAIL } from "@/lib/constants";
 
 const services = [
   "Audit & Assurance",
@@ -23,23 +24,23 @@ const specialtyContacts = [
   {
     title: "Media Inquiries",
     description:
-      "For press releases, journalist interviews, or media briefings with Meridian Partners spokespeople, please reach out to our Communications team.",
-    email: "media@meridianpartners.example.com",
-    phone: "+1 800 555 0200",
+      "For press releases, journalist interviews, or media briefings with our spokespeople, please reach out to our Communications team.",
+    email: `media@${CONTACT_EMAIL.split('@')[1]}`,
+    phone: CONTACT_PHONE,
   },
   {
     title: "Careers",
     description:
-      "Interested in joining Meridian Partners? Our Talent Acquisition team can answer questions about open roles, graduate programmes, and internships.",
-    email: "careers@meridianpartners.example.com",
-    phone: "+1 800 555 0201",
+      "Interested in joining us? Our Talent Acquisition team can answer questions about open roles, graduate programmes, and internships.",
+    email: `careers@${CONTACT_EMAIL.split('@')[1]}`,
+    phone: CONTACT_PHONE,
   },
   {
     title: "Regulatory & Legal",
     description:
       "For subpoenas, regulatory enquiries, conflict-of-interest disclosures, or formal legal correspondence, please contact our General Counsel's office.",
-    email: "legal@meridianpartners.example.com",
-    phone: "+1 800 555 0202",
+    email: `legal@${CONTACT_EMAIL.split('@')[1]}`,
+    phone: CONTACT_PHONE,
   },
 ];
 
@@ -93,7 +94,7 @@ export default function ContactPage() {
                   </div>
                   <p className="text-green-800 font-semibold text-lg mb-2">Thank you for reaching out.</p>
                   <p className="text-green-700 text-sm">
-                    A Meridian professional will contact you at <strong>{form.email}</strong> within one business day.
+                    A professional will contact you at <strong>{form.email}</strong> within one business day.
                   </p>
                 </div>
               ) : (
@@ -195,66 +196,69 @@ export default function ContactPage() {
 
             {/* Contact Info */}
             <div className="flex flex-col justify-center space-y-10">
-              <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-2">Global Headquarters</h2>
-                <p className="text-slate-500 text-sm">Meridian Partners LLC</p>
+            <div>
+              <h2 className="text-3xl font-bold text-slate-900 mb-2">Global Headquarters</h2>
+              <div className="text-slate-500 text-sm flex flex-col gap-1">
+                <span className="font-semibold text-slate-700">{COMPANY_NAME}</span>
+                <span>DBA - {DBA_NAME}</span>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 h-10 w-10 rounded-lg bg-blue-50 flex items-center justify-center">
+                  <MapPin className="h-5 w-5 text-blue-600" />
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-800 text-sm mb-1">Address</p>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    {HEADQUARTERS_ADDRESS.street}<br />
+                    {HEADQUARTERS_ADDRESS.area}<br />
+                    {HEADQUARTERS_ADDRESS.state} {HEADQUARTERS_ADDRESS.country}
+                  </p>
+                </div>
               </div>
 
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 h-10 w-10 rounded-lg bg-blue-50 flex items-center justify-center">
-                    <MapPin className="h-5 w-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-slate-800 text-sm mb-1">Address</p>
-                    <p className="text-slate-600 text-sm leading-relaxed">
-                      100 Financial District Blvd, Suite 4500<br />
-                      New York, NY 10005<br />
-                      United States
-                    </p>
-                  </div>
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 h-10 w-10 rounded-lg bg-blue-50 flex items-center justify-center">
+                  <Phone className="h-5 w-5 text-blue-600" />
                 </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 h-10 w-10 rounded-lg bg-blue-50 flex items-center justify-center">
-                    <Phone className="h-5 w-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-slate-800 text-sm mb-1">Phone</p>
-                    <a
-                      href="tel:+18005550199"
-                      className="text-slate-600 text-sm hover:text-blue-700 transition-colors"
-                    >
-                      +1 800 555 0199
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 h-10 w-10 rounded-lg bg-blue-50 flex items-center justify-center">
-                    <Mail className="h-5 w-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-slate-800 text-sm mb-1">Email</p>
-                    <a
-                      href="mailto:contact@meridianpartners.example.com"
-                      className="text-slate-600 text-sm hover:text-blue-700 transition-colors"
-                    >
-                      contact@meridianpartners.example.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 h-10 w-10 rounded-lg bg-blue-50 flex items-center justify-center">
-                    <Clock className="h-5 w-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-slate-800 text-sm mb-1">Office Hours</p>
-                    <p className="text-slate-600 text-sm">Monday – Friday, 8:00 am – 6:00 pm EST</p>
-                  </div>
+                <div>
+                  <p className="font-semibold text-slate-800 text-sm mb-1">Phone</p>
+                  <a
+                    href={`tel:${CONTACT_PHONE.replace(/\s/g, "")}`}
+                    className="text-slate-600 text-sm hover:text-blue-700 transition-colors"
+                  >
+                    {CONTACT_PHONE}
+                  </a>
                 </div>
               </div>
+
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 h-10 w-10 rounded-lg bg-blue-50 flex items-center justify-center">
+                  <Mail className="h-5 w-5 text-blue-600" />
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-800 text-sm mb-1">Email</p>
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="text-slate-600 text-sm hover:text-blue-700 transition-colors"
+                  >
+                    {CONTACT_EMAIL}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 h-10 w-10 rounded-lg bg-blue-50 flex items-center justify-center">
+                  <Clock className="h-5 w-5 text-blue-600" />
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-800 text-sm mb-1">Office Hours</p>
+                  <p className="text-slate-600 text-sm">Monday – Friday, 8:00 am – 6:00 pm AEST</p>
+                </div>
+              </div>
+            </div>
 
               <div className="pt-4 border-t border-slate-200">
                 <Link

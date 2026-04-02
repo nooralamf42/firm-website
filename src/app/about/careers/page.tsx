@@ -14,13 +14,14 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
+import { HEADQUARTERS_ADDRESS, COMPANY_NAME } from "@/lib/constants";
 
-const whyMeridian = [
+const whyOurFirm = [
   {
     icon: BookOpen,
     title: "Mentorship Programs",
     description:
-      "Every professional at Meridian Partners is paired with a senior mentor from their first week. Our structured mentorship programs span practice groups, geographies, and service lines — ensuring you have the guidance, sponsorship, and honest feedback needed to accelerate your development.",
+      `Every professional with ${COMPANY_NAME} is paired with a senior mentor from their first week. Our structured mentorship programs span practice groups, geographies, and service lines — ensuring you have the guidance, sponsorship, and honest feedback needed to accelerate your development.`,
   },
   {
     icon: Globe,
@@ -38,7 +39,7 @@ const whyMeridian = [
     icon: TrendingUp,
     title: "Continuous Learning",
     description:
-      "The Meridian Learning Institute provides more than 2,000 courses in technical skills, leadership, digital fluency, and professional communication. We fully fund CPA, CFA, CISA, and other professional certifications, and give professionals dedicated study leave in the months before their exams.",
+      `${COMPANY_NAME}'s Learning Institute provides more than 2,000 courses in technical skills, leadership, digital fluency, and professional communication. We fully fund CPA, CFA, CISA, and other professional certifications, and give professionals dedicated study leave in the months before their exams.`,
   },
   {
     icon: Users,
@@ -50,7 +51,7 @@ const whyMeridian = [
     icon: Zap,
     title: "Impact-Driven Work",
     description:
-      "Our clients make decisions that affect millions of people — employees, investors, citizens, communities. The advisory work you do at Meridian Partners genuinely matters. You will see your analysis and recommendations shape strategy at the highest levels of business and government.",
+      `Our clients make decisions that affect millions of people — employees, investors, citizens, communities. The advisory work you do with ${COMPANY_NAME} genuinely matters. You will see your analysis and recommendations shape strategy at the highest levels of business and government.`,
   },
 ];
 
@@ -58,7 +59,7 @@ const careerPaths = [
   {
     title: "Audit & Assurance",
     description:
-      "Meridian's Audit & Assurance practice is the backbone of our firm, combining traditional financial statement audit with cutting-edge data analytics through our ClearSight platform. You will develop rigorous analytical discipline while advising some of the most complex organizations in the world.",
+      `${COMPANY_NAME}'s Audit & Assurance practice is the backbone of the firm, combining traditional financial statement audit with cutting-edge data analytics through our ClearSight platform. You will develop rigorous analytical discipline while advising some of the most complex organizations in the world.`,
     progression: ["Audit Associate", "Senior Auditor", "Audit Manager", "Director — Assurance", "Partner"],
   },
   {
@@ -84,56 +85,56 @@ const careerPaths = [
 const spotlights = [
   {
     quote:
-      "I joined Meridian straight out of university and within three years I was leading client calls with FTSE 100 CFOs. The level of responsibility you're given early on is extraordinary — but so is the support structure around you. My mentor made the difference between me thriving and being overwhelmed.",
+      `I joined ${COMPANY_NAME} straight out of university and within three years I was leading client calls with FTSE 100 CFOs. The level of responsibility you're given early on is extraordinary — but so is the support structure around you. My mentor made the difference between me thriving and being overwhelmed.`,
     name: "Aisha T.",
     role: "Senior Auditor, London",
-    tenure: "4 years at Meridian",
+    tenure: "4 years with us",
   },
   {
     quote:
       "The global mobility program changed my career trajectory entirely. I moved from our Chicago office to Singapore for 18 months and it opened doors I didn't even know existed. I built relationships across Asia-Pacific that continue to drive business today, and I came back with a perspective that no textbook could have given me.",
     name: "Daniel K.",
     role: "Tax Manager, Chicago",
-    tenure: "7 years at Meridian",
+    tenure: "7 years with us",
   },
   {
     quote:
       "What I value most is that leadership here actually invests in developing you. My partner sponsor nominated me for the Leadership Academy when I was still a manager, and the two years I spent in that program fundamentally changed how I think about client relationships and team building. It's the reason I'm still here.",
     name: "Meera S.",
     role: "Director, Risk Advisory, Mumbai",
-    tenure: "9 years at Meridian",
+    tenure: "9 years with us",
   },
 ];
 
 const openings = [
   {
     title: "Tax Associate — International Tax",
-    location: "New York, NY",
+    location: HEADQUARTERS_ADDRESS.full,
     type: "Full-time",
   },
   {
     title: "Senior Auditor — Financial Services",
-    location: "London, UK",
+    location: "Parkwood, QLD Australia",
     type: "Full-time",
   },
   {
     title: "Risk Consultant — Cybersecurity",
-    location: "Singapore / Remote",
+    location: "Remote / Australia",
     type: "Full-time",
   },
   {
     title: "Financial Advisory Manager — M&A",
-    location: "Chicago, IL",
+    location: "Parkwood, QLD Australia",
     type: "Full-time",
   },
   {
     title: "IT Audit Specialist",
-    location: "Frankfurt, Germany",
+    location: "Remote",
     type: "Full-time",
   },
   {
     title: "Bookkeeping Analyst",
-    location: "Toronto, Canada",
+    location: "Parkwood, QLD Australia",
     type: "Full-time",
   },
 ];
@@ -142,16 +143,16 @@ export default function CareersPage() {
   return (
     <main>
       <PageHeader
-        title="Build Your Career at Meridian"
+        title={`Build Your Career With ${COMPANY_NAME}`}
         description="Where exceptional talent meets extraordinary opportunity."
       />
 
-      {/* Why Meridian */}
+      {/* Why Our Firm */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
-              Why Meridian?
+              Why {COMPANY_NAME}?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               We believe that when you invest genuinely in your people, exceptional client outcomes
@@ -159,7 +160,7 @@ export default function CareersPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whyMeridian.map(({ icon: Icon, title, description }) => (
+            {whyOurFirm.map(({ icon: Icon, title, description }) => (
               <Card key={title} className="h-full">
                 <CardHeader>
                   <div className="mb-3 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
@@ -184,7 +185,7 @@ export default function CareersPage() {
               Career Paths
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl">
-              Meridian Partners offers four principal career paths, each with a clear progression
+              {COMPANY_NAME} offers four principal career paths, each with a clear progression
               model and access to the firm's full suite of learning and development resources.
               Lateral movement across practices is actively encouraged.
             </p>
@@ -221,12 +222,12 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* Life at Meridian — Employee Spotlights */}
+      {/* Life at Our Firm — Employee Spotlights */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
-              Life at Meridian
+              Life at {COMPANY_NAME}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               The best measure of a workplace is not what we say about it — it is what our people say.

@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
+import { COMPANY_NAME } from "@/lib/constants";
 import {
   CheckCircle2,
   ShieldCheck,
@@ -52,7 +53,7 @@ const methodologySteps = [
     step: "01",
     title: "Risk Assessment",
     description:
-      "We begin by developing a deep understanding of your business model, industry dynamics, and control environment. Using MeridianIQ, we analyse transactional data to pinpoint areas of inherent and control risk before a single audit procedure is executed.",
+      "We begin by developing a deep understanding of your business model, industry dynamics, and control environment. Using our proprietary audit intelligence platform we analyse transactional data to pinpoint areas of inherent and control risk before a single audit procedure is executed.",
   },
   {
     step: "02",
@@ -123,7 +124,7 @@ export default function AuditAssurancePage() {
             <div>
               <h2 className="text-3xl font-bold text-slate-900 mb-4">An Independent Audit Is a Strategic Asset</h2>
               <p className="text-slate-600 leading-relaxed mb-4">
-                An independent, high-quality audit is the foundation of trust between an organisation and its stakeholders — investors, lenders, regulators, and the public. At Meridian Partners, we treat every engagement as a responsibility, not a transaction.
+                An independent, high-quality audit is the foundation of trust between an organisation and its stakeholders — investors, lenders, regulators, and the public. At {COMPANY_NAME}, we treat every engagement as a responsibility, not a transaction.
               </p>
               <p className="text-slate-600 leading-relaxed">
                 Our audit practice operates under a single global methodology, regardless of geography. Each engagement is led by an experienced partner with sector expertise and supported by specialists in tax, IT controls, valuations, and actuarial science where the engagement demands it.
@@ -191,7 +192,7 @@ export default function AuditAssurancePage() {
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-slate-900 mb-4">Technology-Enabled Audit</h2>
             <p className="text-slate-600 max-w-2xl">
-              MeridianIQ, our proprietary audit intelligence platform, transforms how we gather evidence, assess risk, and communicate findings — delivering higher quality at greater efficiency.
+              Our proprietary audit intelligence platform transforms how we gather evidence, assess risk, and communicate findings — delivering higher quality at greater efficiency.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

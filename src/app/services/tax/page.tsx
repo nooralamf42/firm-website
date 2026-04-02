@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
+import { COMPANY_NAME } from "@/lib/constants";
 import {
   CheckCircle2,
   Globe,
@@ -69,7 +70,7 @@ const approachPillars = [
   {
     title: "Technology-Integrated Tax Function",
     description:
-      "Meridian's tax technology practice helps clients implement and optimise tax engines (Vertex, Thomson Reuters ONESOURCE, Sovos), automate provision workpapers, and build robust data pipelines from ERP to tax reporting.",
+      "Our tax technology practice helps clients implement and optimise tax engines (Vertex, Thomson Reuters ONESOURCE, Sovos), automate provision workpapers, and build robust data pipelines from ERP to tax reporting.",
   },
   {
     title: "Sector-Specific Expertise",
@@ -79,7 +80,7 @@ const approachPillars = [
   {
     title: "Ethical, Sustainable Tax Positions",
     description:
-      "Meridian advises only on tax positions that are legally sound and reputationally defensible. In an era of increased public scrutiny of corporate tax practices, we help clients communicate their tax strategy transparently to boards and stakeholders.",
+      `${COMPANY_NAME} advises only on tax positions that are legally sound and reputationally defensible. In an era of increased public scrutiny of corporate tax practices, we help clients communicate their tax strategy transparently to boards and stakeholders.`,
   },
 ];
 
@@ -101,7 +102,7 @@ export default function TaxPage() {
                 The global tax landscape has never been more complex or more consequential. The OECD's two-pillar framework, shifting domestic corporate rates, expanding digital economy levies, and heightened transfer pricing scrutiny are simultaneously reshaping the tax profiles of businesses of every size and sector.
               </p>
               <p className="text-slate-600 leading-relaxed">
-                Meridian Partners' tax practice combines deep technical expertise with sector knowledge and global reach. With over 1,800 dedicated tax professionals across our network, we provide the insight and execution capability to transform tax from a compliance cost centre into a source of competitive advantage.
+                {COMPANY_NAME}'s tax practice combines deep technical expertise with sector knowledge and global reach. With over 1,800 dedicated tax professionals across our network, we provide the insight and execution capability to transform tax from a compliance cost centre into a source of competitive advantage.
               </p>
             </div>
             <div className="space-y-4">
@@ -156,7 +157,7 @@ export default function TaxPage() {
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-slate-900 mb-4">Our Approach</h2>
             <p className="text-slate-600 max-w-2xl">
-              Meridian Partners approaches tax as a strategic discipline, not an annual filing obligation. Our model is built around continuous partnership, advanced technology, and principled advice.
+              {COMPANY_NAME} approaches tax as a strategic discipline, not an annual filing obligation. Our model is built around continuous partnership, advanced technology, and principled advice.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -185,7 +186,7 @@ export default function TaxPage() {
               The OECD's Global Anti-Base Erosion (GloBE) rules — commonly referred to as Pillar Two — establish a 15% global minimum effective tax rate for multinational enterprise groups with consolidated revenues exceeding €750 million. As of 2026, over 140 jurisdictions have enacted or are implementing qualifying domestic minimum top-up taxes (QDMTT), Income Inclusion Rules (IIR), and Undertaxed Profits Rules (UTPR).
             </p>
             <p className="text-slate-300 leading-relaxed mb-8">
-              The compliance and cash tax implications are significant. Meridian's dedicated Pillar Two task force has assisted over 200 multinational clients with GloBE impact assessments, data readiness reviews, safe harbour analyses, and top-up tax modelling. We work with clients' tax, finance, and IT teams to build sustainable, auditable Pillar Two compliance processes.
+              The compliance and cash tax implications are significant. Our dedicated Pillar Two task force has assisted over 200 multinational clients with GloBE impact assessments, data readiness reviews, safe harbour analyses, and top-up tax modelling. We work with clients' tax, finance, and IT teams to build sustainable, auditable Pillar Two compliance processes.
             </p>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
               {[
@@ -217,7 +218,7 @@ export default function TaxPage() {
         <div className="container mx-auto px-4 max-w-3xl">
           <h2 className="text-3xl font-bold text-white mb-4">Your Tax Strategy Starts Here</h2>
           <p className="text-blue-100 mb-10">
-            Whether you are preparing for a transaction, navigating a regulatory change, or building a long-term tax-efficient structure, Meridian's tax professionals are ready to help.
+            Whether you are preparing for a transaction, navigating a regulatory change, or building a long-term tax-efficient structure, our tax professionals are ready to help.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

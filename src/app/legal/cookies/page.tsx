@@ -1,4 +1,5 @@
 import { PageHeader } from "@/components/ui/page-header";
+import { COMPANY_NAME } from "@/lib/constants";
 
 export default function CookiesPage() {
   return (
@@ -16,7 +17,7 @@ export default function CookiesPage() {
           </p>
           
           <h2>How We Use Cookies</h2>
-          <p>Meridian Partners uses cookies for the following purposes:</p>
+          <p>{COMPANY_NAME} uses cookies for the following purposes:</p>
           <ul>
             <li><strong>Strictly Necessary Cookies:</strong> Essential for the website to function properly, such as secure logins or maintaining session state.</li>
             <li><strong>Performance & Analytics Cookies:</strong> To understand how visitors interact with our site, enabling us to improve layout, speed, and content relevance (e.g., Google Analytics).</li>

@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
+import { COMPANY_NAME } from "@/lib/constants";
 import {
   CheckCircle2,
   BarChart3,
@@ -20,7 +21,7 @@ const serviceOfferings = [
     icon: TrendingUp,
     title: "M&A Advisory",
     description:
-      "Meridian provides buy-side and sell-side M&A advisory to corporate acquirers, private equity sponsors, and family-owned businesses. Our sector-specialist bankers and advisors deliver strategic analysis, target screening, process management, and negotiation support — with a focus on maximising transaction value and certainty of close.",
+      `${COMPANY_NAME} provides buy-side and sell-side M&A advisory to corporate acquirers, private equity sponsors, and family-owned businesses. Our sector-specialist bankers and advisors deliver strategic analysis, target screening, process management, and negotiation support — with a focus on maximising transaction value and certainty of close.`,
     offerings: [
       "Buy-side acquisition advisory & target identification",
       "Sell-side process management & exit readiness",
@@ -46,7 +47,7 @@ const serviceOfferings = [
     icon: BarChart3,
     title: "Business Valuations",
     description:
-      "Meridian's valuation specialists apply rigorous quantitative methods — discounted cash flow, comparable company, and precedent transaction analyses — to provide defensible, independent valuations for financial reporting, tax, litigation, and transaction purposes.",
+      "Our valuation specialists apply rigorous quantitative methods — discounted cash flow, comparable company, and precedent transaction analyses — to provide defensible, independent valuations for financial reporting, tax, litigation, and transaction purposes.",
     offerings: [
       "Business enterprise & equity valuations",
       "Purchase price allocation (ASC 805 / IFRS 3)",
@@ -59,7 +60,7 @@ const serviceOfferings = [
     icon: Scale,
     title: "Corporate Restructuring & Turnaround",
     description:
-      "When companies face liquidity stress or operational distress, Meridian's restructuring professionals act swiftly and decisively. We advise boards, management teams, lenders, and creditors through in-court and out-of-court restructuring processes.",
+      "When companies face liquidity stress or operational distress, Our restructuring professionals act swiftly and decisively. We advise boards, management teams, lenders, and creditors through in-court and out-of-court restructuring processes.",
     offerings: [
       "Liquidity management & 13-week cash flow",
       "Lender advisory & covenant renegotiation",
@@ -85,7 +86,7 @@ const serviceOfferings = [
     icon: Shield,
     title: "Litigation Support",
     description:
-      "Meridian's experts provide independent economic analysis, lost profits calculations, and expert witness testimony in commercial disputes, arbitrations, and regulatory proceedings. Our reports are prepared to withstand cross-examination in the highest courts.",
+      "Our experts provide independent economic analysis, lost profits calculations, and expert witness testimony in commercial disputes, arbitrations, and regulatory proceedings. Our reports are prepared to withstand cross-examination in the highest courts.",
     offerings: [
       "Expert witness reports & testimony",
       "Damages quantification",
@@ -144,7 +145,7 @@ export default function FinancialAdvisoryPage() {
                 The decisions that define an organisation's trajectory — a transformative acquisition, a strategic divestiture, a restructuring in distress — demand advisors who combine deep financial expertise with genuine independence and the courage to provide candid counsel.
               </p>
               <p className="text-slate-600 leading-relaxed">
-                Meridian's Financial Advisory practice brings together transaction specialists, valuation experts, forensic accountants, and restructuring advisors who have operated across every deal type, industry, and market cycle. We measure success by the outcomes we achieve for clients — not by transaction fees.
+                {COMPANY_NAME}'s Financial Advisory practice brings together transaction specialists, valuation experts, forensic accountants, and restructuring advisors who have operated across every deal type, industry, and market cycle. We measure success by the outcomes we achieve for clients — not by transaction fees.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-4">
@@ -237,7 +238,7 @@ export default function FinancialAdvisoryPage() {
             <div>
               <h2 className="text-3xl font-bold text-white mb-3">Speak with Our Advisory Team</h2>
               <p className="text-blue-100 max-w-xl">
-                Whether you are planning a transaction, facing a dispute, or navigating financial distress, Meridian's financial advisory professionals provide the expertise and objectivity your situation demands.
+                Whether you are planning a transaction, facing a dispute, or navigating financial distress, our financial advisory professionals provide the expertise and objectivity your situation demands.
               </p>
             </div>
             <div className="flex flex-col gap-3 shrink-0">

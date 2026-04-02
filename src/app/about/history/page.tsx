@@ -3,67 +3,38 @@ import { ArrowRight, Flag } from "lucide-react";
 import { PageHeader } from "@/components/ui/page-header";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
+import { COMPANY_NAME, DBA_NAME, HEADQUARTERS_ADDRESS } from "@/lib/constants";
 
 const timelineEvents = [
   {
-    year: "1985",
-    headline: "The Founding of Meridian Partners",
+    year: "2010",
+    headline: `The Founding of ${COMPANY_NAME}`,
     description:
-      "Harold Meridian, a former senior partner at a Big 8 firm, founded Meridian Partners in a single rented office on Park Avenue, New York. With a founding team of twelve professionals and an unwavering belief that clients deserved more honest, more attentive counsel than they were receiving elsewhere, Harold set in motion a firm culture that endures to this day. Early clients included mid-market manufacturers and regional financial institutions across the northeastern United States.",
+      `${COMPANY_NAME} was founded with a vision to provide specialized tax and accounting services to local businesses. From the beginning, we focused on delivering personalized, high-quality advice that helped our clients navigate complex financial landscapes. Our founding team brought decades of collective experience from top-tier accounting firms, establishing a culture of integrity and excellence that remains our hallmark today.`,
   },
   {
-    year: "1991",
-    headline: "Crossing the Atlantic — London and Frankfurt",
+    year: "2015",
+    headline: "Expanding Our Reach",
     description:
-      "Six years after its founding, Meridian Partners opened its first international offices in London and Frankfurt, establishing a European foothold just as the Maastricht Treaty reshaped the continent's regulatory landscape. The London office quickly became a hub for cross-border audit work, serving UK-listed multinationals with US operations. The Frankfurt office focused on the German Mittelstand, providing tax advisory and statutory audit services to family-owned industrial groups.",
+      "Five years after our founding, we expanded our operations to better serve a growing list of clients across different regions. This period was marked by the introduction of advanced audit techniques and the expansion of our tax advisory services. We built a reputation for reliability and deep technical expertise, becoming a trusted advisor to mid-market companies and individual entrepreneurs alike.",
   },
   {
-    year: "1997",
-    headline: "Launching the Technology Advisory Practice",
+    year: "2018",
+    headline: `Becoming a ${DBA_NAME} Premier Partner`,
     description:
-      "Recognizing the transformative potential of the internet and enterprise software, Meridian Partners established its Technology Advisory practice. Initially focused on ERP implementation risk and IT audit, the practice rapidly expanded to encompass digital strategy, systems integration, and cybersecurity. Within five years it had grown into one of the firm's fastest-growing service lines and attracted several high-profile Silicon Valley clients during the dot-com era.",
-  },
-  {
-    year: "2003",
-    headline: "The Pacific Partners Merger — 15 New Asia-Pacific Offices",
-    description:
-      "The firm's most transformative milestone to date: a strategic merger with Pacific Partners, a respected Asia-Pacific advisory group headquartered in Sydney with offices across Singapore, Hong Kong, Tokyo, Seoul, Shanghai, and Mumbai. The combined firm added more than 1,800 professionals and 15 offices overnight, establishing Meridian Partners as a genuine global network with deep roots in the fastest-growing economies in the world.",
-  },
-  {
-    year: "2008",
-    headline: "Navigating the Global Financial Crisis — Risk Advisory Launched",
-    description:
-      "When the global financial system buckled under the weight of the subprime mortgage collapse, Meridian Partners stood alongside its clients with steady advice, independent analysis, and practical solutions. The crisis underscored the need for specialized risk counsel, and in its aftermath the firm launched its dedicated Risk Advisory practice — combining financial risk modeling, regulatory compliance, and enterprise risk management into a single integrated offering.",
-  },
-  {
-    year: "2012",
-    headline: "5,000 Professionals Milestone",
-    description:
-      "Meridian Partners crossed the 5,000-professional threshold, cementing its status among the world's leading advisory firms. The milestone was marked by the opening of a new global learning center in Dubai and the launch of the Meridian Leadership Academy, a two-year development program for high-potential managers that has since graduated over 3,000 future partners and directors.",
-  },
-  {
-    year: "2017",
-    headline: "ClearSight: AI-Driven Audit Platform",
-    description:
-      "Meridian Partners unveiled ClearSight, a proprietary AI and machine-learning platform designed to revolutionize the external audit process. ClearSight ingests and analyzes full transaction populations in real time — replacing traditional sampling techniques with comprehensive data review. The platform identifies anomalies, flags risks, and produces audit-ready insights with unprecedented speed and precision. Within two years of its launch, ClearSight was deployed on more than 400 audit engagements worldwide.",
-  },
-  {
-    year: "2020",
-    headline: "Remote Service Delivery Across 65 Countries",
-    description:
-      "The global pandemic posed an extraordinary operational challenge: how do you deliver complex, relationship-intensive advisory services when no one can be in the same room? Meridian Partners responded swiftly, transitioning its entire global workforce to remote delivery within ten days. The firm invested heavily in secure collaboration infrastructure, virtual due diligence technology, and remote audit protocols — and maintained service continuity without a single material engagement disruption across all 65 countries of operation.",
+      `A significant milestone in our journey: we became an official ${DBA_NAME} partner. This transition allowed us to offer our clients state-of-the-art cloud bookkeeping and financial management solutions. By integrating these powerful tools into our service delivery model, we were able to provide real-time insights and greater operational efficiency to our clients, further cementing our position as a leader in digital accounting services.`,
   },
   {
     year: "2023",
-    headline: "Surpassing $50 Billion in Total Assets Advised",
+    headline: "Advancing Our Digital Advisory Services",
     description:
-      "A landmark year for the firm: aggregate client assets under advisory crossed the $50 billion threshold for the first time. Driven by strong growth in financial advisory, restructuring mandates, and ESG-linked capital markets work, this milestone reflected both the breadth of Meridian Partners' client relationships and the depth of trust that organizations place in our counsel when navigating major financial decisions.",
+      "As the business world became increasingly digital, we launched our dedicated Digital Advisory practice. This service line focuses on helping organizations transform their finance functions through technology, including AI-driven analytics, automated payroll systems, and enhanced cybersecurity protocols. Our goal is to empower our clients with the tools they need to stay competitive in a rapidly evolving economy.",
   },
   {
     year: "2026",
-    headline: "Global Sustainability Practice — A New Chapter",
+    headline: COMPANY_NAME,
     description:
-      "In response to the accelerating demand for rigorous, independent sustainability advisory, Meridian Partners launched its Global Sustainability Practice — an integrated offering spanning ESG strategy, carbon accounting, climate risk disclosure, supply chain transparency, and sustainability assurance. With more than 400 dedicated professionals across 30 countries from day one, the practice is positioned to become a defining capability for the firm in the decade ahead.",
+      `Marking a new chapter in our history, we officially transitioned to our new identity: ${COMPANY_NAME}. This rebranding reflects our commitment to continuous innovation and our expanded global outlook. With our headquarters in ${HEADQUARTERS_ADDRESS.area}, ${HEADQUARTERS_ADDRESS.country}, and a network of dedicated professionals worldwide, we are more prepared than ever to help our clients achieve their long-term financial objectives.`,
   },
 ];
 
@@ -85,7 +56,7 @@ export default function HistoryPage() {
             Every great firm is shaped by the choices it makes at pivotal moments. The choice to
             put client interests above short-term gain. The choice to invest in people when it would
             be easier to cut costs. The choice to embrace change rather than resist it. The history
-            of Meridian Partners is a story of exactly those choices, made consistently over forty
+            of {COMPANY_NAME} is a story of exactly those choices, made consistently over forty
             years by thousands of professionals who believed that better advisory was possible.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
@@ -135,8 +106,8 @@ export default function HistoryPage() {
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Looking Forward</h2>
           <p className="text-lg text-slate-300 leading-relaxed mb-5">
-            History is context, not destiny. The milestones above tell the story of what Meridian
-            Partners has built — but the chapter that excites us most is the one being written now.
+            History is context, not destiny. The milestones above tell the story of what ${COMPANY_NAME}
+            has built — but the chapter that excites us most is the one being written now.
             We are investing more than ever in our people, our technology, and our ability to meet
             clients where the world is going, not just where it has been.
           </p>
@@ -144,11 +115,11 @@ export default function HistoryPage() {
             Climate transition, artificial intelligence, geopolitical complexity, and rapid
             regulatory change are reshaping every industry simultaneously. The firms that will
             matter in 2035 are those building the capabilities today to navigate these forces with
-            clarity and confidence. That is the work underway at Meridian Partners.
+            clarity and confidence. That is the work underway at ${COMPANY_NAME}.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/about" className={cn(buttonVariants({ variant: "outline", size: "lg" }))}>
-              About Meridian Partners
+              About {COMPANY_NAME}
               <ArrowRight className="ml-2 size-4" />
             </Link>
             <Link href="/about/leadership" className={cn(buttonVariants({ variant: "ghost", size: "lg" }), "text-white hover:text-white hover:bg-white/10")}>

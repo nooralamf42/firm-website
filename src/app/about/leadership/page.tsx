@@ -5,49 +5,50 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
+import { COMPANY_NAME, DBA_NAME } from "@/lib/constants";
 
 const executiveCommittee = [
   {
     name: "Eleanor Vance",
     title: "Global Chief Executive Officer",
     imageSrc: "/images/leadership/eleanor_vance.png",
-    tenure: "At Meridian since 2009",
-    bio: "Eleanor leads Meridian Partners' global strategy, operations, and long-term vision. With 30 years of experience in international mergers and acquisitions and corporate restructuring, she has advised on some of the most consequential transactions in modern business history. Prior to assuming the CEO role, she served as Head of Financial Advisory for Europe, the Middle East, and Africa. Eleanor is a member of the World Economic Forum's Private Sector Advisory Board and holds a JD from Harvard Law School.",
+    tenure: `with ${COMPANY_NAME} since 2009`,
+    bio: `${COMPANY_NAME}'s global strategy, operations, and long-term vision. With 30 years of experience in international mergers and acquisitions and corporate restructuring, she has advised on some of the most consequential transactions in modern business history. Prior to assuming the CEO role, she served as Head of Financial Advisory for Europe, the Middle East, and Africa. Eleanor is a member of the World Economic Forum's Private Sector Advisory Board and holds a JD from Harvard Law School.`,
   },
   {
     name: "James Okafor",
     title: "Global Chief Financial Officer",
     imageSrc: "/images/leadership/james_okafor.png",
-    tenure: "At Meridian since 2015",
-    bio: "James oversees Meridian Partners' global financial operations, capital strategy, and enterprise performance management. A finance transformation specialist with deep experience in scaling professional services firms, he spent eighteen years as a partner at a Big 4 firm before joining Meridian. He has led the firm through two successful recapitalizations and the financial integration of three major acquisitions. James is a Fellow of the Institute of Chartered Accountants and holds an MBA from London Business School.",
+    tenure: `with ${COMPANY_NAME} since 2015`,
+    bio: `James oversees ${COMPANY_NAME}'s global financial operations, capital strategy, and enterprise performance management. A finance transformation specialist with deep experience in scaling professional services firms, he spent eighteen years as a partner at a Big 4 firm before joining ${COMPANY_NAME}. He has led the firm through two successful recapitalizations and the financial integration of three major acquisitions. James is a Fellow of the Institute of Chartered Accountants and holds an MBA from London Business School.`,
   },
   {
     name: "Dr. Sarah Chen",
     title: "Chief Technology Officer",
     imageSrc: "/images/leadership/sarah_chen.png",
-    tenure: "At Meridian since 2016",
-    bio: "Dr. Chen leads Meridian Partners' global technology strategy, digital transformation, and the development of proprietary advisory platforms including ClearSight. She holds a PhD in Computer Science from Stanford University, where her doctoral research focused on machine learning applications in financial anomaly detection. Before joining Meridian, she served as VP of Engineering at a leading fintech company and as a research scientist at Google DeepMind. She holds 14 patents in applied AI.",
+    tenure: `with ${COMPANY_NAME} since 2016`,
+    bio: `Dr. Chen leads ${COMPANY_NAME}'s global technology strategy, digital transformation, and the development of proprietary advisory platforms including ClearSight. She holds a PhD in Computer Science from Stanford University, where her doctoral research focused on machine learning applications in financial anomaly detection. Before joining ${COMPANY_NAME}, she served as VP of Engineering at a leading fintech company and as a research scientist at Google DeepMind. She holds 14 patents in applied AI.`,
   },
   {
     name: "Marcus Webb",
     title: "Head of Tax Practice",
     imageSrc: "/images/leadership/marcus_webb.png",
-    tenure: "At Meridian since 2004",
-    bio: "Marcus leads Meridian Partners' global tax practice across more than 40 jurisdictions. With 25 years of experience in international tax, transfer pricing, and cross-border structuring, he is one of the most recognized tax professionals in the industry. He has served as a technical advisor to the OECD's Base Erosion and Profit Shifting (BEPS) project and represented clients before tax authorities in the United States, European Union, and the United Kingdom. He is a Chartered Tax Adviser and a member of the American Bar Association Tax Section.",
+    tenure: `with ${COMPANY_NAME} since 2004`,
+    bio: `Marcus leads ${COMPANY_NAME}'s global tax practice across more than 40 jurisdictions. With 25 years of experience in international tax, transfer pricing, and cross-border structuring, he is one of the most recognized tax professionals in the industry. He has served as a technical advisor to the OECD's Base Erosion and Profit Shifting (BEPS) project and represented clients before tax authorities in the United States, European Union, and the United Kingdom. He is a Chartered Tax Adviser and a member of the American Bar Association Tax Section.`,
   },
   {
     name: "Priya Nair",
     title: "Head of Risk Advisory",
     imageSrc: "/images/leadership/priya_nair.png",
-    tenure: "At Meridian since 2011",
-    bio: "Priya leads Meridian Partners' global Risk Advisory practice, encompassing cybersecurity, regulatory compliance, operational risk, and enterprise risk management. A certified information security professional with regulatory experience across the FSB, EBA, and SEC frameworks, she previously served as Chief Risk Officer for a systemically important financial institution. Under her leadership, Meridian's Risk Advisory practice has grown to more than 1,200 professionals and is consistently ranked among the top five in independent industry surveys.",
+    tenure: `with ${COMPANY_NAME} since 2011`,
+    bio: `Priya leads ${COMPANY_NAME}'s global Risk Advisory practice, encompassing cybersecurity, regulatory compliance, operational risk, and enterprise risk management. A certified information security professional with regulatory experience across the FSB, EBA, and SEC frameworks, she previously served as Chief Risk Officer for a systemically important financial institution. Under her leadership, ${COMPANY_NAME}'s Risk Advisory practice has grown to more than 1,200 professionals and is consistently ranked among the top five in independent industry surveys.`,
   },
   {
     name: "Robert Castellano",
     title: "Head of Financial Advisory",
     imageSrc: "/images/leadership/robert_castellano.png",
-    tenure: "At Meridian since 2007",
-    bio: "Robert heads Meridian Partners' Financial Advisory practice, overseeing M&A advisory, restructuring, valuation, and capital markets services. Over a career spanning three decades, he has led or co-led more than 200 M&A transactions with aggregate deal values exceeding $400 billion. His clients include sovereign wealth funds, private equity firms, Fortune 100 corporations, and national governments navigating complex privatizations. Robert is a CFA charterholder and a frequent speaker at the Milken Institute Global Conference.",
+    tenure: `with ${COMPANY_NAME} since 2007`,
+    bio: `Robert heads ${COMPANY_NAME}'s Financial Advisory practice, overseeing M&A advisory, restructuring, valuation, and capital markets services. Over a career spanning three decades, he has led or co-led more than 200 M&A transactions with aggregate deal values exceeding $400 billion. His clients include sovereign wealth funds, private equity firms, Fortune 100 corporations, and national governments navigating complex privatizations. Robert is a CFA charterholder and a frequent speaker at the Milken Institute Global Conference.`,
   },
 ];
 
@@ -88,7 +89,7 @@ export default function LeadershipPage() {
               Executive Committee
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl">
-              Meridian Partners is guided by a six-member Executive Committee whose members bring
+              {COMPANY_NAME} is guided by a six-member Executive Committee whose members bring
               collective experience spanning six continents, six decades of professional services,
               and virtually every major sector of the global economy.
             </p>
@@ -125,7 +126,7 @@ export default function LeadershipPage() {
             Board of Directors
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-5">
-            Meridian Partners' Board of Directors is composed of fourteen members, the majority of
+            {COMPANY_NAME}'s Board of Directors is composed of fourteen members, the majority of
             whom are independent non-executive directors drawn from senior positions in banking,
             government, academia, and industry. The Board provides independent oversight of the
             firm's strategy, financial performance, risk management framework, and governance
@@ -154,7 +155,7 @@ export default function LeadershipPage() {
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               The way we lead is inseparable from the way we serve. These three principles define
-              how Meridian Partners' leadership team shows up — for clients, for each other, and
+              how {COMPANY_NAME}'s leadership team shows up — for clients, for each other, and
               for the professionals who will lead this firm in the future.
             </p>
           </div>
@@ -183,7 +184,7 @@ export default function LeadershipPage() {
             Interested in joining a firm that invests in its people?
           </h2>
           <p className="text-slate-300 mb-8 max-w-xl mx-auto">
-            Explore career opportunities at Meridian Partners and start building your future
+            Explore career opportunities with {COMPANY_NAME} and start building your future
             alongside some of the most respected professionals in the industry.
           </p>
           <Link href="/about/careers" className={cn(buttonVariants({ variant: "secondary", size: "lg" }))}>

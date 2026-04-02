@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
+import { COMPANY_NAME } from "@/lib/constants";
 import {
   CheckCircle2,
   Cpu,
@@ -107,7 +108,7 @@ const methodologySteps = [
     step: "Deliver",
     number: "03",
     description:
-      "Meridian programme managers and subject matter specialists embed alongside your teams to execute. We use agile delivery sprints with defined milestones, KPI dashboards, and escalation protocols — ensuring momentum and accountability throughout.",
+      `${COMPANY_NAME}'s programme managers and subject matter specialists embed alongside your teams to execute. We use agile delivery sprints with defined milestones, KPI dashboards, and escalation protocols — ensuring momentum and accountability throughout.`,
   },
   {
     step: "Sustain",
@@ -166,7 +167,7 @@ export default function ConsultingPage() {
                 Business transformation has never been more urgent — or more complex. Technological disruption, margin pressure, evolving workforce dynamics, and the imperative of ESG are forcing organisations to rethink every dimension of how they operate and compete.
               </p>
               <p className="text-slate-600 leading-relaxed">
-                Meridian's consulting practice is built differently from traditional strategy firms. We combine strategic insight with implementation capability — and we hold ourselves accountable to delivering the financial and operational outcomes we identify, not just the recommendations.
+                {COMPANY_NAME}'s consulting practice is built differently from traditional strategy firms. We combine strategic insight with implementation capability — and we hold ourselves accountable to delivering the financial and operational outcomes we identify, not just the recommendations.
               </p>
             </div>
             <div className="space-y-4">
@@ -279,7 +280,7 @@ export default function ConsultingPage() {
         <div className="container mx-auto px-4 max-w-3xl">
           <h2 className="text-3xl font-bold text-white mb-4">Ready to Transform Your Organisation?</h2>
           <p className="text-blue-100 mb-10">
-            Whether you are launching a transformation programme, responding to market disruption, or seeking to unlock value in your operations, Meridian's consulting professionals are ready to partner with you.
+            Whether you are launching a transformation programme, responding to market disruption, or seeking to unlock value in your operations, {COMPANY_NAME}'s consulting professionals are ready to partner with you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

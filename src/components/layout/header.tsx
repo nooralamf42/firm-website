@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
@@ -16,9 +17,10 @@ import { buttonVariants } from "@/components/ui/button-variants";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { COMPANY_NAME, DBA_NAME } from "@/lib/constants";
 
 const aboutItems = [
-  { title: "Overview", href: "/about", description: "Learn about Meridian Partners' core values and mission." },
+  { title: "Overview", href: "/about", description: `Learn about ${COMPANY_NAME}'s core values and mission.` },
   { title: "Our History", href: "/about/history", description: "Our legacy of trust and excellence since 1985." },
   { title: "Leadership", href: "/about/leadership", description: "Meet our executive team and partners." },
   { title: "Careers", href: "/about/careers", description: "Join our team of dedicated professionals." },
@@ -59,16 +61,18 @@ export function Header() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4 lg:px-8 flex h-20 items-center justify-between">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
+      <div className="container mx-auto px-4 lg:px-8 flex h-25 items-center justify-between">
         <div className="flex items-center gap-6 md:gap-10">
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="h-8 w-8 bg-blue-900 rounded-sm flex items-center justify-center">
-              <span className="text-white font-bold text-xl">M</span>
-            </div>
-            <span className="hidden sm:inline-block font-bold text-xl tracking-tight text-slate-900">
-              Meridian Partners
-            </span>
+          <Link href="/" className="flex items-center group transition-opacity hover:opacity-90">
+            <Image
+              src={pathname === "/legal/privacy" ? "/logo-dba.webp" : "/image-removebg-preview (3).png"}
+              alt={COMPANY_NAME}
+              width={200}
+              height={60}
+              className="h-30 w-auto object-contain"
+              priority
+            />
           </Link>
           
           <div className="hidden lg:flex">
@@ -146,42 +150,42 @@ export function Header() {
               <Menu className="h-6 w-6" />
               <span className="sr-only">Toggle Menu</span>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px] overflow-y-auto">
-              <nav className="flex flex-col gap-6 mt-8">
+            <SheetContent side="right" className="w-[300px] sm:w-[400px] overflow-y-auto px-6">
+              <nav className="flex flex-col gap-8 mt-10">
                 <div className="flex flex-col gap-2">
-                  <h4 className="font-semibold text-lg border-b pb-2">About Us</h4>
+                  <h4 className="font-semibold text-lg border-b pb-3 mb-1">About Us</h4>
                   {aboutItems.map((item) => (
-                    <Link key={item.href} href={item.href} className="text-slate-600 hover:text-slate-900 py-1">
+                    <Link key={item.href} href={item.href} className="text-slate-600 hover:text-slate-900 py-2 px-2 rounded-md hover:bg-slate-100 transition-colors">
                       {item.title}
                     </Link>
                   ))}
                 </div>
                 <div className="flex flex-col gap-2">
-                  <h4 className="font-semibold text-lg border-b pb-2">Services</h4>
+                  <h4 className="font-semibold text-lg border-b pb-3 mb-1">Services</h4>
                   {serviceItems.map((item) => (
-                    <Link key={item.href} href={item.href} className="text-slate-600 hover:text-slate-900 py-1">
+                    <Link key={item.href} href={item.href} className="text-slate-600 hover:text-slate-900 py-2 px-2 rounded-md hover:bg-slate-100 transition-colors">
                       {item.title}
                     </Link>
                   ))}
                 </div>
                 <div className="flex flex-col gap-2">
-                  <h4 className="font-semibold text-lg border-b pb-2">Industries</h4>
+                  <h4 className="font-semibold text-lg border-b pb-3 mb-1">Industries</h4>
                   {industryItems.map((item) => (
-                    <Link key={item.href} href={item.href} className="text-slate-600 hover:text-slate-900 py-1">
+                    <Link key={item.href} href={item.href} className="text-slate-600 hover:text-slate-900 py-2 px-2 rounded-md hover:bg-slate-100 transition-colors">
                       {item.title}
                     </Link>
                   ))}
                 </div>
                 <div className="flex flex-col gap-2">
-                  <h4 className="font-semibold text-lg border-b pb-2">Insights</h4>
+                  <h4 className="font-semibold text-lg border-b pb-3 mb-1">Insights</h4>
                   {insightItems.map((item) => (
-                    <Link key={item.href} href={item.href} className="text-slate-600 hover:text-slate-900 py-1">
+                    <Link key={item.href} href={item.href} className="text-slate-600 hover:text-slate-900 py-2 px-2 rounded-md hover:bg-slate-100 transition-colors">
                       {item.title}
                     </Link>
                   ))}
                 </div>
-                <div className="flex flex-col gap-4 mt-4 pt-4 border-t">
-                  <Link href="/contact" className={cn(buttonVariants(), "w-full bg-blue-900 text-white hover:bg-blue-800")}>
+                <div className="flex flex-col gap-4 mt-2 pt-6 border-t">
+                  <Link href="/contact" className={cn(buttonVariants(), "w-full bg-blue-900 text-white hover:bg-blue-800 py-3")}>
                     Contact Us
                   </Link>
                 </div>

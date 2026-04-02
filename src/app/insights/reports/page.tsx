@@ -5,13 +5,14 @@ import { Button } from "@/components/ui/button";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
 import { Download, FileText } from "lucide-react";
+import { COMPANY_NAME } from "@/lib/constants";
 
 const featuredReport = {
   title: "Global Tax Landscape 2026: Annual Report",
   practiceArea: "Tax",
   pages: 96,
   description:
-    "Meridian's flagship annual publication synthesises the most significant tax law developments across 60+ jurisdictions, analysing the cumulative impact of OECD Pillar Two implementation, unilateral digital services taxes, and the evolving landscape of tax treaty networks. Authored by over 40 partners across our global Tax practice, this report provides multinational enterprises, family offices, and in-house tax teams with the strategic intelligence needed to plan effectively in a rapidly changing environment.",
+    `${COMPANY_NAME}'s flagship annual publication synthesises the most significant tax law developments across 60+ jurisdictions, analysing the cumulative impact of OECD Pillar Two implementation, unilateral digital services taxes, and the evolving landscape of tax treaty networks. Authored by over 40 partners across our global Tax practice, this report provides multinational enterprises, family offices, and in-house tax teams with the strategic intelligence needed to plan effectively in a rapidly changing environment.`,
 };
 
 const reports = [
@@ -29,7 +30,7 @@ const reports = [
     date: "January 2026",
     pages: 36,
     description:
-      "Results from Meridian's annual survey of 800+ CISOs and risk officers, benchmarking cybersecurity maturity, AI-related threat exposure, and board-level governance practices across major industry sectors.",
+      "Results from our annual survey of 800+ CISOs and risk officers, benchmarking cybersecurity maturity, AI-related threat exposure, and board-level governance practices across major industry sectors.",
   },
   {
     title: "ESG Reporting Readiness Survey",
@@ -98,7 +99,7 @@ export default function ReportsPage() {
       <PageHeader
         tag="Research"
         title="Research Reports"
-        description="Comprehensive research and analysis from Meridian's global practice groups."
+        description="Comprehensive research and analysis from our global practice groups."
       />
 
       {/* Featured Report */}
