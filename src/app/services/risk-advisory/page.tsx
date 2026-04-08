@@ -152,31 +152,14 @@ export default function RiskAdvisoryPage() {
 
       {/* Intro */}
       <section className="bg-white py-16">
-        <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">Risk Is Not Just a Threat — It Is a Source of Competitive Advantage</h2>
-              <p className="text-slate-600 leading-relaxed mb-4">
-                Organisations that identify and manage risk more effectively than their peers are better positioned to seize opportunities, maintain regulatory confidence, and sustain long-term value creation. {COMPANY_NAME}'s Risk Advisory practice helps clients build that capability.
-              </p>
-              <p className="text-slate-600 leading-relaxed">
-                Our risk professionals combine deep regulatory knowledge with practical controls implementation experience. We are former regulators, chief risk officers, cybersecurity specialists, and sustainability experts — with one shared goal: helping you manage risk on your terms.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { stat: "650+", label: "Risk Professionals Globally" },
-                { stat: "200+", label: "Cyber Investigations Conducted" },
-                { stat: "300+", label: "ERM Frameworks Designed" },
-                { stat: "98%", label: "Regulatory Examination Pass Rate" },
-              ].map(({ stat, label }) => (
-                <div key={label} className="bg-blue-50 border border-blue-100 rounded-xl p-5 text-center">
-                  <span className="text-3xl font-extrabold text-blue-800 block mb-1">{stat}</span>
-                  <span className="text-xs font-medium text-slate-600">{label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">Risk Is Not Just a Threat — It Is a Source of Competitive Advantage</h2>
+          <p className="text-slate-600 leading-relaxed mb-4">
+            Organisations that identify and manage risk more effectively than their peers are better positioned to seize opportunities, maintain regulatory confidence, and sustain long-term value creation. {COMPANY_NAME}'s Risk Advisory practice helps clients build that capability.
+          </p>
+          <p className="text-slate-600 leading-relaxed">
+            Our risk professionals combine deep regulatory knowledge with practical controls implementation experience. We are former regulators, chief risk officers, cybersecurity specialists, and sustainability experts — with one shared goal: helping you manage risk on your terms.
+          </p>
         </div>
       </section>
 

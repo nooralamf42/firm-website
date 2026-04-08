@@ -188,31 +188,14 @@ export default function BookkeepingPage() {
 
       {/* Intro */}
       <section className="bg-white py-16">
-        <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">Your Extended Finance Team</h2>
-              <p className="text-slate-600 leading-relaxed mb-4">
-                Accurate, timely financial records are not just a compliance requirement — they are the foundation of every strategic and operational decision your business makes. Yet maintaining a high-quality in-house bookkeeping function is costly, time-consuming, and increasingly difficult as cloud technology and regulation evolve.
-              </p>
-              <p className="text-slate-600 leading-relaxed">
-                As an official {DBA_NAME} partner, {COMPANY_NAME}'s bookkeeping & payroll practice provides businesses of all sizes with access to a dedicated team of certified accounting professionals — delivering the accuracy, consistency, and analytical depth of a large finance department at a fraction of the cost.
-              </p>
-            </div>
-            <div className="space-y-4">
-              {[
-                { stat: "3,500+", label: "Businesses Served" },
-                { stat: "99.98%", label: "Payroll Accuracy Rate" },
-                { stat: "40–60%", label: "Average Cost Reduction vs. In-House" },
-                { stat: "48hr", label: "Average Onboarding Timeline" },
-              ].map(({ stat, label }) => (
-                <div key={label} className="flex items-center gap-6 bg-slate-50 rounded-xl px-6 py-4 border border-slate-100">
-                  <span className="text-2xl font-extrabold text-blue-800 shrink-0 w-24">{stat}</span>
-                  <span className="text-sm font-medium text-slate-600">{label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">Your Extended Finance Team</h2>
+          <p className="text-slate-600 leading-relaxed mb-4">
+            Accurate, timely financial records are not just a compliance requirement — they are the foundation of every strategic and operational decision your business makes. Yet maintaining a high-quality in-house bookkeeping function is costly, time-consuming, and increasingly difficult as cloud technology and regulation evolve.
+          </p>
+          <p className="text-slate-600 leading-relaxed">
+            As an official {DBA_NAME} partner, {COMPANY_NAME}'s bookkeeping &amp; payroll practice provides businesses of all sizes with access to a dedicated team of certified accounting professionals — delivering the accuracy, consistency, and analytical depth of a large finance department at a fraction of the cost.
+          </p>
         </div>
       </section>
 

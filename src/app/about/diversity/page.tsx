@@ -1,12 +1,8 @@
 import Link from "next/link";
 import {
   ArrowRight,
-  Award,
-  Heart,
   Globe,
-  ShieldCheck,
   Accessibility,
-  Rainbow,
   TrendingUp,
   CheckCircle2,
 } from "lucide-react";
@@ -16,72 +12,35 @@ import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
 import { COMPANY_NAME } from "@/lib/constants";
 
-const deiStats = [
-  { value: "48%", label: "Women Professionals" },
-  { value: "42%", label: "Diverse Leadership" },
-  { value: "90+", label: "Nationalities Represented" },
-  { value: "15", label: "Employee Resource Groups" },
-];
-
 const programs = [
   {
     icon: TrendingUp,
     title: "Women in Leadership Initiative",
     description:
-      `Launched in 2014, our Women in Leadership Initiative provides structured sponsorship, executive coaching, and curated career development opportunities for high-potential women across all levels of ${COMPANY_NAME}. The program includes an annual leadership summit, cross-practice mentorship pairings, and a dedicated panel interview process designed to reduce bias. Since its inception, the proportion of women in director and partner roles has increased by 22 percentage points.`,
-  },
-  {
-    icon: Rainbow,
-    title: "LGBTQ+ Allies Network",
-    description:
-      `${COMPANY_NAME}'s LGBTQ+ Allies Network operates across 45 offices globally and is one of ${COMPANY_NAME}'s most active employee resource groups. The network hosts regular educational events, provides peer support, advocates for inclusive benefits policies, and connects LGBTQ+ professionals across practice groups and geographies. The firm has been a signatory to the UN LGBTI Standards of Conduct for Business since 2018.`,
+      `Our Women in Leadership Initiative provides structured mentorship, professional coaching, and curated career development opportunities for high-potential women across all levels of ${COMPANY_NAME}. Driven by leaders with hands-on experience in cultivating inclusive environments, the program includes a leadership summit, cross-practice mentorship pairings, and a dedicated career advancement framework designed to reduce bias.`,
   },
   {
     icon: Globe,
     title: "Multicultural Advancement Program",
     description:
-      "The Multicultural Advancement Program targets systemic barriers to advancement for professionals from underrepresented ethnic and cultural backgrounds. Participants receive twelve months of intensive sponsorship from a senior partner, a dedicated leadership development curriculum, and visibility opportunities including client-facing speaking roles. The program has a 94% retention rate among alumni, compared to a firm-wide average of 81%.",
+      `The Multicultural Advancement Program targets systemic barriers to advancement for professionals from diverse ethnic and cultural backgrounds. Participants receive dedicated guidance from senior leadership, a robust development curriculum, and visibility opportunities including client-facing engagements. Our team brings deep, practical experience in empowering diverse talent to reach their full potential.`,
   },
   {
     icon: Accessibility,
     title: "Accessibility & Disability Inclusion",
     description:
-      "We are committed to a workplace that is fully accessible and genuinely welcoming to professionals with disabilities. Our Accessibility & Disability Inclusion program includes flexible work accommodation frameworks, an assistive technology fund, a Disability Confidence training program for all managers, and confidential peer support networks. All new offices are built to exceed local accessibility requirements, and we are working toward full retrofitting of existing locations by 2028.",
+      `We are committed to a workplace that is fully accessible and genuinely welcoming to professionals with varying abilities. Our approach includes flexible work accommodation frameworks, an assistive technology fund, and confidence training for our managers. Leveraging our hands-on experience, we ensure all our workspaces and digital platforms prioritize accessibility from day one.`,
   },
 ];
 
 const hiringPractices = [
-  "Structured, criteria-based interview processes that reduce evaluator subjectivity across all roles",
-  "Diverse interview panels required for all Director, Senior Manager, and Partner-track positions",
-  "Blind CV screening for entry-level and early-career roles to reduce name and institution bias",
-  "Pay equity audits conducted annually by an independent third party, with results published in our Transparency Report",
-  "Targeted university partnerships with historically Black colleges and universities (HBCUs), Hispanic-serving institutions, and other minority-serving institutions",
-  "Removal of degree requirements from roles where competency and experience are sufficient, broadening access to candidates from non-traditional educational backgrounds",
-  "All interviewers complete bias awareness training before participating in any hiring process",
-];
-
-const awards = [
-  {
-    icon: Award,
-    title: "Forbes Best Employers for Diversity",
-    year: "2022, 2023, 2024, 2025",
-    description:
-      `${COMPANY_NAME} has been recognized by Forbes magazine as one of the Best Employers for Diversity for four consecutive years, based on independent surveys of employees across all demographic groups. The recognition reflects measurable progress on representation, pay equity, and inclusive culture.`,
-  },
-  {
-    icon: ShieldCheck,
-    title: "Human Rights Campaign — Best Places to Work",
-    year: "2021 — 2026",
-    description:
-      `${COMPANY_NAME} has achieved a perfect score on the Human Rights Campaign Corporate Equality Index for six consecutive years, earning its designation as one of the Best Places to Work for LGBTQ+ Equality. The index evaluates workplace non-discrimination policies, equal benefits, and organizational competency in LGBTQ+ inclusion.`,
-  },
-  {
-    icon: Heart,
-    title: "Disability:IN Disability Equality Index — Best Places to Work",
-    year: "2023, 2024, 2025",
-    description:
-      `${COMPANY_NAME} has been recognized by Disability:IN as a Best Place to Work for Disability Inclusion, based on its performance across culture and leadership, enterprise-wide access, employment practices, community engagement, and supplier diversity. The firm scored in the top tier of all participating global professional services firms.`,
-  },
+  "Structured, criteria-based interview processes that prioritize hands-on experience and core competencies",
+  "Diverse interview panels to ensure a comprehensive and fair evaluation of all candidates",
+  "Blind CV screening for initial reviews to reduce any potential unconscious bias",
+  "Commitment to competitive and equitable compensation across all roles and levels",
+  "Targeted outreach to diverse professional groups and academic institutions to broaden our talent pool",
+  "Valuing practical, hands-on experience alongside traditional educational backgrounds to ensure broad access to opportunities",
+  "All team members involved in hiring undergo comprehensive bias awareness and evaluation training",
 ];
 
 export default function DiversityPage() {
@@ -107,36 +66,11 @@ export default function DiversityPage() {
             reach better answers.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed mb-5">
-            Our DEI strategy is structured around three pillars: representation, belonging, and
-            equity. Representation means building a workforce and leadership pipeline that reflects
-            the diversity of the clients and communities we serve. Belonging means creating
-            conditions in which every professional feels genuinely included, heard, and valued.
-            Equity means identifying and eliminating the structural barriers — in hiring, promotion,
-            compensation, and culture — that prevent talented people from reaching their potential.
+            As a newly established firm, our DEI strategy is built from the ground up, resting on a foundation of extensive hands-on experience in the professional services sector. We understand that representation means building a workforce and leadership pipeline that reflects the diverse clients and communities we serve. Beyond representation, we prioritize belonging—creating conditions in which every professional feels genuinely included, heard, and valued.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            We measure our progress rigorously, report on it publicly in our annual Transparency
-            Report, and hold our leadership accountable for outcomes — not just intentions. There
-            is always more to do, and we approach that work with the same commitment to continuous
-            improvement that we bring to every client engagement.
+            Equity means identifying and proactively preventing structural barriers in our hiring, professional development, and culture. We are establishing optimal practices from day one, driven by our leadership's proven experience in cultivating high-performing, inclusive teams without the legacy constraints of older organizations.
           </p>
-        </div>
-      </section>
-
-      {/* DEI by the Numbers */}
-      <section className="bg-slate-950 py-16">
-        <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="text-center text-3xl md:text-4xl font-bold text-white mb-12">
-            DEI by the Numbers
-          </h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {deiStats.map(({ value, label }) => (
-              <div key={label} className="text-center">
-                <p className="text-4xl md:text-5xl font-extrabold text-blue-400 mb-2">{value}</p>
-                <p className="text-slate-300 text-base font-medium">{label}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -145,15 +79,13 @@ export default function DiversityPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="mb-12">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
-              Our Programs
+              Our Core Programs
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl">
-              Structural change requires structural investment. These four programs represent the
-              core of our DEI programming — each designed to address specific barriers and create
-              measurable, lasting change.
+              Structural change requires targeted focus. These programs represent the foundation of our DEI initiatives, drawing on our team's deep, hands-on experience to create an empowering environment for all.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {programs.map(({ icon: Icon, title, description }) => (
               <Card key={title} className="h-full">
                 <CardHeader>
@@ -178,9 +110,7 @@ export default function DiversityPage() {
             Inclusive Hiring Practices
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-            Diversity begins at the door. Our hiring process is designed from the ground up to give
-            every candidate a fair, consistent, and unbiased experience — regardless of where they
-            studied, what they look like, or which communities they belong to.
+            Diversity begins at the door. Drawing on years of hands-on hiring experience from across the industry, we have established a hiring process designed to give every candidate a fair, consistent, and unbiased experience. We evaluate you on your potential and your practical experience.
           </p>
           <ul className="space-y-4">
             {hiringPractices.map((practice) => (
@@ -190,38 +120,6 @@ export default function DiversityPage() {
               </li>
             ))}
           </ul>
-        </div>
-      </section>
-
-      {/* Awards & Recognition */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
-              Awards &amp; Recognition
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              External validation matters — not because recognition is the goal, but because
-              independent assessments hold us accountable and signal to prospective colleagues
-              that our commitments are real.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {awards.map(({ icon: Icon, title, year, description }) => (
-              <Card key={title} className="h-full">
-                <CardHeader>
-                  <div className="mb-3 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-yellow-500/10">
-                    <Icon className="size-6 text-yellow-600" />
-                  </div>
-                  <CardTitle className="text-base font-bold leading-snug">{title}</CardTitle>
-                  <p className="text-xs text-primary font-semibold">{year}</p>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-sm leading-relaxed">{description}</CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -235,7 +133,13 @@ export default function DiversityPage() {
             We are actively building the most inclusive professional services firm in the world.
             If that mission resonates with you, we want to hear from you.
           </p>
-          <Link href="/about/careers" className={cn(buttonVariants({ variant: "outline", size: "lg" }))}>
+          <Link 
+            href="/about/careers" 
+            className={cn(
+              buttonVariants({ size: "lg" }),
+              "bg-white text-slate-950 hover:bg-slate-200 border-none px-8 font-semibold"
+            )}
+          >
             Explore Career Opportunities
             <ArrowRight className="ml-2 size-4" />
           </Link>

@@ -60,16 +60,6 @@ export default function ArticlesPage() {
               </article>
             ))}
           </div>
-
-          {/* Load More */}
-          <div className="mt-14 text-center">
-            <Button
-              variant="outline"
-              className="border-slate-300 text-slate-700 hover:bg-slate-50 px-10 py-5 text-base font-medium"
-            >
-              Load More Articles
-            </Button>
-          </div>
         </div>
       </section>
     </div>

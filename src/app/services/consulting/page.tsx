@@ -159,31 +159,14 @@ export default function ConsultingPage() {
 
       {/* Intro */}
       <section className="bg-white py-16">
-        <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">Transforming for Sustained Competitive Advantage</h2>
-              <p className="text-slate-600 leading-relaxed mb-4">
-                Business transformation has never been more urgent — or more complex. Technological disruption, margin pressure, evolving workforce dynamics, and the imperative of ESG are forcing organisations to rethink every dimension of how they operate and compete.
-              </p>
-              <p className="text-slate-600 leading-relaxed">
-                {COMPANY_NAME}'s consulting practice is built differently from traditional strategy firms. We combine strategic insight with implementation capability — and we hold ourselves accountable to delivering the financial and operational outcomes we identify, not just the recommendations.
-              </p>
-            </div>
-            <div className="space-y-4">
-              {[
-                { stat: "800+", detail: "Transformation programmes delivered globally" },
-                { stat: "35%", detail: "Average cost reduction achieved for operational excellence clients" },
-                { stat: "$12B+", detail: "Cumulative client value unlocked over five years" },
-                { stat: "92%", detail: "Client satisfaction score across consulting engagements" },
-              ].map(({ stat, detail }) => (
-                <div key={detail} className="flex items-center gap-4 p-4 bg-slate-50 rounded-xl border border-slate-100">
-                  <span className="text-2xl font-black text-blue-700 w-20 shrink-0">{stat}</span>
-                  <span className="text-sm text-slate-600">{detail}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">Transforming for Sustained Competitive Advantage</h2>
+          <p className="text-slate-600 leading-relaxed mb-4">
+            Business transformation has never been more urgent — or more complex. Technological disruption, margin pressure, evolving workforce dynamics, and the imperative of ESG are forcing organisations to rethink every dimension of how they operate and compete.
+          </p>
+          <p className="text-slate-600 leading-relaxed">
+            {COMPANY_NAME}'s consulting practice is built differently from traditional strategy firms. We combine strategic insight with implementation capability — and we hold ourselves accountable to delivering the financial and operational outcomes we identify, not just the recommendations.
+          </p>
         </div>
       </section>
 

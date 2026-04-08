@@ -35,8 +35,6 @@ export function Footer() {
             <h3 className="text-white font-semibold mb-4">Firm</h3>
             <ul className="space-y-3 text-sm">
               <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
-              <li><Link href="/about/history" className="hover:text-white transition-colors">Our History</Link></li>
-              <li><Link href="/about/leadership" className="hover:text-white transition-colors">Leadership</Link></li>
               <li><Link href="/about/careers" className="hover:text-white transition-colors">Careers</Link></li>
               <li><Link href="/about/diversity" className="hover:text-white transition-colors">Diversity & Inclusion</Link></li>
             </ul>

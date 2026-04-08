@@ -21,8 +21,6 @@ import { COMPANY_NAME, DBA_NAME } from "@/lib/constants";
 
 const aboutItems = [
   { title: "Overview", href: "/about", description: `Learn about ${COMPANY_NAME}'s core values and mission.` },
-  { title: "Our History", href: "/about/history", description: "Our legacy of trust and excellence since 1985." },
-  { title: "Leadership", href: "/about/leadership", description: "Meet our executive team and partners." },
   { title: "Careers", href: "/about/careers", description: "Join our team of dedicated professionals." },
   { title: "Diversity & Inclusion", href: "/about/diversity", description: "Our commitment to a diverse workplace." },
 ];
@@ -44,12 +42,12 @@ const industryItems = [
   { title: "Technology", href: "/industries/technology" },
   { title: "Manufacturing", href: "/industries/manufacturing" },
   { title: "Real Estate", href: "/industries/real-estate" },
+  { title: "Other Industries", href: "/industries/others" },
 ];
 
 const insightItems = [
   { title: "All Insights", href: "/insights" },
   { title: "Articles", href: "/insights/articles" },
-  { title: "Reports", href: "/insights/reports" },
 ];
 
 export function Header() {
@@ -137,9 +135,6 @@ export function Header() {
         
         <div className="flex items-center gap-4">
           <div className="hidden md:flex gap-4 items-center">
-            <Link href="/contact/locations" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
-              Locations
-            </Link>
             <Link href="/contact" className={cn(buttonVariants(), "bg-blue-600 hover:bg-blue-700 text-white")}>
               Contact Us
             </Link>

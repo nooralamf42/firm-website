@@ -41,16 +41,13 @@ const coreValues = [
 ];
 
 const globalStats = [
-  { value: "120", label: "Offices Worldwide" },
-  { value: "65", label: "Countries Served" },
-  { value: "10,000+", label: "Professionals" },
-  { value: "8,500", label: "Active Clients" },
+  { value: "3+", label: "Founding Partners" },
+  { value: "50+", label: "Years Combined Experience" },
+  { value: "100%", label: "Client Commitment" },
+  { value: "24/7", label: "Strategic Support" },
 ];
 
 const timelineHighlights = [
-  { year: "2010", event: "Founded to provide specialized tax and accounting services" },
-  { year: "2018", event: `Became an official ${DBA_NAME} partner` },
-  { year: "2023", event: "Expanded digital advisory services across the region" },
   { year: "2026", event: `Launched ${COMPANY_NAME}` },
 ];
 
@@ -120,41 +117,17 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Global Reach Stats */}
-      <section className="bg-slate-950 py-16">
-        <div className="container mx-auto px-4 lg:px-8">
-          <h2 className="text-center text-3xl md:text-4xl font-bold text-white mb-12">
-            Our Global Reach
-          </h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {globalStats.map(({ value, label }) => (
-              <div key={label} className="text-center">
-                <p className="text-4xl md:text-5xl font-extrabold text-blue-400 mb-2">{value}</p>
-                <p className="text-slate-300 text-base font-medium">{label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Our Story Timeline Teaser */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
           <div className="flex flex-col lg:flex-row lg:items-start lg:gap-16">
             <div className="lg:w-1/2 mb-10 lg:mb-0">
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
-                Our Story
+                Our Founding Story
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Four decades of growth, transformation, and unwavering commitment to our clients.
-                From a single office in Manhattan to a truly global network, our journey reflects
-                the evolution of the professional services industry itself — and our determination
-                to lead it.
+                Built on decades of combined leadership experience at top-tier institutions, our founders recognized the need for a more agile, deeply engaged advisory approach. We launched {COMPANY_NAME} to bring premier expertise directly to our clients without the legacy constraints.
               </p>
-              <Link href="/about/history" className={cn(buttonVariants({ size: "lg" }))}>
-                Explore Our Full History
-                <ArrowRight className="ml-2 size-4" />
-              </Link>
             </div>
             <div className="lg:w-1/2 space-y-5">
               {timelineHighlights.map(({ year, event }) => (
@@ -168,7 +141,7 @@ export default function AboutPage() {
                 </div>
               ))}
               <p className="text-muted-foreground text-sm pt-1 pl-16 italic">
-                And much more — explore the complete timeline.
+                And much more is coming
               </p>
             </div>
           </div>

@@ -153,23 +153,7 @@ export default async function ArticlePage({
                   View all articles <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
-
-              {/* Newsletter CTA */}
-              <div className="rounded-xl bg-slate-950 text-white p-6">
-                <h3 className="font-bold text-base mb-2">Stay Informed</h3>
-                <p className="text-slate-300 text-sm mb-5 leading-relaxed">
-                  Subscribe to our Insights newsletter for fortnightly analysis from our global practice groups.
-                </p>
-                <Link
-                  href="/insights#newsletter"
-                  className={cn(
-                    buttonVariants(),
-                    "bg-blue-600 hover:bg-blue-700 text-white w-full justify-center font-semibold"
-                  )}
-                >
-                  Subscribe Free
-                </Link>
-              </div>
+=
 
               {/* Contact CTA */}
               <div className="rounded-xl border border-slate-200 p-6">

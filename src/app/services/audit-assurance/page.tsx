@@ -102,12 +102,6 @@ const techCapabilities = [
   },
 ];
 
-const stats = [
-  { value: "98%", label: "Client Retention Rate" },
-  { value: "2,400+", label: "Audits Completed Annually" },
-  { value: "340+", label: "PCAOB-Registered Engagements" },
-  { value: "60+", label: "Industry Sectors Covered" },
-];
 
 export default function AuditAssurancePage() {
   return (
@@ -119,26 +113,14 @@ export default function AuditAssurancePage() {
 
       {/* Intro */}
       <section className="bg-white py-16">
-        <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">An Independent Audit Is a Strategic Asset</h2>
-              <p className="text-slate-600 leading-relaxed mb-4">
-                An independent, high-quality audit is the foundation of trust between an organisation and its stakeholders — investors, lenders, regulators, and the public. At {COMPANY_NAME}, we treat every engagement as a responsibility, not a transaction.
-              </p>
-              <p className="text-slate-600 leading-relaxed">
-                Our audit practice operates under a single global methodology, regardless of geography. Each engagement is led by an experienced partner with sector expertise and supported by specialists in tax, IT controls, valuations, and actuarial science where the engagement demands it.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {stats.map(({ value, label }) => (
-                <div key={label} className="bg-blue-50 rounded-xl p-6 text-center border border-blue-100">
-                  <span className="text-3xl font-extrabold text-blue-800 block mb-1">{value}</span>
-                  <span className="text-sm font-medium text-slate-600">{label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">An Independent Audit Is a Strategic Asset</h2>
+          <p className="text-slate-600 leading-relaxed mb-4">
+            An independent, high-quality audit is the foundation of trust between an organisation and its stakeholders — investors, lenders, regulators, and the public. At {COMPANY_NAME}, we treat every engagement as a responsibility, not a transaction.
+          </p>
+          <p className="text-slate-600 leading-relaxed">
+            Our audit practice operates under a single global methodology, regardless of geography. Each engagement is led by an experienced partner with sector expertise and supported by specialists in tax, IT controls, valuations, and actuarial science where the engagement demands it.
+          </p>
         </div>
       </section>
 

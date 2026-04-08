@@ -42,24 +42,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trust Stats Strip */}
-      <section className="bg-white border-b border-slate-100">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-slate-200">
-            {[
-              { value: "40+", label: "Years of Trust" },
-              { value: "120", label: "Global Offices" },
-              { value: "$50B+", label: "Assets Advised" },
-              { value: "10k+", label: "Professionals" },
-            ].map(({ value, label }) => (
-              <div key={label} className="text-center py-10 px-6">
-                <p className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">{value}</p>
-                <p className="mt-1 text-xs font-semibold text-slate-500 uppercase tracking-widest">{label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Services Overview Section */}
       <section className="bg-slate-50 py-24">

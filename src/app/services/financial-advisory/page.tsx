@@ -120,12 +120,6 @@ const transactionProcess = [
   },
 ];
 
-const keyStats = [
-  { value: "$200B+", label: "Transaction Value Advised (5-Year Cumulative)" },
-  { value: "500+", label: "M&A Deals Completed" },
-  { value: "150+", label: "Forensic Investigations Conducted Annually" },
-  { value: "35", label: "Countries with Dedicated Transaction Teams" },
-];
 
 export default function FinancialAdvisoryPage() {
   return (
@@ -137,26 +131,14 @@ export default function FinancialAdvisoryPage() {
 
       {/* Intro */}
       <section className="bg-white py-16">
-        <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">Trusted Counsel When the Stakes Are Highest</h2>
-              <p className="text-slate-600 leading-relaxed mb-4">
-                The decisions that define an organisation's trajectory — a transformative acquisition, a strategic divestiture, a restructuring in distress — demand advisors who combine deep financial expertise with genuine independence and the courage to provide candid counsel.
-              </p>
-              <p className="text-slate-600 leading-relaxed">
-                {COMPANY_NAME}'s Financial Advisory practice brings together transaction specialists, valuation experts, forensic accountants, and restructuring advisors who have operated across every deal type, industry, and market cycle. We measure success by the outcomes we achieve for clients — not by transaction fees.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 gap-4">
-              {keyStats.map(({ value, label }) => (
-                <div key={label} className="flex items-center gap-6 bg-blue-900 text-white rounded-xl px-6 py-5">
-                  <span className="text-3xl font-extrabold text-blue-300 shrink-0 w-28">{value}</span>
-                  <span className="text-sm font-medium text-blue-100">{label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">Trusted Counsel When the Stakes Are Highest</h2>
+          <p className="text-slate-600 leading-relaxed mb-4">
+            The decisions that define an organisation's trajectory — a transformative acquisition, a strategic divestiture, a restructuring in distress — demand advisors who combine deep financial expertise with genuine independence and the courage to provide candid counsel.
+          </p>
+          <p className="text-slate-600 leading-relaxed">
+            {COMPANY_NAME}'s Financial Advisory practice brings together transaction specialists, valuation experts, forensic accountants, and restructuring advisors who have operated across every deal type, industry, and market cycle. We measure success by the outcomes we achieve for clients — not by transaction fees.
+          </p>
         </div>
       </section>
 

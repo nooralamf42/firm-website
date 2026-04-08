@@ -25,9 +25,9 @@ const whyOurFirm = [
   },
   {
     icon: Globe,
-    title: "Global Mobility",
+    title: "Remote & Agile Work",
     description:
-      "With 120 offices across 65 countries, the world is your professional canvas. Our Global Mobility program enables you to spend six to twenty-four months in an international office, building cross-cultural competence and a global professional network that will define your career.",
+      "As a forward-thinking firm, we embrace remote flexibility while maintaining a highly collaborative environment. You will have the freedom to manage your work dynamically, building cross-functional competence and an expanding professional network.",
   },
   {
     icon: Heart,
@@ -43,9 +43,9 @@ const whyOurFirm = [
   },
   {
     icon: Users,
-    title: "Diverse Culture",
+    title: "Inclusive Culture",
     description:
-      "We represent 90+ nationalities across our global workforce and maintain 15 active employee resource groups. Our DEI strategy is embedded in our hiring, promotion, and compensation processes — not treated as a side initiative. Inclusion is a core business priority, not a compliance checkbox.",
+      "We believe that a diverse team accelerates innovation. Our DEI strategy is embedded from day one in our hiring, promotion, and compensation processes. Inclusion is a deeply held core business priority built directly into the foundation of our firm.",
   },
   {
     icon: Zap,
@@ -79,30 +79,6 @@ const careerPaths = [
     description:
       "Our Financial Advisory practice covers M&A advisory, transaction support, restructuring, valuation, and capital markets. Our professionals work alongside CFOs and boards on the most consequential decisions an organization can make, from major acquisitions to complex debt restructurings.",
     progression: ["Analyst", "Associate", "Senior Associate", "Manager / VP", "Director / Partner"],
-  },
-];
-
-const spotlights = [
-  {
-    quote:
-      `I joined ${COMPANY_NAME} straight out of university and within three years I was leading client calls with FTSE 100 CFOs. The level of responsibility you're given early on is extraordinary — but so is the support structure around you. My mentor made the difference between me thriving and being overwhelmed.`,
-    name: "Aisha T.",
-    role: "Senior Auditor, London",
-    tenure: "4 years with us",
-  },
-  {
-    quote:
-      "The global mobility program changed my career trajectory entirely. I moved from our Chicago office to Singapore for 18 months and it opened doors I didn't even know existed. I built relationships across Asia-Pacific that continue to drive business today, and I came back with a perspective that no textbook could have given me.",
-    name: "Daniel K.",
-    role: "Tax Manager, Chicago",
-    tenure: "7 years with us",
-  },
-  {
-    quote:
-      "What I value most is that leadership here actually invests in developing you. My partner sponsor nominated me for the Leadership Academy when I was still a manager, and the two years I spent in that program fundamentally changed how I think about client relationships and team building. It's the reason I'm still here.",
-    name: "Meera S.",
-    role: "Director, Risk Advisory, Mumbai",
-    tenure: "9 years with us",
   },
 ];
 
@@ -222,35 +198,6 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* Life at Our Firm — Employee Spotlights */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
-              Life at {COMPANY_NAME}
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              The best measure of a workplace is not what we say about it — it is what our people say.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {spotlights.map(({ quote, name, role, tenure }) => (
-              <Card key={name} className="h-full bg-muted/30">
-                <CardContent className="pt-6">
-                  <p className="text-foreground italic leading-relaxed mb-6 text-sm">
-                    &ldquo;{quote}&rdquo;
-                  </p>
-                  <div className="border-t border-border pt-4">
-                    <p className="font-semibold text-foreground text-sm">{name}</p>
-                    <p className="text-muted-foreground text-xs">{role}</p>
-                    <p className="text-muted-foreground text-xs">{tenure}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Current Openings */}
       <section className="py-16 md:py-24 bg-muted/30">
