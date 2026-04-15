@@ -26,7 +26,7 @@ export const PLANS: Record<string, PlanData> = {
     description: "Ideal for growing businesses needing quarterly advisory",
     features: [
       "Everything in Foundation",
-      "Accounts Payable & Receivable",
+      "Multi-Currency Bookkeeping",
       "Quarterly Tax Planning",
       "Priority Email & Phone Support",
       "Cash Flow Analysis"
