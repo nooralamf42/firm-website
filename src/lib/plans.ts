@@ -6,7 +6,7 @@ export type PlanData = {
     popular?: boolean;
 }
 
-export const PLANS = {
+export const PLANS: Record<string, PlanData> = {
   foundation: {
     name: "Foundation",
     price: 2499,

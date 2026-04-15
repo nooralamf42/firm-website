@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
@@ -11,7 +11,7 @@ import CompanyInfo from './components/companyInfo';
 import ContactInfo from './components/contactInfo';
 import BusinessAddress from './components/businessAddress';
 
-export default function QualityBusinessCheckout() {
+function CheckoutContent() {
     const searchParams = useSearchParams();
     const planParam = searchParams.get('plan');
     const { planObj } = usePlanDetails({ enableToast: false, noLinkRedirection: true, noLoginRedir: true });
@@ -272,5 +272,13 @@ export default function QualityBusinessCheckout() {
                 </div>
             )}
         </div>
+    );
+}
+
+export default function QualityBusinessCheckout() {
+    return (
+        <Suspense fallback={<div className="flex justify-center items-center h-screen"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900" /></div>}>
+            <CheckoutContent />
+        </Suspense>
     );
 }
