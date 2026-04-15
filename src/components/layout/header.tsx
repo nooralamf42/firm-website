@@ -128,6 +128,13 @@ export function Header() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
+                {/* Pricing Link */}
+                <NavigationMenuItem>
+                  <Link href="/pricing" className={navigationMenuTriggerStyle()}>
+                    Pricing
+                  </Link>
+                </NavigationMenuItem>
+
               </NavigationMenuList>
             </NavigationMenu>
           </div>
@@ -178,6 +185,11 @@ export function Header() {
                       {item.title}
                     </Link>
                   ))}
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Link href="/pricing" className="font-semibold text-lg hover:text-slate-900 transition-colors">
+                    Pricing
+                  </Link>
                 </div>
                 <div className="flex flex-col gap-4 mt-2 pt-6 border-t">
                   <Link href="/contact" className={cn(buttonVariants(), "w-full bg-blue-900 text-white hover:bg-blue-800 py-3")}>
