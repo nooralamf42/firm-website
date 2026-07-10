@@ -11,5 +11,5 @@ export const HEADQUARTERS_ADDRESS = {
 };
 
 export const CONTACT_PHONE = "+61 447180277";
-export const CONTACT_EMAIL = "contact@innovativenationaltax.com"; // Placeholder if not provided
-export const DPO_EMAIL = "dpo@innovativenationaltax.com"; // Placeholder for legal
+export const CONTACT_EMAIL = "contact@nationaltallytech.com"; // Placeholder if not provided
+export const DPO_EMAIL = "contact@nationaltallytech.com"; // Placeholder for legal
