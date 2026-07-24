@@ -64,7 +64,7 @@ export function Header() {
         <div className="flex items-center gap-6 md:gap-10">
           <Link href="/" className="flex items-center group transition-opacity hover:opacity-90">
             <Image
-              src={pathname === "/legal/privacy" ? "/logo-dba.webp" : "/image-removebg-preview (3).png"}
+              src="/logo-dba.webp"
               alt={COMPANY_NAME}
               width={200}
               height={60}

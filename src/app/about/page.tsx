@@ -55,7 +55,13 @@ export default function AboutPage() {
   return (
     <main>
       <PageHeader
-        title={`About ${COMPANY_NAME}`}
+        title={
+          <>
+            About {COMPANY_NAME}
+            <br />
+            <span className="text-2xl md:text-3xl text-slate-300">(DBA {DBA_NAME})</span>
+          </>
+        }
         description="Trusted advisors delivering premier tax and bookkeeping solutions."
       />
 

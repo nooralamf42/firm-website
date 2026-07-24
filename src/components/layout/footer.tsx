@@ -16,7 +16,7 @@ export function Footer() {
           
           {/* Brand */}
           <div className="space-y-6">
-            <Link href="/" className="inline-block group transition-all duration-300">
+            <Link href="/" className="flex flex-col items-center group transition-all duration-300 w-fit">
               <Image
                 src={pathname === "/legal/privacy" ? "/dark-logo-dba.webp" : "/dark-logo.webp"}
                 alt={COMPANY_NAME}
@@ -24,6 +24,7 @@ export function Footer() {
                 height={80}
                 className="h-60 w-auto object-contain"
               />
+              <span className="text-sm font-bold text-slate-400 -mt-12 text-center">(DBA {DBA_NAME})</span>
             </Link>
             <p className="text-sm leading-relaxed text-slate-400">
               Delivering premier accounting, tax, and advisory solutions to empower businesses worldwide.
@@ -74,7 +75,7 @@ export function Footer() {
         </div>
 
         <div className="mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-          <p>&copy; {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {COMPANY_NAME} (DBA {DBA_NAME}). All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="/legal/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/legal/terms" className="hover:text-white transition-colors">Terms of Service</Link>
