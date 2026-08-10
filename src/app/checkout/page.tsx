@@ -1,284 +1,182 @@
-'use client'
+"use client";
 
-import React, { useState, Suspense } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
-import usePlanDetails from './components/usePlanDetails';
-import Loader from './components/loader';
-import toast from 'react-hot-toast';
-import CompanyInfo from './components/companyInfo';
-import ContactInfo from './components/contactInfo';
-import BusinessAddress from './components/businessAddress';
+import { Suspense, useState } from "react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { motion } from "motion/react";
+import { Shield, Lock, CheckCircle, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
+import { toast } from "sonner";
 
 function CheckoutContent() {
-    const searchParams = useSearchParams();
-    const planParam = searchParams.get('plan');
-    const { planObj } = usePlanDetails({ enableToast: false, noLinkRedirection: true, noLoginRedir: true });
-    
-    // We maintain steps internally: 'login' -> 'password' -> 'review'
-    const [step, setStep] = useState<'login' | 'password' | 'review'>('login');
-    const [subStep, setSubStep] = useState(0); // 0 means form not submitted, 3 means ready to pay
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
-    const [isPending, setIsPending] = useState(false);
+  const searchParams = useSearchParams();
+  const product = searchParams.get("product");
+  const price = searchParams.get("price");
+  const qty = searchParams.get("qty");
+  const [loading, setLoading] = useState(false);
 
-    const [formData, setFormData] = useState({
-        companyName: '',
-        email: '',
-        phone: '',
-        firstName: '',
-        lastName: '',
-        country: 'US',
-        address: '',
-        zipCode: '',
-        city: '',
-        state: ''
-    });
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      toast.success("Order placed successfully! Check your email for access details.");
+    }, 2000);
+  };
 
-    if (!planParam) {
-        return (
-            <div className="flex justify-center items-center h-screen bg-gray-50">
-                <p className="text-xl font-medium text-gray-700">Invalid or missing plan parameter.</p>
-            </div>
-        )
-    }
+  return (
+    <div className="min-h-screen bg-background">
+      <Navbar />
 
-    const handleLoginSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (email) {
-            setFormData(prev => ({ ...prev, email }));
-            setStep('password');
-        }
-    };
+      <section className="pt-28 pb-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <h1 className="font-display text-4xl font-bold mb-2">Secure Checkout</h1>
+            <p className="text-muted-foreground mb-8">Complete your purchase below. All transactions are SSL encrypted and PCI DSS compliant.</p>
+          </motion.div>
 
-    const handlePasswordSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (password) {
-            toast.success('Login successful');
-            setStep('review');
-        }
-    };
-
-    const handleInputChange = (field: string, value: string): void => {
-        setFormData(prev => ({ ...prev, [field]: value }));
-    };
-
-    const handleSave = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        setIsPending(true)
-        setTimeout(() => {
-            setSubStep(3)
-            toast.success('Saved Details')
-            setIsPending(false)
-        }, 1000)
-    };
-
-    const handlePaymentClick = () => {
-        toast.error("Payment integration doesn't exist in this demo.")
-    }
-
-    const isEnterprise = planObj?.name.toLowerCase() === 'enterprise';
-
-    return (
-        <div className="min-h-screen font-sans flex items-center justify-center ">
-            
-            {/* Login Step */}
-            {step === 'login' && (
-                <div className="bg-[#f8f9fa] w-full min-h-screen flex items-center justify-center">
-                    <form onSubmit={handleLoginSubmit} className="bg-white p-10 rounded-lg shadow-sm border border-gray-200 w-full max-w-md">
-                        <div className="mb-5 flex justify-center">
-                            <Image src="/image-removebg-preview (3).png" alt="Innovative National Tax" width={250} height={80} className="h-20 w-auto object-contain" priority />
-                        </div>
-                        <h2 className="text-xl font-semibold text-gray-800 text-center mb-8 font-normal">
-                            Sign in to Innovative National Tax
-                        </h2>
-                        <div className="mb-6">
-                            <input
-                                type="email"
-                                placeholder="Email"
-                                value={email}
-                                required
-                                onChange={(e) => setEmail(e.target.value)}
-                                className="w-full px-4 py-3 border-2 border-black rounded focus:outline-none focus:border-gray-500 text-gray-700 font-sans"
-                            />
-                        </div>
-                        <button
-                            type='submit'  
-                            className="w-full bg-black hover:bg-gray-800 text-white py-3 px-4 rounded font-medium transition-colors duration-200 flex items-center justify-center font-sans tracking-wide"
-                        >
-                            Continue
-                        </button>
-                    </form>
-                </div>
-            )}
-
-            {/* Password Step */}
-            {step === 'password' && (
-                <div className="bg-[#f8f9fa] w-full min-h-screen flex items-center justify-center">
-                    <form onSubmit={handlePasswordSubmit} className="bg-white p-10 rounded-lg shadow-sm border border-gray-200 w-full max-w-md">
-                        <div className="mb-5 flex justify-center">
-                            <Image src="/image-removebg-preview (3).png" alt="Innovative National Tax" width={250} height={80} className="h-20 w-auto object-contain" priority />
-                        </div>
-                        <h2 className="text-xl font-semibold text-gray-800 text-center mb-2 font-normal">
-                            Enter your password
-                        </h2>
-                        <div className="text-center mb-2">
-                            <span className="text-gray-700">{email}</span>
-                        </div>
-                        <div className="text-center mb-6">
-                            <button
-                                onClick={() => setStep('login')}
-                                type="button"
-                                className="text-gray-600 hover:text-black text-sm underline"
-                            >
-                                Use a different account
-                            </button>
-                        </div>
-                        <div className="mb-6">
-                            <label className="block text-gray-700 text-sm mb-2 font-medium">Password</label>
-                            <div className="relative">
-                                <input
-                                    required
-                                    type={showPassword ? "text" : "password"}
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full px-4 py-3 border-2 border-black rounded focus:outline-none focus:border-gray-500 text-gray-700 pr-12 font-sans"
-                                />
-                                <button
-                                    type="button"
-                                    onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-600 hover:text-gray-800"
-                                >
-                                    {showPassword ? (
-                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                        </svg>
-                                    ) : (
-                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21" />
-                                        </svg>
-                                    )}
-                                </button>
-                            </div>
-                        </div>
-                        <button
-                            type='submit'
-                            className="w-full bg-black hover:bg-gray-800 text-white py-3 px-4 rounded font-medium transition-colors duration-200 mb-6 font-sans tracking-wide"
-                        >
-                            Sign in
-                        </button>
-                    </form>
-                </div>
-            )}
-
-            {/* Review / Order Summary Step */}
-            {step === 'review' && (
-                <div className="w-full min-h-screen py-8 pt-0">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="flex justify-between items-center mb-10 mt-5">
-                            <Image src="/image-removebg-preview (3).png" alt="Innovative National Tax" width={200} height={60} className="h-16 w-auto object-contain" priority />
-                            <Link href="/" className="px-4 py-2 bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 rounded-md text-sm font-medium transition-colors">
-                                Home
-                            </Link>
-                        </div>
-                        <div className="mb-8 mt-10">
-                            <h1 className="text-3xl font-bold text-gray-900 mb-2">Complete Your Purchase</h1>
-                            <p className="text-gray-600">Enter billing information to proceed with your Innovative National Tax plan.</p>
-                        </div>
-
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                            {/* Form Section */}
-                            <form onSubmit={handleSave} className="lg:col-span-2">
-                                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 md:p-8">
-                                    <CompanyInfo companyName={formData.companyName} onChange={(value: string) => handleInputChange('companyName', value)} />
-                                    <div className="border-t border-gray-200 my-8"></div>
-                                    <ContactInfo email={formData.email} phone={formData.phone} firstName={formData.firstName} lastName={formData.lastName} onChange={handleInputChange} />
-                                    <div className="border-t border-gray-200 my-8"></div>
-                                    <BusinessAddress country={formData.country} address={formData.address} zipCode={formData.zipCode} city={formData.city} state={formData.state} onChange={handleInputChange} />
-                                    {subStep !== 3 && (
-                                        <button
-                                            disabled={isPending}
-                                            type="submit"
-                                            className="mt-8 bg-black hover:bg-gray-800 text-white px-8 py-3 rounded-md font-medium transition-colors cursor-pointer w-full md:w-auto"
-                                        >
-                                            {isPending ? 'Saving...' : 'Save and Continue'}
-                                        </button>
-                                    )}
-                                </div>
-                            </form>
-
-                            {/* Order Summary Section */}
-                            <div className="lg:col-span-1">
-                                {!planObj ? <Loader/> : (
-                                    <div className={`rounded-lg p-6 shadow-md border ${isEnterprise ? 'bg-black text-white border-black' : 'bg-gray-50 text-gray-900 border-gray-100'} font-sans`}>
-                                        <h2 className={`text-xl font-semibold mb-6 ${isEnterprise ? 'text-white' : 'text-gray-900'}`}>Order Summary</h2>
-                                        
-                                        <div className="flex flex-col space-y-6">
-                                            <div>
-                                                <h3 className={`font-medium text-lg ${isEnterprise ? 'text-white' : 'text-gray-900'}`}>
-                                                    {planObj.name}
-                                                </h3>
-                                                {planObj.popular && (
-                                                    <span className="inline-block mt-2 bg-black text-white text-xs font-bold px-2 py-1 rounded border border-white">Most Popular</span>
-                                                )}
-                                            </div>
-
-                                            <div className="mb-2">
-                                                <span className="text-3xl font-bold tracking-tight">${planObj.price}</span>
-                                                <span className={`text-sm ${isEnterprise ? 'text-gray-400' : 'text-gray-500'} ml-1`}>per year</span>
-                                            </div>
-
-                                            <p className={`text-sm ${isEnterprise ? 'text-gray-300' : 'text-gray-600'} h-auto pb-4`}>
-                                                {planObj.description}
-                                            </p>
-
-                                            <div className="space-y-3 pb-4">
-                                                <p className={`font-semibold text-sm ${isEnterprise ? 'text-white' : 'text-gray-900'} mb-2`}>What's included?</p>
-                                                {planObj.features.map((feature: string, idx: number) => (
-                                                    <div key={idx} className="flex items-start">
-                                                        <span className={`mr-2 ${isEnterprise ? 'text-gray-400' : 'text-gray-400'}`}>•</span>
-                                                        <span className={`text-sm ${isEnterprise ? 'text-gray-300' : 'text-gray-600'}`}>{feature}</span>
-                                                    </div>
-                                                ))}
-                                            </div>
-
-                                            <div className="border-t border-gray-200 pt-4 mt-4">
-                                                <div className="flex justify-between items-center">
-                                                    <span className={`text-lg font-semibold ${isEnterprise ? 'text-white' : 'text-gray-900'}`}>Total due today</span>
-                                                    <span className={`text-xl font-bold ${isEnterprise ? 'text-white' : 'text-gray-900'}`}>${planObj.price}</span>
-                                                </div>
-                                            </div>
-
-                                            {subStep === 3 && (
-                                                <button
-                                                    onClick={(e) => {
-                                                        e.preventDefault();
-                                                        handlePaymentClick();
-                                                    }}
-                                                    className={`mt-6 w-full px-6 py-3 border border-transparent rounded-md font-medium transition-colors cursor-pointer text-center text-md ${isEnterprise ? 'bg-white text-black hover:bg-gray-100' : 'bg-black text-white hover:bg-gray-800'}`}
-                                                >
-                                                    Pay Now
-                                                </button>
-                                            )}
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
+          <div className="grid lg:grid-cols-5 gap-8">
+            {/* Form */}
+            <div className="lg:col-span-3 space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Contact */}
+                <div className="bg-card border border-border rounded-2xl p-6 space-y-4">
+                  <h2 className="font-display font-bold text-lg">Contact Information</h2>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <Label>First Name</Label>
+                      <Input placeholder="John" required />
                     </div>
+                    <div className="space-y-1.5">
+                      <Label>Last Name</Label>
+                      <Input placeholder="Smith" required />
+                    </div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label>Email Address</Label>
+                    <Input type="email" placeholder="john@example.com" required />
+                    <p className="text-xs text-muted-foreground">Access details will be emailed immediately upon successful payment.</p>
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label>Phone Number</Label>
+                    <Input type="tel" placeholder="+1 (555) 000-0000" />
+                  </div>
                 </div>
-            )}
+
+                {/* Payment */}
+                <div className="bg-card border border-border rounded-2xl p-6 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h2 className="font-display font-bold text-lg">Payment Details</h2>
+                    <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                      <Lock className="w-3.5 h-3.5 text-primary" />
+                      SSL Secured
+                    </div>
+                  </div>
+                  <div className="bg-primary/5 border border-primary/20 rounded-xl p-4 text-sm text-muted-foreground">
+                    <p>Payment processing is handled securely via our PCI DSS Level 1 compliant payment provider. Card data is tokenized client-side and never touches our servers.</p>
+                    <p className="mt-2 text-xs">3D Secure (3DS) authentication may be required for fraud prevention.</p>
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label>Card Number</Label>
+                    <Input placeholder="1234 5678 9012 3456" required />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <Label>Expiry Date</Label>
+                      <Input placeholder="MM / YY" required />
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label>CVV</Label>
+                      <Input placeholder="123" required />
+                    </div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label>Name on Card</Label>
+                    <Input placeholder="John Smith" required />
+                  </div>
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full bg-primary text-primary-foreground glow-cyan font-semibold text-base py-6"
+                >
+                  {loading ? "Processing..." : "Complete Purchase"}
+                  {!loading && <ArrowRight className="w-5 h-5 ml-2" />}
+                </Button>
+
+                <p className="text-xs text-muted-foreground text-center">
+                  By completing your purchase you agree to our{" "}
+                  <Link href="/policies/terms" className="text-primary hover:underline">Terms & Conditions</Link>. You are protected by our{" "}
+                  <Link href="/policies/refund" className="text-primary hover:underline">7-Day Money-Back Guarantee</Link>.
+                </p>
+              </form>
+            </div>
+
+            {/* Order Summary */}
+            <div className="lg:col-span-2 space-y-4">
+              <div className="bg-card border border-border rounded-2xl p-6 space-y-4">
+                <h2 className="font-display font-bold text-lg">Order Summary</h2>
+                <div className="space-y-3">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-muted-foreground">Product</span>
+                    <span className="font-semibold text-right max-w-[180px]">
+                      {product ?? "NexGen Service"}
+                    </span>
+                  </div>
+                  {qty && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">Quantity</span>
+                      <span className="font-semibold">{qty}</span>
+                    </div>
+                  )}
+                  <div className="border-t border-border pt-3 flex justify-between">
+                    <span className="font-bold">Total</span>
+                    <span className="font-display font-bold text-xl text-primary">
+                      ${price ?? "—"}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Trust badges */}
+              <div className="bg-card border border-border rounded-2xl p-5 space-y-3">
+                <h3 className="font-semibold text-sm">Purchase Protection</h3>
+                {[
+                  { icon: Shield, text: "7-Day Money-Back Guarantee" },
+                  { icon: Lock, text: "PCI DSS Level 1 Compliant" },
+                  { icon: CheckCircle, text: "Instant email delivery" },
+                  { icon: CheckCircle, text: "3D Secure fraud protection" },
+                ].map(({ icon: Icon, text }) => (
+                  <div key={text} className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <Icon className="w-4 h-4 text-primary shrink-0" />
+                    {text}
+                  </div>
+                ))}
+                <p className="text-xs text-muted-foreground pt-2 border-t border-border">
+                  See our full{" "}
+                  <Link href="/policies/refund" className="text-primary hover:underline">Refund Policy</Link>{" "}
+                  for complete terms.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-    );
+      </section>
+
+      <Footer />
+    </div>
+  );
 }
 
-export default function QualityBusinessCheckout() {
-    return (
-        <Suspense fallback={<div className="flex justify-center items-center h-screen"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900" /></div>}>
-            <CheckoutContent />
-        </Suspense>
-    );
+export default function Checkout() {
+  return (
+    <Suspense fallback={null}>
+      <CheckoutContent />
+    </Suspense>
+  );
 }

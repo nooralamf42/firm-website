@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, Geist_Mono } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
-
-import { COMPANY_NAME, DBA_NAME } from "@/lib/constants";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -13,22 +10,16 @@ const inter = Inter({
   display: "swap",
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700", "800", "900"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: `${COMPANY_NAME} | ${DBA_NAME}`,
-  description: `Global leaders in tax, bookkeeping, consulting, and financial advisory services. Official ${DBA_NAME} partner delivering premier accounting solutions.`,
+  title: "National Tally Tech",
+  description:
+    "Professional technology, bookkeeping, and software solutions for businesses across Australia. Authorised QuickBooks Reseller.",
 };
 
 export default function RootLayout({
@@ -39,9 +30,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} ${geistMono.variable} h-full antialiased`}
+      className={`dark ${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">
+      <body className="min-h-full font-sans">
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-16588370450"
@@ -56,13 +47,9 @@ export default function RootLayout({
             gtag('config', 'AW-16588370450');
           `}
         </Script>
-        <Header />
-        <main className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        <Toaster />
+        {children}
       </body>
     </html>
   );
 }
-

@@ -1,174 +1,85 @@
+"use client";
+
 import Link from "next/link";
-import {
-  Shield,
-  Star,
-  Lightbulb,
-  Users,
-  ArrowRight,
-  Briefcase,
-} from "lucide-react";
-import { PageHeader } from "@/components/ui/page-header";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { buttonVariants } from "@/components/ui/button-variants";
-import { cn } from "@/lib/utils";
-import { COMPANY_NAME, DBA_NAME, FULL_BRAND_NAME } from "@/lib/constants";
+import { motion } from "motion/react";
+import { Zap, ChevronRight, Target, Users, Award, Globe, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
-const coreValues = [
-  {
-    icon: Shield,
-    title: "Integrity",
-    description:
-      "We hold ourselves to the highest ethical standards in every engagement. Our clients trust us with their most sensitive financial matters, and we honor that trust through transparency, honesty, and accountability in all that we do.",
-  },
-  {
-    icon: Star,
-    title: "Excellence",
-    description:
-      "Mediocrity is not in our vocabulary. We pursue the highest quality in our analysis, our advice, and our client service. Every engagement is an opportunity to set a new benchmark for what exceptional advisory looks like.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation",
-    description:
-      "The business landscape evolves rapidly, and so do we. From AI-powered audit platforms to real-time risk monitoring tools, we invest in technology and fresh thinking to deliver advantages that our clients cannot find elsewhere.",
-  },
-  {
-    icon: Users,
-    title: "Inclusion",
-    description:
-      "Our greatest asset is our people, in all their diversity. We cultivate a culture where professionals of every background, identity, and perspective are empowered to contribute fully and grow without limits.",
-  },
-];
-
-const globalStats = [
-  { value: "3+", label: "Founding Partners" },
-  { value: "50+", label: "Years Combined Experience" },
-  { value: "100%", label: "Client Commitment" },
-  { value: "24/7", label: "Strategic Support" },
-];
-
-const timelineHighlights = [
-  { year: "2026", event: `Launched ${COMPANY_NAME}` },
-];
-
-export default function AboutPage() {
+export default function About() {
   return (
-    <main>
-      <PageHeader
-        title={
-          <>
-            About {COMPANY_NAME}
-            <br />
-            <span className="text-2xl md:text-3xl text-slate-300">(DBA {DBA_NAME})</span>
-          </>
-        }
-        description="Trusted advisors delivering premier tax and bookkeeping solutions."
-      />
+    <div className="min-h-screen bg-background">
+      <Navbar />
 
-      {/* Who We Are */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-6">
-            Who We Are
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed mb-5">
-            {FULL_BRAND_NAME} is a premier professional services firm delivering tax,
-            bookkeeping, consulting, and financial advisory services. We have grown to serve clients across 
-            diverse sectors, with a team of dedicated professionals committed to excellence.
-          </p>
-          <p className="text-lg text-muted-foreground leading-relaxed mb-5">
-            Our clients range from ambitious growth-stage companies to established multinational
-            corporations and local businesses. What unites them is a demand for advice that is rigorous, 
-            independent, and attuned to the unique pressures they face. That is precisely what we deliver — 
-            driving every engagement we undertake today.
-          </p>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            We are not a firm that offers off-the-shelf answers. Our professionals bring deep sector
-            expertise, global perspective, and a genuine commitment to our clients' long-term success.
-            When you work with us, you work with a team that treats your challenges as
-            their own.
-          </p>
+      <section className="pt-28 pb-20 bg-grid relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 to-background z-10" />
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
+            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-foreground">About Us</span>
+          </div>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
+            <div className="flex items-center gap-2 mb-5">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <Zap className="w-5 h-5 text-primary-foreground" />
+              </div>
+              <span className="text-primary font-semibold">About National Tally Tech</span>
+            </div>
+            <h1 className="font-display text-5xl sm:text-6xl font-bold leading-tight text-balance">
+              We Build Technology That{" "}
+              <span className="text-primary">Moves Business Forward</span>
+            </h1>
+            <p className="mt-6 text-xl text-muted-foreground leading-relaxed">
+              INNOVATIVE NATIONAL TAX & UPKEEP INTERNATIONAL TALLY PTY LTD is a Queensland-registered technology and business services firm headquartered at U905, 6 Tonga Place, Parkwood QLD 4214, Australia. We deliver professional software development, bookkeeping, and technology consulting services to businesses across Australia & United States, combining deep local expertise with a commitment to measurable client outcomes.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Core Values */}
-      <section className="py-16 md:py-24 bg-muted/30">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
-              Our Core Values
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              These four principles are not aspirational statements — they are the criteria against
-              which every decision at {COMPANY_NAME} is measured.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {coreValues.map(({ icon: Icon, title, description }) => (
-              <Card key={title} className="h-full">
-                <CardHeader>
-                  <div className="mb-3 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
-                    <Icon className="size-6 text-primary" />
-                  </div>
-                  <CardTitle className="text-lg font-semibold">{title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-sm leading-relaxed">
-                    {description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+      {/* Values */}
+      <section className="py-16 bg-card border-y border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: Target, title: "Mission", desc: "To democratize access to world-class engineering by making enterprise-quality software development accessible to every business." },
+              { icon: Award, title: "Quality", desc: "Every line of code is reviewed by senior engineers. We don't ship anything we wouldn't be proud to show a Fortune 500 CTO." },
+              { icon: Users, title: "People First", desc: "We invest heavily in our team's growth. Happy engineers build better products. It's that simple." },
+              { icon: Globe, title: "Global Reach", desc: "With offices and delivery centers across 3 continents, we bring global perspectives to every project." },
+            ].map(({ icon: Icon, title, desc }) => (
+              <motion.div
+                key={title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="p-6 bg-background rounded-xl border border-border"
+              >
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                  <Icon className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="font-display font-bold text-lg mb-2">{title}</h3>
+                <p className="text-sm text-muted-foreground">{desc}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Our Story Timeline Teaser */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-          <div className="flex flex-col lg:flex-row lg:items-start lg:gap-16">
-            <div className="lg:w-1/2 mb-10 lg:mb-0">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
-                Our Founding Story
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Built on decades of combined leadership experience at top-tier institutions, our founders recognized the need for a more agile, deeply engaged advisory approach. We launched {COMPANY_NAME} to bring premier expertise directly to our clients without the legacy constraints.
-              </p>
-            </div>
-            <div className="lg:w-1/2 space-y-5">
-              {timelineHighlights.map(({ year, event }) => (
-                <div key={year} className="flex gap-4 items-start">
-                  <span className="text-blue-600 font-bold text-lg w-12 shrink-0 pt-0.5">
-                    {year}
-                  </span>
-                  <div className="flex-1 border-l-2 border-blue-200 pl-4">
-                    <p className="text-foreground font-medium leading-snug">{event}</p>
-                  </div>
-                </div>
-              ))}
-              <p className="text-muted-foreground text-sm pt-1 pl-16 italic">
-                And much more is coming
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Careers CTA */}
-      <section className="py-16 md:py-20 bg-slate-950 text-white">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <Briefcase className="mx-auto mb-4 size-10 text-blue-400" />
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Join Our Team</h2>
-          <p className="text-lg text-slate-300 max-w-xl mx-auto mb-8">
-            We are always looking for exceptional professionals who share our values and want to do
-            the best work of their careers. Explore opportunities with us today.
-          </p>
-          <Link href="/about/careers" className={cn(buttonVariants({ variant: "outline", size: "lg" }))}>
-            View Open Positions
-            <ArrowRight className="ml-2 size-4" />
+      {/* CTA */}
+      <section className="py-16 bg-card border-t border-border">
+        <div className="max-w-2xl mx-auto text-center px-4">
+          <h2 className="font-display text-3xl font-bold mb-4">Ready to Work Together?</h2>
+          <p className="text-muted-foreground mb-8">Book a free consultation and let's discuss how we can help you build your vision.</p>
+          <Link href="/contact">
+            <Button className="bg-primary text-primary-foreground glow-cyan font-semibold px-10">
+              Get in Touch <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
           </Link>
         </div>
       </section>
-    </main>
+
+      <Footer />
+    </div>
   );
 }
