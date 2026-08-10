@@ -30,7 +30,7 @@ export default function PrivacyPolicy() {
             <h1 className="font-display text-5xl font-bold mb-4">Privacy Policy</h1>
             <p className="text-muted-foreground mb-2">Last updated: {updated}</p>
             <p className="text-muted-foreground mb-8">
-              INNOVATIVE NATIONAL TAX &amp; UPKEEP INTERNATIONAL TALLY PTY LTD (ABN 75 696 801 895), trading as National Tally Tech ("we," "us," or "our"), operates nationaltallytech.com. This policy explains how we handle your personal information in accordance with the <strong className="text-foreground">Privacy Act 1988 (Cth)</strong> and the <strong className="text-foreground">13 Australian Privacy Principles (APPs)</strong>.
+              INNOVATIVE NATIONAL TAX &amp; UPKEEP INTERNATIONAL TALLY PTY LTD (ABN 75 696 801 895), trading as National Tally Tech (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), operates nationaltallytech.com. This policy explains how we handle your personal information in accordance with the <strong className="text-foreground">Privacy Act 1988 (Cth)</strong> and the <strong className="text-foreground">13 Australian Privacy Principles (APPs)</strong>.
             </p>
 
             <div className="bg-primary/10 border border-primary/30 rounded-2xl p-6 mb-10">

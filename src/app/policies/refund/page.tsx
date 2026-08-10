@@ -96,7 +96,7 @@ export default function RefundPolicy() {
                 <h2 className="font-display text-2xl font-bold mb-3">5. How to Request a Refund</h2>
                 <p className="text-muted-foreground leading-relaxed">To initiate a refund, please contact us within the applicable window:</p>
                 <ul className="mt-3 space-y-2 text-muted-foreground">
-                  <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span> <strong className="text-foreground">Email:</strong> contact@nationaltallytech.com with subject line "Refund Request – [Order #]"</li>
+                  <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span> <strong className="text-foreground">Email:</strong> contact@nationaltallytech.com with subject line &quot;Refund Request – [Order #]&quot;</li>
                   <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span> <strong className="text-foreground">Phone:</strong> +61 447 180 277 (Mon–Fri, 9am–5pm AEST)</li>
                   <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span> Include your order confirmation number, name, email, and reason for refund.</li>
                 </ul>

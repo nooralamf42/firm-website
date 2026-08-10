@@ -40,7 +40,7 @@ export default function Contact() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-12">
             <span className="text-primary text-sm font-semibold uppercase tracking-widest">Get in Touch</span>
             <h1 className="font-display text-5xl font-bold mt-3 text-balance">
-              Let's Build Something <span className="text-primary">Great Together</span>
+              Let&apos;s Build Something <span className="text-primary">Great Together</span>
             </h1>
             <p className="mt-4 text-muted-foreground max-w-xl text-lg">
               Book a free 30-minute consultation or drop us a message. We respond within 1 business day.

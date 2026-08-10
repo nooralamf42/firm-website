@@ -70,7 +70,7 @@ export default function About() {
       <section className="py-16 bg-card border-t border-border">
         <div className="max-w-2xl mx-auto text-center px-4">
           <h2 className="font-display text-3xl font-bold mb-4">Ready to Work Together?</h2>
-          <p className="text-muted-foreground mb-8">Book a free consultation and let's discuss how we can help you build your vision.</p>
+          <p className="text-muted-foreground mb-8">Book a free consultation and let&apos;s discuss how we can help you build your vision.</p>
           <Link href="/contact">
             <Button className="bg-primary text-primary-foreground glow-cyan font-semibold px-10">
               Get in Touch <ArrowRight className="w-4 h-4 ml-2" />
