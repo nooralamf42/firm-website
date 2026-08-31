@@ -36,7 +36,7 @@ export default function RefundPolicy() {
             <div className="bg-primary/10 border border-primary/30 rounded-2xl p-6 mb-10 glow-cyan">
               <p className="font-semibold text-lg mb-2">Summary</p>
               <p className="text-muted-foreground">
-                This policy is governed by the <strong className="text-foreground">Australian Consumer Law (ACL)</strong> (Schedule 2, Competition and Consumer Act 2010 (Cth)). Consumers have statutory guarantee rights that cannot be excluded, restricted, or modified. In addition to your ACL rights, we offer a <strong className="text-foreground">7-day change-of-mind refund</strong> on software where the activation key has not been redeemed, and a prorated refund on services cancelled within 7 days.
+                This policy is governed by the <strong className="text-foreground">Australian Consumer Law (ACL)</strong> (Schedule 2, Competition and Consumer Act 2010 (Cth)). Consumers have statutory guarantee rights that cannot be excluded, restricted, or modified.
               </p>
             </div>
 
@@ -59,7 +59,7 @@ export default function RefundPolicy() {
               <div>
                 <h2 className="font-display text-2xl font-bold mb-3">2. Software &amp; Digital Product Refunds</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  In addition to your ACL rights, we offer a change-of-mind refund on software licenses (including QuickBooks and other third-party software) under the following conditions:
+                  We offer a change-of-mind refund on software licenses (including QuickBooks and other third-party software) under the following conditions:
                 </p>
 
                 <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-5 my-4">
