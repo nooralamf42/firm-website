@@ -61,6 +61,14 @@ export default function RefundPolicy() {
                 <p className="text-muted-foreground leading-relaxed">
                   In addition to your ACL rights, we offer a change-of-mind refund on software licenses (including QuickBooks and other third-party software) under the following conditions:
                 </p>
+
+                <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-5 my-4">
+                  <p className="font-semibold text-foreground mb-2">General Digital Products &amp; Services Policy</p>
+                  <p className="text-muted-foreground leading-relaxed text-sm">
+                    All purchases of digital products and software services are <strong className="text-foreground">final and non-refundable</strong> once the product has been delivered, activated, or made available to the customer. Refunds may only be considered where the purchased product is materially defective, inaccessible due to an issue attributable to us, or the service/product was not delivered as agreed. Refund requests must be submitted within <strong className="text-foreground">7 days of purchase</strong> and will be reviewed on a case-by-case basis.
+                  </p>
+                </div>
+
                 <ul className="mt-3 space-y-2 text-muted-foreground">
                   <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span> The refund request is submitted within <strong className="text-foreground">7 calendar days</strong> of the original purchase date.</li>
                   <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span> The software activation key or licence code has <strong className="text-foreground">NOT</strong> been redeemed or activated.</li>
