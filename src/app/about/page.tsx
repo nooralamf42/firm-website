@@ -25,14 +25,19 @@ export default function About() {
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <Zap className="w-5 h-5 text-primary-foreground" />
               </div>
-              <span className="text-primary font-semibold">About National Tally Tech</span>
+              <div className="flex flex-col leading-tight">
+                <span className="text-primary font-semibold leading-none">About National Tally Tech</span>
+                <span className="text-[10px] text-muted-foreground font-medium tracking-wide leading-none mt-0.5">
+                  DBA Intuit QuickBooks
+                </span>
+              </div>
             </div>
             <h1 className="font-display text-5xl sm:text-6xl font-bold leading-tight text-balance">
               We Build Technology That{" "}
               <span className="text-primary">Moves Business Forward</span>
             </h1>
             <p className="mt-6 text-xl text-muted-foreground leading-relaxed">
-              INNOVATIVE NATIONAL TAX & UPKEEP INTERNATIONAL TALLY PTY LTD is a Queensland-registered technology and business services firm headquartered at U905, 6 Tonga Place, Parkwood QLD 4214, Australia. We deliver professional software development, bookkeeping, and technology consulting services to businesses across Australia & United States, combining deep local expertise with a commitment to measurable client outcomes.
+              INNOVATIVE NATIONAL TAX & UPKEEP INTERNATIONAL TALLY PTY LTD DBA Intuit QuickBooks is a Queensland-registered technology and business services firm headquartered at U905, 6 Tonga Place, Parkwood QLD 4214, Australia. We deliver professional software development, bookkeeping, and technology consulting services to businesses across Australia & United States, combining deep local expertise with a commitment to measurable client outcomes.
             </p>
           </motion.div>
         </div>

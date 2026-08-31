@@ -28,9 +28,14 @@ export default function Footer() {
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <Zap className="w-5 h-5 text-primary-foreground" />
               </div>
-              <span className="font-display font-bold text-lg">
-                National<span className="text-primary"> Tally Tech</span>
-              </span>
+              <div className="flex flex-col leading-tight">
+                <span className="font-display font-bold text-lg leading-none">
+                  National<span className="text-primary"> Tally Tech</span>
+                </span>
+                <span className="text-[10px] text-muted-foreground font-medium tracking-wide leading-none mt-0.5">
+                  DBA Intuit QuickBooks
+                </span>
+              </div>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Professional technology, bookkeeping, and software solutions for businesses across Australia. Authorised QuickBooks Reseller.
