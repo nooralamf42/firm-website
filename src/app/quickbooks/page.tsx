@@ -13,6 +13,14 @@ import {
   Building2,
   Star,
   ArrowRight,
+  Users,
+  Code2,
+  Layers,
+  ShieldCheck,
+  Gauge,
+  Plus,
+  Minus,
+  Clock,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/navbar";
@@ -102,8 +110,17 @@ const plans = [
   },
 ];
 
+const engineerPerks = [
+  { icon: Code2,       label: "React, Next.js, Node & Python" },
+  { icon: Layers,      label: "Frontend, backend & infra" },
+  { icon: ShieldCheck, label: "NDA & IP assignment" },
+  { icon: Gauge,       label: "Scale hours monthly" },
+];
+
 export default function QuickBooks() {
   const [annual, setAnnual] = useState(false);
+  const [engineers, setEngineers] = useState(1);
+  const [hours, setHours] = useState(80);
 
   function displayPrice(plan: typeof plans[0]) {
     const price = annual ? Math.round(plan.monthlyPrice * 0.8) : plan.monthlyPrice;
@@ -245,6 +262,132 @@ export default function QuickBooks() {
             All plans include SOC 2-aligned infrastructure, encrypted data at rest, and no setup fees. Prices in USD, excluding local taxes.
           </p>
         </div>
+      </section>
+
+      {/* ── Engineer Hiring Calculator ───────────────────────────────────────── */}
+      <section id="engineers" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid gap-8 rounded-3xl border border-border bg-card p-7 sm:p-10 lg:grid-cols-2 lg:items-center"
+        >
+          {/* Left — description */}
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 text-xs text-muted-foreground">
+              <Users className="w-3.5 h-3.5 text-primary" aria-hidden="true" />
+              On-demand engineering
+            </div>
+            <h2 className="font-display mt-4 text-2xl sm:text-3xl font-bold tracking-tight">
+              Hire senior full-stack engineers
+            </h2>
+            <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
+              Vetted senior engineers who plug straight into your stack and sprint. Flat{" "}
+              <span className="font-semibold text-foreground">$25/hour</span>{" "}
+              — no recruiter fees, no long contracts. Adjust the team size and monthly hours to see your commitment update live.
+            </p>
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+              {engineerPerks.map(({ icon: Icon, label }) => (
+                <li key={label} className="flex items-center gap-2.5 text-sm text-muted-foreground">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-secondary text-primary shrink-0">
+                    <Icon className="w-4 h-4" aria-hidden="true" />
+                  </span>
+                  {label}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Right — live calculator */}
+          <div className="rounded-2xl border border-border bg-background p-6 sm:p-7">
+            {/* Engineers counter */}
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium">Engineers</span>
+              <div className="flex items-center gap-3">
+                <button
+                  id="engineer-decrease"
+                  type="button"
+                  aria-label="Decrease engineers"
+                  onClick={() => setEngineers(Math.max(1, engineers - 1))}
+                  disabled={engineers <= 1}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-secondary text-foreground transition-colors hover:border-primary disabled:opacity-40 cursor-pointer"
+                >
+                  <Minus className="w-4 h-4" aria-hidden="true" />
+                </button>
+                <span className="font-mono w-8 text-center text-lg tabular-nums">{engineers}</span>
+                <button
+                  id="engineer-increase"
+                  type="button"
+                  aria-label="Increase engineers"
+                  onClick={() => setEngineers(engineers + 1)}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-secondary text-foreground transition-colors hover:border-primary cursor-pointer"
+                >
+                  <Plus className="w-4 h-4" aria-hidden="true" />
+                </button>
+              </div>
+            </div>
+
+            {/* Hours slider */}
+            <div className="mt-6">
+              <div className="flex items-center justify-between mb-3">
+                <span className="flex items-center gap-1.5 text-sm font-medium">
+                  <Clock className="w-4 h-4 text-primary" aria-hidden="true" />
+                  Hours / month
+                </span>
+                <span className="font-mono text-lg tabular-nums font-semibold">{hours}h</span>
+              </div>
+              <div className="relative">
+                <input
+                  id="hours-slider"
+                  type="range"
+                  min={10}
+                  max={320}
+                  step={10}
+                  value={hours}
+                  onChange={(e) => setHours(Number(e.target.value))}
+                  aria-label="Monthly hours per engineer"
+                  className="w-full h-1.5 rounded-full appearance-none cursor-pointer bg-secondary accent-primary"
+                />
+              </div>
+              <div className="mt-2 flex justify-between text-[11px] text-muted-foreground">
+                <span>10h · part-time</span>
+                <span>160h · full-time</span>
+                <span>320h</span>
+              </div>
+            </div>
+
+            {/* Breakdown */}
+            <div className="mt-6 space-y-2 border-t border-border pt-5 text-sm">
+              <div className="flex items-center justify-between text-muted-foreground">
+                <span>Rate</span>
+                <span className="font-mono text-xs sm:text-sm">$25.00 / hr</span>
+              </div>
+              <div className="flex items-center justify-between text-muted-foreground">
+                <span>{engineers} × {hours}h</span>
+                <span className="font-mono text-xs sm:text-sm">{engineers * hours} hrs / mo</span>
+              </div>
+              <div className="flex items-baseline justify-between pt-1">
+                <span className="font-medium">Estimated monthly</span>
+                <span className="font-display text-2xl font-bold sm:text-3xl">
+                  ${(engineers * hours * 25).toLocaleString()}
+                </span>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <Link href="/contact" className="mt-6 block">
+              <Button
+                id="cta-reserve-engineers"
+                className="w-full bg-primary text-primary-foreground font-semibold glow-cyan hover:bg-primary/90 rounded-full"
+              >
+                Reserve engineers <ArrowRight className="w-4 h-4 ml-1.5" />
+              </Button>
+            </Link>
+            <p className="mt-3 text-center text-[11px] text-muted-foreground">
+              Billed monthly · pause or rescale anytime · first week satisfaction guarantee
+            </p>
+          </div>
+        </motion.div>
       </section>
 
       <Footer />
