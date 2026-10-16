@@ -14,7 +14,7 @@ interface PaymentRow {
   currency: string;
   productName: string;
   customer: {
-    fullName: string; firstName?: string; lastName?: string; companyName?: string; abn?: string;
+    fullName: string; firstName?: string; lastName?: string; companyName?: string; ein?: string;
     email: string; phone: string; address: string; city: string; state?: string; zip?: string; country: string;
   };
   consent?: { agreedToTerms: boolean; agreedAt: string; signatureMode: 'draw' | 'type' };
@@ -80,7 +80,7 @@ const EVENT_LABEL: Record<string, string> = {
   reference_mismatch: 'Reference mismatch flagged',
 };
 
-const money = (n: number, c: string) => `${new Intl.NumberFormat('en-AU', { style: 'currency', currency: c }).format(n)} ${c}`;
+const money = (n: number, c: string) => `${new Intl.NumberFormat('en-US', { style: 'currency', currency: c }).format(n)} ${c}`;
 const dateStr = (d: string) => new Date(d).toLocaleDateString('en-AU', { timeZone: TZ, day: '2-digit', month: '2-digit', year: 'numeric' });
 const timeStr = (d: string) => new Date(d).toLocaleTimeString('en-AU', { timeZone: TZ, hour: '2-digit', minute: '2-digit', second: '2-digit' }) + ' AEST';
 const isoDay = (d: string) => new Date(d).toLocaleDateString('en-CA', { timeZone: TZ });
@@ -336,7 +336,7 @@ export default function AdminLogsPage() {
                       <td className="py-4 px-4 align-top">
                         <div className="font-semibold text-sm">{c?.fullName}</div>
                         <div className="text-muted-foreground font-medium mt-0.5">{c?.email}</div>
-                        {c?.companyName && <div className="text-[10px] font-semibold text-purple-400 mt-1 bg-purple-500/10 px-2 py-0.5 rounded-md inline-block">{c.companyName}{c.abn ? ` · ABN ${c.abn}` : ''}</div>}
+                        {c?.companyName && <div className="text-[10px] font-semibold text-purple-400 mt-1 bg-purple-500/10 px-2 py-0.5 rounded-md inline-block">{c.companyName}{c.ein ? ` · EIN ${c.ein}` : ''}</div>}
                         {c?.phone && <div className="text-[10px] text-muted-foreground mt-1">📞 {c.phone}</div>}
                         {c?.address && (
                           <div className="text-[10px] text-muted-foreground mt-2 bg-muted/30 p-2.5 rounded-lg border border-border leading-relaxed max-w-xs">

@@ -1,4 +1,3 @@
-import crypto from 'crypto';
 import { ObjectId } from 'mongodb';
 import { getDb, logPaymentEvent } from '@/lib/db';
 
@@ -17,49 +16,18 @@ const GATEWAY = (process.env.EPAY_GATEWAY_URL || 'https://gtw.online-epayment.co
 export interface EpayConfig {
   publicKey: string;
   terNO: string;
-  /** When set, checkout parameters are AES-256-CBC encrypted so the customer cannot edit the amount. */
-  privateKey?: string;
 }
 
 export function getEpayConfig(): EpayConfig | null {
   const publicKey = process.env.EPAY_PUBLIC_KEY?.trim();
   const terNO = process.env.EPAY_TERNO?.trim();
   if (!publicKey || !terNO) return null;
-  return { publicKey, terNO, privateKey: process.env.EPAY_PRIVATE_KEY?.trim() || undefined };
+  return { publicKey, terNO };
 }
 
-function aesKeyIv(privateKey: string, publicKey: string) {
-  const key = Buffer.alloc(32);
-  Buffer.from(privateKey, 'utf8').copy(key, 0, 0, 32);
-  const iv = Buffer.from(crypto.createHash('sha256').update(publicKey).digest('hex').slice(0, 16), 'utf8');
-  return { key, iv };
-}
-
-/** Same transform as ePay's PHP sample (payload_sha256): AES-256-CBC, key = private key truncated/padded to
- *  32 bytes, iv = first 16 chars of sha256(public key) hex, then base64 of the base64 ciphertext, made
- *  URL-safe with padding stripped. */
-export function encryptEpayPayload(query: string, privateKey: string, publicKey: string): string {
-  const { key, iv } = aesKeyIv(privateKey, publicKey);
-  const cipher = crypto.createCipheriv('aes-256-cbc', key, iv);
-  const openSslOutput = Buffer.concat([cipher.update(query, 'utf8'), cipher.final()]).toString('base64');
-  return Buffer.from(openSslOutput, 'utf8').toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-}
-
-/** Inverse of encryptEpayPayload; used by tests and for debugging only. */
-export function decryptEpayPayload(payload: string, privateKey: string, publicKey: string): string {
-  const { key, iv } = aesKeyIv(privateKey, publicKey);
-  const b64 = payload.replace(/-/g, '+').replace(/_/g, '/');
-  const inner = Buffer.from(b64 + '='.repeat((4 - (b64.length % 4)) % 4), 'base64').toString('utf8');
-  const decipher = crypto.createDecipheriv('aes-256-cbc', key, iv);
-  return Buffer.concat([decipher.update(Buffer.from(inner, 'base64')), decipher.final()]).toString('utf8');
-}
-
-/** The URL to send the customer to. Encrypted when a private key is configured, plain query otherwise. */
+/** The URL to send the customer to: ePay's public-key checkout (no private key, no encryption). */
 export function buildEpayCheckoutUrl(cfg: EpayConfig, params: Record<string, string>): string {
-  const query = new URLSearchParams({ public_key: cfg.publicKey, terNO: cfg.terNO, ...params }).toString();
-  if (cfg.privateKey) {
-    return `${GATEWAY}/checkout?encrypted_payload=${encryptEpayPayload(query, cfg.privateKey, cfg.publicKey)}${cfg.publicKey}`;
-  }
+  const query = new URLSearchParams({ public_key: cfg.publicKey, terNO: cfg.terNO, 'integration-type': 'Encode-Checkout', ...params }).toString();
   return `${GATEWAY}/checkout?${query}`;
 }
 

@@ -58,9 +58,9 @@ export default function PayFlow({ link }: { link: FlowLink }) {
 
   const [first, ...rest] = (link.customerName || '').trim().split(/\s+/);
   const [form, setForm] = useState({
-    companyName: '', abn: '', email: link.customerEmail || '', phone: '',
+    companyName: '', ein: '', email: link.customerEmail || '', phone: '',
     firstName: first || '', lastName: rest.join(' '),
-    country: 'AU', address: '', zipCode: '', city: '', state: '',
+    country: 'US', address: '', zipCode: '', city: '', state: '',
   });
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [signatureMode, setSignatureMode] = useState<'draw' | 'type'>('draw');
@@ -148,10 +148,7 @@ export default function PayFlow({ link }: { link: FlowLink }) {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/quickbooks_logo.png" className="mx-auto" alt="QuickBooks" width={200} height={100} />
             </div>
-            <h2 className="text-xl text-gray-800 text-center mb-8">Let&apos;s get you started</h2>
-            <p className="text-sm text-gray-600 text-center -mt-5 mb-6">
-              {link.productName}
-            </p>
+            <h2 className="text-xl text-gray-800 text-center mb-8">Let&apos;s get you in to QuickBooks</h2>
 
             <div className="mb-6">
               <input
@@ -208,7 +205,7 @@ export default function PayFlow({ link }: { link: FlowLink }) {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <form onSubmit={onSubmit} onFocus={() => track('form_started')} className="lg:col-span-2">
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 md:p-8">
-                <CompanyInfo companyName={form.companyName} abn={form.abn} onChange={onField} />
+                <CompanyInfo companyName={form.companyName} ein={form.ein} onChange={onField} />
                 <div className="border-t border-gray-200 my-8" />
                 <ContactInfo email={form.email} phone={form.phone} firstName={form.firstName} lastName={form.lastName} onChange={onField} />
                 <div className="border-t border-gray-200 my-8" />

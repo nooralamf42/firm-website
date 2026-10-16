@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getDb, logPaymentEvent, type Payment, type PaymentLink } from '@/lib/db';
 import { buildEpayCheckoutUrl, getEpayConfig } from '@/lib/epay';
 import { requestInfo } from '@/lib/request-info';
+import { CURRENCY } from '@/lib/products';
 
 const clean = (v: unknown, max = 120) => String(v ?? '').trim().slice(0, max);
 const SIGNATURE_PREFIX = 'data:image/png;base64,';
@@ -33,7 +34,7 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ token: str
       firstName,
       lastName,
       companyName: clean(body.companyName, 120) || undefined,
-      abn: clean(body.abn, 20) || undefined,
+      ein: clean(body.ein, 20),
       email: clean(body.email),
       phone: clean(body.phone, 30),
       address: clean(body.address, 200),
@@ -42,9 +43,10 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ token: str
       zip: clean(body.zip, 20) || undefined,
       country: clean(body.country, 10).toUpperCase(),
     };
-    if (!firstName || !lastName || !customer.address || !customer.city || customer.phone.length < 8) {
+    if (!firstName || !lastName || !customer.companyName || !customer.address || !customer.city || customer.phone.length < 8) {
       return NextResponse.json({ error: 'Please fill in all required fields.' }, { status: 400 });
     }
+    if (!/^\d{2}-\d{7}$/.test(customer.ein)) return NextResponse.json({ error: 'Please enter your EIN in the format 12-3456789.' }, { status: 400 });
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email)) return NextResponse.json({ error: 'Please enter a valid email address.' }, { status: 400 });
     // Not truncated: anything other than a 2-letter ISO code is rejected rather than guessed.
     if (!/^[A-Z]{2}$/.test(customer.country)) return NextResponse.json({ error: 'Please choose your country.' }, { status: 400 });
@@ -61,7 +63,7 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ token: str
     const payment: Payment = {
       linkToken: link.token,
       amount: link.amount,
-      currency: link.currency,
+      currency: CURRENCY,
       productName: link.productName,
       plan: link.plan,
       customer,
@@ -75,14 +77,15 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ token: str
     };
     const inserted = await db.collection('payments').insertOne({ ...payment });
     const paymentId = inserted.insertedId.toString();
-    await logPaymentEvent('checkout_started', { paymentId, linkToken: link.token, ip: ipAddress, device, browser, ua, detail: { amount: link.amount, currency: link.currency, email: customer.email, signed: true } });
+    await logPaymentEvent('checkout_started', { paymentId, linkToken: link.token, ip: ipAddress, device, browser, ua, detail: { amount: link.amount, currency: CURRENCY, email: customer.email, signed: true } });
 
     const base = (process.env.SITE_URL?.trim() || 'http://localhost:3000').replace(/\/+$/, '');
     const redirectUrl = buildEpayCheckoutUrl(cfg, {
+      bill_ip: ipAddress,
       source_url: base,
       retrycount: '5',
       bill_amt: link.amount.toFixed(2),
-      bill_currency: link.currency,
+      bill_currency: CURRENCY,
       product_name: link.productName,
       fullname: customer.fullName,
       bill_email: customer.email,

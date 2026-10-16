@@ -50,7 +50,8 @@ export interface PaymentCustomer {
   firstName?: string;
   lastName?: string;
   companyName?: string;
-  abn?: string;
+  /** US Employer Identification Number, format 12-3456789. */
+  ein?: string;
   email: string;
   phone: string;
   address: string;

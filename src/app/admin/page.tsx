@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
-import { CUSTOM_PRODUCTS, EDITIONS, YEAR_OPTIONS, isEdition, productLabel } from '@/lib/products';
+import { CURRENCY, CUSTOM_PRODUCTS, EDITIONS, YEAR_OPTIONS, isEdition, productLabel } from '@/lib/products';
 
 interface LinkRow {
   token: string;
@@ -25,7 +25,7 @@ interface LinkRow {
 }
 
 const money = (n: number) => n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-const fmt = (n: number, c: string) => `${new Intl.NumberFormat('en-AU', { style: 'currency', currency: c }).format(n)} ${c}`;
+const fmt = (n: number, c: string) => `${new Intl.NumberFormat('en-US', { style: 'currency', currency: c }).format(n)} ${c}`;
 const when = (d?: string) => (d ? new Date(d).toLocaleString('en-AU', { timeZone: 'Australia/Brisbane' }) : '—');
 
 function linkState(l: LinkRow) {
@@ -53,7 +53,7 @@ export default function AdminCreateLinkPage() {
   const [years, setYears] = useState(1);
   const [price, setPrice] = useState('');
   const [discount, setDiscount] = useState('');
-  const [currency, setCurrency] = useState('AUD');
+  const currency = CURRENCY; // every link is charged in US dollars
   const [customerName, setCustomerName] = useState('');
   const [customerEmail, setCustomerEmail] = useState('');
   const [note, setNote] = useState('');
@@ -70,7 +70,7 @@ export default function AdminCreateLinkPage() {
     if (res.status === 401) { window.location.href = '/admin/login'; return; }
     const json = await res.json().catch(() => ({}));
     if (!res.ok) setError(json.error || 'Could not load links');
-    else { setLinks(json.links); if (json.defaultCurrency) setCurrency((c) => (c === 'AUD' ? json.defaultCurrency : c)); }
+    else setLinks(json.links);
     setLoading(false);
   }, []);
 
@@ -86,7 +86,7 @@ export default function AdminCreateLinkPage() {
     const res = await fetch('/api/admin/links', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ product, users, years, price, discount, currency, customerName, customerEmail, note, expiresInDays }),
+      body: JSON.stringify({ product, users, years, price, discount, customerName, customerEmail, note, expiresInDays }),
     });
     const json = await res.json().catch(() => ({}));
     setCreating(false);
@@ -161,19 +161,13 @@ export default function AdminCreateLinkPage() {
             </div>
           )}
 
-          <div className="grid sm:grid-cols-3 gap-5">
-            <div className="space-y-1.5 sm:col-span-2">
-              <Label htmlFor="price" className="font-semibold">Price</Label>
-              <Input id="price" type="number" min={0} step="0.01" placeholder="e.g. 3500" value={price} onChange={(e) => touch(setPrice)(e.target.value)} className="border-primary font-semibold" />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="currency">Currency</Label>
-              <Input id="currency" maxLength={3} value={currency} onChange={(e) => touch(setCurrency)(e.target.value.toUpperCase())} className="uppercase" />
-            </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="price" className="font-semibold">Price ($ USD)</Label>
+            <Input id="price" type="number" min={0} step="0.01" placeholder="e.g. 3500" value={price} onChange={(e) => touch(setPrice)(e.target.value)} className="border-primary font-semibold" />
           </div>
 
           <div className="border-t border-border pt-5 space-y-1.5">
-            <Label htmlFor="discount" className="text-muted-foreground">Discount <span className="text-[10px] italic font-normal">(Optional secondary override)</span></Label>
+            <Label htmlFor="discount" className="text-muted-foreground">Discount ($) <span className="text-[10px] italic font-normal">(Optional secondary override)</span></Label>
             <Input id="discount" type="number" min={0} step="0.01" placeholder="e.g. 500" value={discount} onChange={(e) => touch(setDiscount)(e.target.value)} />
             {disc > base && <p className="text-xs text-destructive">Discount cannot be greater than the price.</p>}
           </div>

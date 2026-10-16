@@ -93,7 +93,7 @@ function Field({ label, children, htmlFor }: { label: string; children: React.Re
 
 type OnChange = (field: string, value: string) => void;
 
-export function CompanyInfo({ companyName, abn, onChange }: { companyName: string; abn: string; onChange: OnChange }) {
+export function CompanyInfo({ companyName, ein, onChange }: { companyName: string; ein: string; onChange: OnChange }) {
   const id = useId();
   return (
     <div>
@@ -102,14 +102,21 @@ export function CompanyInfo({ companyName, abn, onChange }: { companyName: strin
         <Field label="Company name" htmlFor={`${id}-company`}>
           <input required id={`${id}-company`} type="text" value={companyName} onChange={(e) => onChange('companyName', e.target.value)} className={input} />
         </Field>
-        <Field label="ABN (optional)" htmlFor={`${id}-abn`}>
+        <Field label="EIN" htmlFor={`${id}-ein`}>
           <input
-            id={`${id}-abn`}
+            required
+            id={`${id}-ein`}
             type="text"
             inputMode="numeric"
-            placeholder="12 345 678 901"
-            value={abn}
-            onChange={(e) => onChange('abn', e.target.value.replace(/[^\d ]/g, '').slice(0, 14))}
+            placeholder="12-3456789"
+            pattern="\d{2}-\d{7}"
+            title="Format must be 9 digits: 12-3456789"
+            value={ein}
+            onChange={(e) => {
+              let val = e.target.value.replace(/\D/g, '').slice(0, 9);
+              if (val.length > 2) val = val.slice(0, 2) + '-' + val.slice(2);
+              onChange('ein', val);
+            }}
             className={input}
           />
         </Field>
@@ -146,10 +153,63 @@ export function ContactInfo(props: { email: string; phone: string; firstName: st
 }
 
 const COUNTRIES: [string, string][] = [
-  ['AU', 'Australia'], ['NZ', 'New Zealand'], ['US', 'United States'], ['GB', 'United Kingdom'], ['CA', 'Canada'],
+  ['US', 'United States'], ['AU', 'Australia'], ['NZ', 'New Zealand'], ['GB', 'United Kingdom'], ['CA', 'Canada'],
   ['IN', 'India'], ['SG', 'Singapore'], ['AE', 'United Arab Emirates'], ['IE', 'Ireland'], ['DE', 'Germany'],
   ['FR', 'France'], ['NL', 'Netherlands'], ['ZA', 'South Africa'], ['PH', 'Philippines'], ['MY', 'Malaysia'],
   ['HK', 'Hong Kong'], ['JP', 'Japan'], ['PK', 'Pakistan'], ['BD', 'Bangladesh'], ['LK', 'Sri Lanka'],
+];
+const US_STATES: [string, string][] = [
+  ['AL', 'Alabama'],
+  ['AK', 'Alaska'],
+  ['AZ', 'Arizona'],
+  ['AR', 'Arkansas'],
+  ['CA', 'California'],
+  ['CO', 'Colorado'],
+  ['CT', 'Connecticut'],
+  ['DE', 'Delaware'],
+  ['DC', 'District of Columbia'],
+  ['FL', 'Florida'],
+  ['GA', 'Georgia'],
+  ['HI', 'Hawaii'],
+  ['ID', 'Idaho'],
+  ['IL', 'Illinois'],
+  ['IN', 'Indiana'],
+  ['IA', 'Iowa'],
+  ['KS', 'Kansas'],
+  ['KY', 'Kentucky'],
+  ['LA', 'Louisiana'],
+  ['ME', 'Maine'],
+  ['MD', 'Maryland'],
+  ['MA', 'Massachusetts'],
+  ['MI', 'Michigan'],
+  ['MN', 'Minnesota'],
+  ['MS', 'Mississippi'],
+  ['MO', 'Missouri'],
+  ['MT', 'Montana'],
+  ['NE', 'Nebraska'],
+  ['NV', 'Nevada'],
+  ['NH', 'New Hampshire'],
+  ['NJ', 'New Jersey'],
+  ['NM', 'New Mexico'],
+  ['NY', 'New York'],
+  ['NC', 'North Carolina'],
+  ['ND', 'North Dakota'],
+  ['OH', 'Ohio'],
+  ['OK', 'Oklahoma'],
+  ['OR', 'Oregon'],
+  ['PA', 'Pennsylvania'],
+  ['RI', 'Rhode Island'],
+  ['SC', 'South Carolina'],
+  ['SD', 'South Dakota'],
+  ['TN', 'Tennessee'],
+  ['TX', 'Texas'],
+  ['UT', 'Utah'],
+  ['VT', 'Vermont'],
+  ['VA', 'Virginia'],
+  ['WA', 'Washington'],
+  ['WV', 'West Virginia'],
+  ['WI', 'Wisconsin'],
+  ['WY', 'Wyoming'],
 ];
 const AU_STATES = ['ACT', 'NSW', 'NT', 'QLD', 'SA', 'TAS', 'VIC', 'WA'];
 
@@ -170,15 +230,20 @@ export function BusinessAddress(props: { country: string; address: string; zipCo
           <input required id={`${id}-address`} type="text" placeholder="Enter street address" value={address} onChange={(e) => onChange('address', e.target.value)} className={input} />
         </Field>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Field label="Postcode" htmlFor={`${id}-zip`}>
-            <input required id={`${id}-zip`} type="text" placeholder="Enter postcode" value={zipCode} onChange={(e) => onChange('zipCode', e.target.value)} className={input} />
+          <Field label={country === 'US' ? 'ZIP code' : 'Postcode'} htmlFor={`${id}-zip`}>
+            <input required id={`${id}-zip`} type="text" placeholder={country === 'US' ? 'Enter ZIP code' : 'Enter postcode'} value={zipCode} onChange={(e) => onChange('zipCode', e.target.value)} className={input} />
           </Field>
           <Field label="City" htmlFor={`${id}-city`}>
             <input required id={`${id}-city`} type="text" placeholder="Enter city" value={city} onChange={(e) => onChange('city', e.target.value)} className={input} />
           </Field>
         </div>
         <Field label="State" htmlFor={`${id}-state`}>
-          {country === 'AU' ? (
+          {country === 'US' ? (
+            <select required id={`${id}-state`} value={state} onChange={(e) => onChange('state', e.target.value)} className={`${input} appearance-none`} style={selectArrow}>
+              <option value="">Select a state</option>
+              {US_STATES.map(([code, name]) => <option key={code} value={code}>{name}</option>)}
+            </select>
+          ) : country === 'AU' ? (
             <select required id={`${id}-state`} value={state} onChange={(e) => onChange('state', e.target.value)} className={`${input} appearance-none`} style={selectArrow}>
               <option value="">Select a state</option>
               {AU_STATES.map((s) => <option key={s} value={s}>{s}</option>)}
@@ -199,7 +264,7 @@ export interface SummaryLink {
   plan?: { product: string; users?: number; years?: number; basePrice: number; discount: number };
 }
 
-const money = (n: number, currency: string) => new Intl.NumberFormat('en-AU', { style: 'currency', currency }).format(n);
+const money = (n: number, currency: string) => new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(n);
 
 export function OrderSummary({ link }: { link: SummaryLink }) {
   const plan = link.plan;

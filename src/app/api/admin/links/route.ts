@@ -2,7 +2,7 @@ import crypto from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import { ADMIN_COOKIE, verifyAdminSession } from '@/lib/admin-auth';
 import { getDb, logPaymentEvent, type PaymentLink } from '@/lib/db';
-import { describePlan, isEdition, isKnownProduct } from '@/lib/products';
+import { CURRENCY, describePlan, isEdition, isKnownProduct } from '@/lib/products';
 
 // The proxy already guards /api/admin; checking again here keeps the route safe even if the matcher changes.
 function unauthorized(req: NextRequest) {
@@ -21,12 +21,11 @@ async function handleGET(req: NextRequest) {
   const db = await getDb();
   const links = await db.collection('paymentLinks').find({}).sort({ createdAt: -1 }).limit(200).toArray();
   return NextResponse.json({
-    defaultCurrency: (process.env.DEFAULT_CURRENCY || 'AUD').toUpperCase(),
     links: links.map((l) => ({ ...l, _id: String(l._id), url: `${siteUrl()}/pay/${l.token}` })),
   });
 }
 
-/** Create a link: { product, users?, years?, price, discount?, currency?, customerName?, customerEmail?, note?, expiresInDays? } */
+/** Create a link: { product, users?, years?, price, discount?, customerName?, customerEmail?, note?, expiresInDays? } */
 async function handlePOST(req: NextRequest) {
   const denied = unauthorized(req);
   if (denied) return denied;
@@ -52,8 +51,7 @@ async function handlePOST(req: NextRequest) {
     if (![1, 2, 3].includes(years)) return NextResponse.json({ error: 'Contract period must be 1, 2 or 3 years' }, { status: 400 });
   }
 
-  const currency = String(body.currency || process.env.DEFAULT_CURRENCY || 'AUD').trim().toUpperCase();
-  if (!/^[A-Z]{3}$/.test(currency)) return NextResponse.json({ error: 'Currency must be a 3-letter code, e.g. AUD' }, { status: 400 });
+  const currency = CURRENCY; // always US dollars, whatever the request says
 
   const customerEmail = String(body.customerEmail || '').trim();
   if (customerEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail)) return NextResponse.json({ error: 'Customer email looks invalid' }, { status: 400 });

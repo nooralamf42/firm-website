@@ -69,7 +69,7 @@ function ResultContent() {
             <div className="border border-gray-100 rounded-xl overflow-hidden mb-6">
               <div className={row}>
                 <span className={label}><DollarSign className="w-4 h-4" /> Amount Paid</span>
-                <span className="text-sm font-bold text-gray-900">{new Intl.NumberFormat('en-AU', { style: 'currency', currency: paid.currency }).format(paid.amount)} {paid.currency}</span>
+                <span className="text-sm font-bold text-gray-900">{new Intl.NumberFormat('en-US', { style: 'currency', currency: paid.currency }).format(paid.amount)} {paid.currency}</span>
               </div>
               <div className={row}>
                 <span className={label}><Package className="w-4 h-4" /> Plan</span>

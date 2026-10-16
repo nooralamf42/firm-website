@@ -29,6 +29,9 @@ export const CUSTOM_PRODUCTS = [
   { value: 'n', name: 'Outstanding Balance Payment' },
 ] as const;
 
+/** Every payment link is charged in US dollars. */
+export const CURRENCY = 'USD';
+
 export const YEAR_OPTIONS = [
   { value: 1, label: '1 Year' },
   { value: 2, label: '2 Years' },

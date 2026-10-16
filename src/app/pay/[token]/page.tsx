@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getDb, type PaymentLink } from '@/lib/db';
 import { PayShell } from '@/components/pay/pay-ui';
+import { CURRENCY } from '@/lib/products';
 import PayFlow from './pay-flow';
 
 export const dynamic = 'force-dynamic';
@@ -49,7 +50,7 @@ export default async function PayPage({ params }: { params: Promise<{ token: str
         token: link.token,
         productName: link.productName,
         amount: link.amount,
-        currency: link.currency,
+        currency: CURRENCY,
         plan: link.plan,
         note: link.note,
         customerName: link.customerName,
