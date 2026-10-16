@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nationaltallytech",
+  "compatibility_date": "2026-10-16",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": ".open-next/worker.js",
+  // By default `wrangler deploy` (run by every git-triggered Cloudflare build) wipes any
+  // Runtime variable set via the dashboard — secrets survive, plain variables don't. Set this
+  // from day one this time, rather than discovering it the hard way (see quickbooks-interprises).
+  "keep_vars": true,
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

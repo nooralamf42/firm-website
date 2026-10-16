@@ -8,8 +8,15 @@ import { ADMIN_COOKIE, isAdminHost, verifyAdminSession } from '@/lib/admin-auth'
  * request to the public site (pages, assets, /pay, /api/epay…) never reaches this file.
  *  - Main domain: /admin and /api/admin answer 404, exactly as if they did not exist.
  *  - Admin host: "/" shows the dashboard; everything else under /admin needs the signed session cookie.
+ *
+ * Named/filed as the old `middleware.ts` convention (not Next.js 16's new `proxy.ts`), deliberately:
+ * `proxy.ts` always runs on the Node.js runtime in Next 16 (not configurable), and OpenNext's
+ * Cloudflare adapter doesn't support Node-runtime middleware at all yet ("Node.js middleware is not
+ * currently supported"). `middleware.ts` is deprecated but still works and still runs on the
+ * Edge-compatible runtime OpenNext needs — which is also why admin-auth.ts uses Web Crypto
+ * (crypto.subtle) instead of Node's `crypto` module.
  */
-export function proxy(req: NextRequest) {
+export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const onAdminHost = isAdminHost(req.headers.get('host'));
 
@@ -23,7 +30,7 @@ export function proxy(req: NextRequest) {
   const isLogin = pathname === '/admin/login' || pathname === '/api/admin/login';
 
   if (pathname === '/') {
-    if (!verifyAdminSession(req.cookies.get(ADMIN_COOKIE)?.value)) {
+    if (!(await verifyAdminSession(req.cookies.get(ADMIN_COOKIE)?.value))) {
       return NextResponse.redirect(new URL('/admin/login', req.url));
     }
     const res = NextResponse.rewrite(new URL('/admin', req.url));
@@ -31,7 +38,7 @@ export function proxy(req: NextRequest) {
     return res;
   }
 
-  if (!isLogin && !verifyAdminSession(req.cookies.get(ADMIN_COOKIE)?.value)) {
+  if (!isLogin && !(await verifyAdminSession(req.cookies.get(ADMIN_COOKIE)?.value))) {
     if (isApi) return NextResponse.json({ error: 'Unauthorized' }, { status: 401, headers });
     return NextResponse.redirect(new URL('/admin/login', req.url));
   }

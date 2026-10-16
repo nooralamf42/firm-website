@@ -3,13 +3,13 @@ import { ADMIN_COOKIE, verifyAdminSession } from '@/lib/admin-auth';
 import { getDb } from '@/lib/db';
 import { settleEpayPayment } from '@/lib/epay';
 
-function unauthorized(req: NextRequest) {
-  return verifyAdminSession(req.cookies.get(ADMIN_COOKIE)?.value) ? null : NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+async function unauthorized(req: NextRequest) {
+  return (await verifyAdminSession(req.cookies.get(ADMIN_COOKIE)?.value)) ? null : NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 }
 
 /** Payment records + the event log, for the admin "Logs" page. */
 async function handleGET(req: NextRequest) {
-  const denied = unauthorized(req);
+  const denied = await unauthorized(req);
   if (denied) return denied;
   const db = await getDb();
   const [payments, events, links] = await Promise.all([
@@ -27,7 +27,7 @@ async function handleGET(req: NextRequest) {
 
 /** "Verify with ePay": re-check one payment against ePay's own records. { paymentId } */
 async function handlePOST(req: NextRequest) {
-  const denied = unauthorized(req);
+  const denied = await unauthorized(req);
   if (denied) return denied;
   const { paymentId } = await req.json().catch(() => ({}));
   if (typeof paymentId !== 'string') return NextResponse.json({ error: 'paymentId is required' }, { status: 400 });

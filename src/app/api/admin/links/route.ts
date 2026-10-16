@@ -5,8 +5,8 @@ import { getDb, logPaymentEvent, type PaymentLink } from '@/lib/db';
 import { CURRENCY, describePlan, isEdition, isKnownProduct } from '@/lib/products';
 
 // The proxy already guards /api/admin; checking again here keeps the route safe even if the matcher changes.
-function unauthorized(req: NextRequest) {
-  return verifyAdminSession(req.cookies.get(ADMIN_COOKIE)?.value) ? null : NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+async function unauthorized(req: NextRequest) {
+  return (await verifyAdminSession(req.cookies.get(ADMIN_COOKIE)?.value)) ? null : NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 }
 
 function siteUrl() {
@@ -16,7 +16,7 @@ function siteUrl() {
 const round2 = (n: number) => Math.round(n * 100) / 100;
 
 async function handleGET(req: NextRequest) {
-  const denied = unauthorized(req);
+  const denied = await unauthorized(req);
   if (denied) return denied;
   const db = await getDb();
   const links = await db.collection('paymentLinks').find({}).sort({ createdAt: -1 }).limit(200).toArray();
@@ -27,7 +27,7 @@ async function handleGET(req: NextRequest) {
 
 /** Create a link: { product, users?, years?, price, discount?, customerName?, customerEmail?, note?, expiresInDays? } */
 async function handlePOST(req: NextRequest) {
-  const denied = unauthorized(req);
+  const denied = await unauthorized(req);
   if (denied) return denied;
 
   const body = await req.json().catch(() => ({}));
@@ -80,7 +80,7 @@ async function handlePOST(req: NextRequest) {
 
 /** Enable / disable a link: { token, status: 'active' | 'disabled' } */
 async function handlePATCH(req: NextRequest) {
-  const denied = unauthorized(req);
+  const denied = await unauthorized(req);
   if (denied) return denied;
   const { token, status } = await req.json().catch(() => ({}));
   if (typeof token !== 'string' || (status !== 'active' && status !== 'disabled')) return NextResponse.json({ error: 'Bad request' }, { status: 400 });

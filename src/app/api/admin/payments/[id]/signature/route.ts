@@ -5,7 +5,7 @@ import { getDb } from '@/lib/db';
 
 /** The signed consent for one payment. Kept out of the list response because the image is large. */
 export async function GET(req: NextRequest, ctx: { params: Promise<{ id: string }> }) {
-  if (!verifyAdminSession(req.cookies.get(ADMIN_COOKIE)?.value)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await verifyAdminSession(req.cookies.get(ADMIN_COOKIE)?.value))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   try {
     const { id } = await ctx.params;
     if (!ObjectId.isValid(id)) return NextResponse.json({ error: 'Not found' }, { status: 404 });
