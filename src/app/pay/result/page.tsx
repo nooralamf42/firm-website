@@ -7,7 +7,7 @@ import { CheckCircle, Clock, Hash, Mail, Package, DollarSign, XCircle } from 'lu
 import { PayShell } from '@/components/pay/pay-ui';
 import { CONTACT_EMAIL } from '@/lib/constants';
 
-type State = 'checking' | 'paid' | 'pending' | 'failed' | 'problem';
+type State = 'checking' | 'paid' | 'pending' | 'failed' | 'problem' | 'test';
 interface Paid { amount: number; currency: string; productName: string; transactionId?: string }
 
 function ResultContent() {
@@ -34,6 +34,7 @@ function ResultContent() {
           }
           if (json.status === 'failed') return !cancelled && setState('failed');
           if (json.status === 'mismatch' || json.status === 'not_found') return !cancelled && setState('problem');
+          if (json.status === 'test_ignored') return !cancelled && setState('test');
         } catch {}
         await new Promise((r) => setTimeout(r, 3000));
       }
@@ -48,6 +49,7 @@ function ResultContent() {
     pending: { Icon: Clock, bg: 'bg-amber-50', tone: 'text-amber-500', title: 'Payment is processing', text: 'We have not received the final confirmation yet. If your payment went through, we will confirm it shortly — no need to pay again.' },
     failed: { Icon: XCircle, bg: 'bg-red-50', tone: 'text-red-500', title: 'Payment was not completed', text: 'Your payment was declined or cancelled and you have not been charged. You can go back to your payment link and try again.' },
     problem: { Icon: XCircle, bg: 'bg-red-50', tone: 'text-red-500', title: 'We could not verify this payment', text: 'Please contact us with your payment details so we can check it for you.' },
+    test: { Icon: XCircle, bg: 'bg-amber-50', tone: 'text-amber-500', title: 'No charge was made', text: 'Our payment partner processed this as a test transaction — your card was not charged. Please contact us so we can resolve this and complete your payment.' },
   }[state];
 
   const row = 'flex items-center justify-between px-5 py-3.5 border-b border-gray-100 last:border-0';
