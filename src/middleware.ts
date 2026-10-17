@@ -20,6 +20,14 @@ export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const onAdminHost = isAdminHost(req.headers.get('host'));
 
+  // The matcher's host-based `has` condition for "/" isn't honored by the Cloudflare Workers
+  // edge runtime (OpenNext) the way it is on Vercel, so this middleware ends up invoked for "/"
+  // on every host, not just the admin subdomain. Without this guard the real site homepage on
+  // the main domain gets caught by the "pretend this doesn't exist" branch below and 404s.
+  if (pathname === '/' && !onAdminHost) {
+    return NextResponse.next();
+  }
+
   if (!onAdminHost) {
     // Not the admin subdomain (or ADMIN_HOST is unset): pretend these routes do not exist.
     return NextResponse.rewrite(new URL('/__not-found', req.url), { status: 404 });
